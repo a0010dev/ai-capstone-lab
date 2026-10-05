@@ -1,0 +1,51 @@
+{
+  "dataset_id": "synthetic-defects-v1",
+  "controls": [
+    {
+      "control_id": "DEMO-CTRL-001", "job_id": "DEMO-JOB-A",
+      "section": "TE", "operation": "DEMO-TEST", "date": "2026-09-01",
+      "sample_quantity": 100, "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-002", "job_id": "DEMO-JOB-B",
+      "section": "TE", "operation": "DEMO-TEST", "date": "2026-09-15",
+      "sample_quantity": 80,
+      "defects": [
+        {"record_id": "DEMO-DEF-001", "defect_code": "DEMO-CODE-A", "errors": 8, "affected_boards": 6, "repaired_boards": 2, "removed_boards": 3},
+        {"record_id": "DEMO-DEF-002", "defect_code": "DEMO-CODE-B", "errors": 5, "affected_boards": 4, "repaired_boards": 1, "removed_boards": 1}
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-003", "job_id": "DEMO-JOB-A",
+      "section": "TV", "operation": "DEMO-INSPECT", "date": "2026-09-20",
+      "sample_quantity": 60,
+      "defects": [
+        {"record_id": "DEMO-DEF-003", "defect_code": "DEMO-CODE-A", "errors": 7, "affected_boards": 7, "repaired_boards": 0, "removed_boards": 5}
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-004", "job_id": "DEMO-JOB-C",
+      "section": "TE", "operation": "DEMO-TEST", "date": "2026-09-30",
+      "sample_quantity": 40,
+      "defects": [
+        {"record_id": "DEMO-DEF-004", "defect_code": "DEMO-CODE-C", "errors": 10, "affected_boards": 9, "repaired_boards": 1, "removed_boards": 8}
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-005", "job_id": "DEMO-JOB-D",
+      "section": "TV", "operation": "DEMO-INSPECT", "date": "2026-08-31",
+      "sample_quantity": 50,
+      "defects": [
+        {"record_id": "DEMO-DEF-005", "defect_code": "DEMO-CODE-B", "errors": 2, "affected_boards": 2, "repaired_boards": 2, "removed_boards": 0}
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-006", "job_id": "DEMO-JOB-B",
+      "section": "TE", "operation": "DEMO-TEST", "date": "2026-10-01",
+      "sample_quantity": 30,
+      "defects": [
+        {"record_id": "DEMO-DEF-006", "defect_code": "DEMO-CODE-C", "errors": 4, "affected_boards": 3, "repaired_boards": 0, "removed_boards": 0}
+      ]
+    }
+  ]
+}
