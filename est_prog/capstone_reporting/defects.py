@@ -111,3 +111,45 @@ def get_defect_summary(section=None, date_from=None, date_to=None):
     result = _response(dataset_id, section, date_from, date_to)
     result['totals'] = totals
     return result
+
+
+def get_defect_pareto(section=None, date_from=None, date_to=None,
+                      metric='removed_boards'):
+    """Rank observed defect codes by quantity, retaining source references.
+
+    Percentages are contributions to the selected metric, not defect rates.
+    Zero-total percentages are undefined (None); zero-quantity rows are kept.
+    """
+    if not isinstance(metric, _STRING_TYPES) or metric not in _DEFECT_METRICS:
+        raise ValueError('metric must be one of: %s' % ', '.join(_DEFECT_METRICS))
+    dataset_id, controls = _select_controls(section, date_from, date_to)
+    groups = {}
+    for control in controls:
+        for defect in control['defects']:
+            code = defect['defect_code']
+            group = groups.setdefault(code, {
+                'defect_code': code, 'quantity': 0, 'records': [],
+            })
+            group['quantity'] += defect[metric]
+            group['records'].append({
+                'job_id': control['job_id'],
+                'control_id': control['control_id'],
+                'record_id': defect['record_id'],
+                'quantity': defect[metric],
+            })
+    items = sorted(groups.values(),
+                   key=lambda row: (-row['quantity'], row['defect_code']))
+    total = sum(row['quantity'] for row in items)
+    cumulative = 0
+    for row in items:
+        row['records'].sort(key=lambda ref: (
+            ref['job_id'], ref['control_id'], ref['record_id']))
+        cumulative += row['quantity']
+        row['percentage'] = 100.0 * row['quantity'] / total if total else None
+        row['cumulative_percentage'] = 100.0 * cumulative / total if total else None
+    result = _response(dataset_id, section, date_from, date_to)
+    result['metric_semantics']['percentage_basis'] = 'share_of_selected_metric_not_defect_rate'
+    result['metric'] = metric
+    result['total_quantity'] = total
+    result['items'] = items
+    return result

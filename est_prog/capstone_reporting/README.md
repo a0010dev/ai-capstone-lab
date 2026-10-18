@@ -4,15 +4,18 @@ El projecte vol respondre preguntes de negoci en llenguatge natural mitjançant
 un agent de reporting de només lectura. L'agent triarà eines de domini
 deterministes; aquestes determinaran els fets sobre les dades operatives.
 
-Aquest primer increment només implementa `get_defect_summary` i
-`get_defect_detail` amb la biblioteca estàndard, compatibles amb Python 2.7 i 3.
+Aquest prototip implementa `get_defect_summary`, `get_defect_detail` i
+`get_defect_pareto` amb la biblioteca estàndard. Aquest repositori requereix
+Python 3.13 o superior. La limitació de Python 2.7 correspon a l'entorn ERP
+extern i no és un requisit d'execució ni de proves d'aquest capstone.
 Segueix la ubicació de reporting del repositori, `est_prog`.
 Les eines són prototips funcionals de la interfície, no regles ERP definitives.
 No importen `kfl_prog`, no connecten amb producció i no modifiquen dades.
 
-No s'utilitza RAG: aquest exercici consulta quantitats estructurades mitjançant
-eines, sense necessitat de recuperar documents. No incorpora un LLM, framework
-d'agents, cerca vectorial ni generació SQL.
+La capa de dades consulta quantitats estructurades mitjançant eines, sense RAG,
+LLM, framework d'agents, cerca vectorial ni generació SQL. La capa Python 3
+`agent.py`, afegida a la setmana 3, connecta les tres eines amb el model; vegeu
+[04-reporting-agent.ipynb](../../notebooks/04-reporting-agent.ipynb).
 
 ## Dades i contracte provisional
 
@@ -34,10 +37,12 @@ No modifica les dades ni calcula mètriques. El notebook `03-defect-retrieval.ip
 demostra aquesta capa sense RAG ni LLM.
 
 ```python
-from est_prog.capstone_reporting import get_defect_summary, get_defect_detail
+from est_prog.capstone_reporting import (
+    get_defect_summary, get_defect_detail, get_defect_pareto)
 
 filters = dict(section='TE', date_from='2026-09-01', date_to='2026-09-30')
 summary = get_defect_summary(**filters)
+pareto = get_defect_pareto(metric='removed_boards', **filters)
 detail = get_defect_detail(**filters)
 ```
 
@@ -61,31 +66,64 @@ afectades 19, reparades 4 i retirades 12. Les retirades s'expliquen amb
 L'estabilitat dels resultats depèn de la mateixa versió del fixture; no hi ha
 un mecanisme de captures de dades vives en aquest prototip.
 
+## Pareto de defectes
+
+`get_defect_pareto(section=None, date_from=None, date_to=None,
+metric='removed_boards')` agrupa les línies originals per `defect_code`.
+Admet `errors`, `affected_boards`, `repaired_boards` i `removed_boards`;
+qualsevol altra mètrica genera `ValueError`. Comparteix els filtres del resum
+i del detall, sense canviar-ne els contractes.
+
+La resposta afegeix `metric`, `total_quantity` i `items`. Cada element conté
+`defect_code`, `quantity`, `percentage`, `cumulative_percentage` i `records`.
+Cada referència de `records` conserva `job_id`, `control_id`, `record_id` i la
+quantitat de la mètrica: permet localitzar la línia a `get_defect_detail` amb
+els mateixos filtres i justificar cada grup. Inclou també línies de valor zero.
+
+L'ordre és quantitat descendent i, en cas d'empat, codi ascendent. El percentatge
+és `100 * quantity / total_quantity`: contribució al total de la mètrica
+seleccionada, **no una taxa de defectuositat**. L'acumulat es calcula des de les
+quantitats acumulades, sense sumar percentatges arrodonits. La tool retorna
+percentatges sense arrodoniment de presentació. Amb total zero, els percentatges
+són `null` i es conserven els codis observats; sense línies de defecte, `items`
+és buit i el total és zero.
+
+Per TE al setembre, les retirades són C: 8 (66,67%), A: 3 (25%) i B: 1 (8,33%),
+amb percentatges acumulats 66,67%, 91,67% i 100% (arrodonits aquí per llegibilitat).
+El total 12 coincideix amb el resum i el detall. Els codis identifiquen defectes
+registrats; el Pareto no demostra les causes del problema.
+
 ## Executar la demostració i les proves
 
 Des de l'arrel del repositori, sense dependències addicionals:
 
 ```sh
-python2.7 -m est_prog.capstone_reporting
+python3 -m est_prog.capstone_reporting
 python3 -m unittest discover -s tests -v
 ```
 
-La demo imprimeix el resum, els jobs/controls/línies i `3 + 1 + 8 = 12`.
+La demo imprimeix el resum, el Pareto, els jobs/controls/línies i `3 + 1 + 8 = 12`.
 Les proves de recuperació comproven càrrega, filtres opcionals i combinats,
 controls sans, dates límit, seleccions buides, validació, rutes explícites i
-lectures independents.
+lectures independents. Les proves de Pareto reconcilien les quatre mètriques
+amb resum i detall; cobreixen referències, percentatges, empats, totals zero
+i determinisme sense mutació compartida.
 
-## Connexió futura amb l'agent
+## Connexió amb l'agent (setmana 3)
 
 > "Show me the defect summary for section TE this month and show me the jobs
 > that explain the removals."
 
-Un agent futur interpretarà la pregunta, resoldrà el període i cridarà les dues
-eines amb els mateixos filtres. Utilitzarà el detall per explicar quins jobs
-contribueixen a les retirades. L'LLM no calcularà les mètriques de fabricació.
+`agent.py` interpreta la pregunta, resol el període i pot cridar les tres eines
+amb els mateixos filtres. El detall permet explicar quins registres i jobs
+contribueixen a les retirades. Si es demana un rànquing per codi, consulta el
+Pareto amb la mètrica triada
+(`removed_boards` per defecte). Els totals i percentatges es calculen a les eines;
+l’agent no atribueix causes de negoci a partir del rànquing.
+El notebook 04 mostra crides, respostes i comprovacions d’onze casos de negoci, inclosos els de Pareto.
 
 El backend sintètic se substituirà per l'ERP/API, mantenint les signatures
 públiques i l'estructura de resposta sempre que sigui possible. Aquesta
 substitució requerirà validar regles, unitats, cobertura i consistència de les
 dades reals; no es reutilitzaran automàticament les convencions del fixture.
-Pareto i consulta específica de jobs afectats queden fora d'aquest increment.
+La consulta agregada específica de jobs afectats queda fora d'aquest increment.

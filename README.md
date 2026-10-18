@@ -37,6 +37,80 @@ Existing report requests and their expected results will form an evaluation set 
 - `notebooks/01-setup.ipynb` - smoke test that confirms your environment works
 - `notebooks/02-rag.ipynb` - original minimal RAG baseline
 - `notebooks/03-defect-retrieval.ipynb` - deterministic retrieval of synthetic defect records; no RAG or LLM
+- `notebooks/04-reporting-agent.ipynb` - week 3 tool-calling agent with eleven business queries including Pareto, visible tool traces and checks against the synthetic fixture
+
+## Week 3: tool-calling agent
+
+Three deterministic tools are implemented: `get_defect_summary` for totals,
+`get_defect_detail` for source controls and defect rows, and `get_defect_pareto`
+for ranking defect codes by a selected metric. All three take `section`,
+`date_from`, and `date_to`, and return the applied filters,
+synthetic source, and provisional metric semantics. A document search tool
+would not add value for these structured reporting queries.
+
+`est_prog/capstone_reporting/agent.py` adds a Python 3 Responses API loop over
+these functions, following the [official function-calling protocol](https://developers.openai.com/api/docs/guides/function-calling).
+The model selects tools; an allowlisted dispatcher validates the arguments,
+executes the functions, and returns their results to the model. The loop keeps
+a tool trace and stops after at most eight model rounds. The original RAG
+notebook remains available as a baseline; the deterministic backend has no
+OpenAI dependency. This capstone requires Python 3.13 or later. Python 2.7 is
+a constraint of the external ERP environment, not a local runtime or test requirement.
+
+Open notebook 04 and run all cells with `OPENAI_API_KEY` configured in `.env`.
+It uses the baseline model `gpt-4o-mini`; set `OPENAI_MODEL` to override it.
+Running the notebook makes paid API calls. The evaluation fixes the reference
+date at `2026-10-16` to make relative-month queries reproducible.
+
+```python
+from dotenv import load_dotenv
+from est_prog.capstone_reporting.agent import run_agent
+
+load_dotenv()
+result = run_agent("Show the defect summary for TE in September 2026.")
+print(result["answer"])
+print(result["tool_calls"])
+```
+
+Each call starts a fresh conversation. If the agent asks for clarification,
+submit the complete clarified question in a new call. API failures propagate;
+invalid tool arguments are returned to the model for correction. No matching
+records do not establish zero production or complete data coverage. Rates
+and job aggregation remain unsupported until their definitions and
+dedicated deterministic tools are validated. Natural-language answers still
+need review against the traces; the notebook checks routing, filters and facts,
+not every claim in the prose. No ERP connection is made.
+
+## Defect Pareto
+
+```python
+from est_prog.capstone_reporting import get_defect_pareto
+
+pareto = get_defect_pareto(
+    section="TE", date_from="2026-09-01", date_to="2026-09-30",
+    metric="removed_boards",
+)
+```
+
+Allowed metrics are `errors`, `affected_boards`, `repaired_boards`, and
+`removed_boards` (the default). The response includes the common metadata,
+`metric`, `total_quantity`, and `items` ranked by descending quantity, with
+ascending defect codes breaking ties. Each item includes its quantity, share,
+cumulative share, and original job/control/record references. Shares are
+contributions to the selected metric, not defect rates or evidence of causes.
+Percentages are unrounded; zero totals produce `null` percentages and retain
+observed codes and source rows. No defect rows produces an empty list.
+For TE in September 2026, removals rank C=8, A=3, B=1 (total 12).
+The Python function defaults to `removed_boards`; the agent's strict tool
+schema requires an explicit `metric` and instructs the model to select that
+default when the user does not specify one.
+
+Run the summary → Pareto → detail demonstration without API calls:
+
+```sh
+python3 -m est_prog.capstone_reporting
+python3 -m unittest discover -s tests -v
+```
 
 ## Data
 
