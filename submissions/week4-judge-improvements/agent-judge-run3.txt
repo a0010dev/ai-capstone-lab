@@ -1,0 +1,93 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.16, pytest-9.2.0, pluggy-1.7.0 -- /workspaces/ai-capstone-lab/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /workspaces/ai-capstone-lab
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collecting ... collected 1 item
+
+tests/test_judge.py::test_zero_removals_with_existing_records_judge {
+  "answer": "Dades sintètiques: Hi ha registres de defecte, però zero plaques retirades durant el període d'octubre de 2026 (del 2026-10-01 al 2026-10-31). \n\nAquí teniu el detall dels codi de defecte observats:\n\n| Codi de defecte | Quantitat | Registres                              |\n|------------------|-----------|---------------------------------------|\n| DEMO-CODE-C      | 0         | Job ID: DEMO-JOB-B, Control ID: DEMO-CTRL-006, Record ID: DEMO-DEF-006 |\n\n- Total de plaques retirades: 0\n- Percentatge: no definit.",
+  "tool_calls": [
+    {
+      "name": "get_defect_pareto",
+      "arguments": "{\"section\":\"TE\",\"date_from\":\"2026-10-01\",\"date_to\":\"2026-10-31\",\"metric\":\"removed_boards\"}",
+      "result": {
+        "schema_version": 1,
+        "source": {
+          "kind": "synthetic",
+          "dataset_id": "synthetic-defects-v1"
+        },
+        "filters": {
+          "section": "TE",
+          "date_from": "2026-10-01",
+          "date_to": "2026-10-31"
+        },
+        "metric_semantics": {
+          "status": "prototype_only_not_validated_erp_rules",
+          "date_basis": "synthetic_control_date_inclusive",
+          "sample_quantity": "sum_once_per_control_not_unique_boards",
+          "board_counts": "sum_of_recorded_occurrences_not_unique_boards",
+          "percentage_basis": "share_of_selected_metric_not_defect_rate"
+        },
+        "metric": "removed_boards",
+        "total_quantity": 0,
+        "items": [
+          {
+            "defect_code": "DEMO-CODE-C",
+            "quantity": 0,
+            "records": [
+              {
+                "job_id": "DEMO-JOB-B",
+                "control_id": "DEMO-CTRL-006",
+                "record_id": "DEMO-DEF-006",
+                "quantity": 0
+              }
+            ],
+            "percentage": null,
+            "cumulative_percentage": null
+          }
+        ]
+      }
+    }
+  ],
+  "model": "gpt-4o-mini",
+  "reference_date": "2026-10-16"
+}
+Judge model: gpt-4o-mini
+Judge feedback:
+{
+  "criteria": [
+    {
+      "criterion_description": "The agent calls get_defect_pareto with section='TE', date_from='2026-10-01', date_to='2026-10-31' and metric='removed_boards'.",
+      "judgement": "The tool trace clearly shows that the agent called `get_defect_pareto` with the specified arguments: section='TE', date_from='2026-10-01', date_to='2026-10-31', and metric='removed_boards'. Thus, this criterion is met.",
+      "passed": true
+    }
+  ],
+  "feedback": ""
+}
+Judge feedback:
+{
+  "criteria": [
+    {
+      "criterion_description": "The final answer identifies DEMO-CODE-C with zero removed boards and explains that defect records exist despite zero removals. It must not claim that there are no matching records or that coverage is unknown. Acknowledging existing defect records is sufficient: there is no requirement to separately discuss coverage. Ignore percentage claims for this criterion.",
+      "judgement": "The final answer correctly identifies DEMO-CODE-C with zero removed boards and clearly states that defect records exist despite the zero removals. It does not make any claims that there are no matching records or that coverage is unknown. The acknowledgment of existing defect records is present and sufficient for the criterion.",
+      "passed": true
+    }
+  ],
+  "feedback": ""
+}
+Judge feedback:
+{
+  "criteria": [
+    {
+      "criterion_description": "The final answer must not present a defect rate or a numeric Pareto percentage, including 0%. Reporting zero removed boards is a quantity, not a percentage. If the answer omits percentages entirely, this criterion passes. If it discusses percentages, it must explain that they are undefined because total removed boards is zero.",
+      "judgement": "The final answer discusses percentages and explicitly states that they are 'no definit' (undefined) due to the total removed boards being zero. It also reports zero removed boards as a quantity, not a percentage. Therefore, it meets the requirement to explain the lacking percentage.",
+      "passed": true
+    }
+  ],
+  "feedback": ""
+}
+PASSED
+
+============================== 1 passed in 9.04s ===============================

@@ -1,0 +1,1068 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.16, pytest-9.2.0, pluggy-1.7.0 -- /workspaces/ai-capstone-lab/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /workspaces/ai-capstone-lab
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collecting ... collected 12 items
+
+tests/test_judge_calibration.py::test_judge_agrees_with_fixed_labels[correct-without-percentages-run-1] Fixed example: correct-without-percentages; repetition: 1
+{
+  "answer": "Dades sintètiques: TE, del 2026-10-01 al 2026-10-31, ambdues dates incloses. Dataset: synthetic-defects-v1. Hi ha registres de defecte, però zero plaques retirades.\n\n| Codi de defecte | Plaques retirades |\n|---|---:|\n| DEMO-CODE-C | 0 |",
+  "tool_calls": [
+    {
+      "name": "get_defect_pareto",
+      "arguments": "{\"section\": \"TE\", \"date_from\": \"2026-10-01\", \"date_to\": \"2026-10-31\", \"metric\": \"removed_boards\"}",
+      "result": {
+        "schema_version": 1,
+        "source": {
+          "kind": "synthetic",
+          "dataset_id": "synthetic-defects-v1"
+        },
+        "filters": {
+          "section": "TE",
+          "date_from": "2026-10-01",
+          "date_to": "2026-10-31"
+        },
+        "metric_semantics": {
+          "status": "prototype_only_not_validated_erp_rules",
+          "date_basis": "synthetic_control_date_inclusive",
+          "sample_quantity": "sum_once_per_control_not_unique_boards",
+          "board_counts": "sum_of_recorded_occurrences_not_unique_boards",
+          "percentage_basis": "share_of_selected_metric_not_defect_rate"
+        },
+        "metric": "removed_boards",
+        "total_quantity": 0,
+        "items": [
+          {
+            "defect_code": "DEMO-CODE-C",
+            "quantity": 0,
+            "records": [
+              {
+                "job_id": "DEMO-JOB-B",
+                "control_id": "DEMO-CTRL-006",
+                "record_id": "DEMO-DEF-006",
+                "quantity": 0
+              }
+            ],
+            "percentage": null,
+            "cumulative_percentage": null
+          }
+        ]
+      }
+    }
+  ]
+}
+Judge model: gpt-4o-mini
+Judge feedback:
+{
+  "criteria": [
+    {
+      "criterion_description": "The agent calls get_defect_pareto with section='TE', date_from='2026-10-01', date_to='2026-10-31' and metric='removed_boards'.",
+      "passed": true,
+      "judgement": "The tool trace shows that get_defect_pareto was called with section='TE', date_from='2026-10-01', date_to='2026-10-31', and metric='removed_boards', meeting the criteria."
+    },
+    {
+      "criterion_description": "The final answer identifies DEMO-CODE-C with zero removed boards and explains that defect records exist despite zero removals. It must not claim that there are no matching records or that coverage is unknown.",
+      "passed": true,
+      "judgement": "The final answer identifies DEMO-CODE-C with zero removed boards and states that there are defect records despite zero removals. It does not claim there are no matching records or that coverage is unknown."
+    },
+    {
+      "criterion_description": "The final answer must not present a defect rate or a numeric Pareto percentage, including 0%. Reporting zero removed boards is a quantity, not a percentage. If the answer omits percentages entirely, this criterion passes. If it discusses percentages, it must explain that they are undefined because total removed boards is zero.",
+      "passed": true,
+      "judgement": "The final answer does not mention any defect rate or numeric Pareto percentage. It only reports zero removed boards, which is a quantity and not a percentage. Therefore, this criterion is passed."
+    }
+  ],
+  "feedback": ""
+}
+Human labels: [True, True, True]; judge labels: [True, True, True]
+PASSED
+tests/test_judge_calibration.py::test_judge_agrees_with_fixed_labels[correct-without-percentages-run-2] Fixed example: correct-without-percentages; repetition: 2
+{
+  "answer": "Dades sintètiques: TE, del 2026-10-01 al 2026-10-31, ambdues dates incloses. Dataset: synthetic-defects-v1. Hi ha registres de defecte, però zero plaques retirades.\n\n| Codi de defecte | Plaques retirades |\n|---|---:|\n| DEMO-CODE-C | 0 |",
+  "tool_calls": [
+    {
+      "name": "get_defect_pareto",
+      "arguments": "{\"section\": \"TE\", \"date_from\": \"2026-10-01\", \"date_to\": \"2026-10-31\", \"metric\": \"removed_boards\"}",
+      "result": {
+        "schema_version": 1,
+        "source": {
+          "kind": "synthetic",
+          "dataset_id": "synthetic-defects-v1"
+        },
+        "filters": {
+          "section": "TE",
+          "date_from": "2026-10-01",
+          "date_to": "2026-10-31"
+        },
+        "metric_semantics": {
+          "status": "prototype_only_not_validated_erp_rules",
+          "date_basis": "synthetic_control_date_inclusive",
+          "sample_quantity": "sum_once_per_control_not_unique_boards",
+          "board_counts": "sum_of_recorded_occurrences_not_unique_boards",
+          "percentage_basis": "share_of_selected_metric_not_defect_rate"
+        },
+        "metric": "removed_boards",
+        "total_quantity": 0,
+        "items": [
+          {
+            "defect_code": "DEMO-CODE-C",
+            "quantity": 0,
+            "records": [
+              {
+                "job_id": "DEMO-JOB-B",
+                "control_id": "DEMO-CTRL-006",
+                "record_id": "DEMO-DEF-006",
+                "quantity": 0
+              }
+            ],
+            "percentage": null,
+            "cumulative_percentage": null
+          }
+        ]
+      }
+    }
+  ]
+}
+Judge model: gpt-4o-mini
+Judge feedback:
+{
+  "criteria": [
+    {
+      "criterion_description": "The agent calls get_defect_pareto with section='TE', date_from='2026-10-01', date_to='2026-10-31' and metric='removed_boards'.",
+      "passed": true,
+      "judgement": "The tool trace shows that the agent correctly called get_defect_pareto with the specified parameters: section='TE', date_from='2026-10-01', date_to='2026-10-31', and metric='removed_boards'."
+    },
+    {
+      "criterion_description": "The final answer identifies DEMO-CODE-C with zero removed boards and explains that defect records exist despite zero removals. It must not claim that there are no matching records or that coverage is unknown.",
+      "passed": true,
+      "judgement": "The final answer identifies DEMO-CODE-C with zero removed boards and states that there are defect records despite having zero removals, fulfilling the criterion."
+    },
+    {
+      "criterion_description": "The final answer must not present a defect rate or a numeric Pareto percentage, including 0%. Reporting zero removed boards is a quantity, not a percentage. If the answer omits percentages entirely, this criterion passes. If it discusses percentages, it must explain that they are undefined because total removed boards is zero.",
+      "passed": true,
+      "judgement": "The final answer does not present a defect rate or numeric Pareto percentage, thus satisfying the criterion. It reports zero removed boards as a quantity."
+    }
+  ],
+  "feedback": ""
+}
+Human labels: [True, True, True]; judge labels: [True, True, True]
+PASSED
+tests/test_judge_calibration.py::test_judge_agrees_with_fixed_labels[correct-undefined-percentages-run-1] Fixed example: correct-undefined-percentages; repetition: 1
+{
+  "answer": "Dades sintètiques: TE, del 2026-10-01 al 2026-10-31, ambdues dates incloses. Dataset: synthetic-defects-v1. Hi ha registres de defecte, però zero plaques retirades.\n\n| Codi de defecte | Plaques retirades |\n|---|---:|\n| DEMO-CODE-C | 0 |\n\nEls percentatges són indefinits perquè el total de plaques retirades és zero.",
+  "tool_calls": [
+    {
+      "name": "get_defect_pareto",
+      "arguments": "{\"section\": \"TE\", \"date_from\": \"2026-10-01\", \"date_to\": \"2026-10-31\", \"metric\": \"removed_boards\"}",
+      "result": {
+        "schema_version": 1,
+        "source": {
+          "kind": "synthetic",
+          "dataset_id": "synthetic-defects-v1"
+        },
+        "filters": {
+          "section": "TE",
+          "date_from": "2026-10-01",
+          "date_to": "2026-10-31"
+        },
+        "metric_semantics": {
+          "status": "prototype_only_not_validated_erp_rules",
+          "date_basis": "synthetic_control_date_inclusive",
+          "sample_quantity": "sum_once_per_control_not_unique_boards",
+          "board_counts": "sum_of_recorded_occurrences_not_unique_boards",
+          "percentage_basis": "share_of_selected_metric_not_defect_rate"
+        },
+        "metric": "removed_boards",
+        "total_quantity": 0,
+        "items": [
+          {
+            "defect_code": "DEMO-CODE-C",
+            "quantity": 0,
+            "records": [
+              {
+                "job_id": "DEMO-JOB-B",
+                "control_id": "DEMO-CTRL-006",
+                "record_id": "DEMO-DEF-006",
+                "quantity": 0
+              }
+            ],
+            "percentage": null,
+            "cumulative_percentage": null
+          }
+        ]
+      }
+    }
+  ]
+}
+Judge model: gpt-4o-mini
+Judge feedback:
+{
+  "criteria": [
+    {
+      "criterion_description": "The agent calls get_defect_pareto with section='TE', date_from='2026-10-01', date_to='2026-10-31' and metric='removed_boards'.",
+      "passed": true,
+      "judgement": "The agent calls get_defect_pareto with the specified parameters as evidenced in the tool trace."
+    },
+    {
+      "criterion_description": "The final answer identifies DEMO-CODE-C with zero removed boards and explains that defect records exist despite zero removals. It must not claim that there are no matching records or that coverage is unknown.",
+      "passed": true,
+      "judgement": "The final answer identifies DEMO-CODE-C with zero removed boards and states that there are defect records despite the zero removals. There is no claim that there are no matching records or that coverage is unknown."
+    },
+    {
+      "criterion_description": "The final answer must not present a defect rate or a numeric Pareto percentage, including 0%. Reporting zero removed boards is a quantity, not a percentage. If the answer omits percentages entirely, this criterion passes. If it discusses percentages, it must explain that they are undefined because total removed boards is zero.",
+      "passed": true,
+      "judgement": "The final answer states that percentages are undefined because the total removed boards is zero, thus complying with the criterion. No defect rate or numeric Pareto percentage is presented."
+    }
+  ],
+  "feedback": ""
+}
+Human labels: [True, True, True]; judge labels: [True, True, True]
+PASSED
+tests/test_judge_calibration.py::test_judge_agrees_with_fixed_labels[correct-undefined-percentages-run-2] Fixed example: correct-undefined-percentages; repetition: 2
+{
+  "answer": "Dades sintètiques: TE, del 2026-10-01 al 2026-10-31, ambdues dates incloses. Dataset: synthetic-defects-v1. Hi ha registres de defecte, però zero plaques retirades.\n\n| Codi de defecte | Plaques retirades |\n|---|---:|\n| DEMO-CODE-C | 0 |\n\nEls percentatges són indefinits perquè el total de plaques retirades és zero.",
+  "tool_calls": [
+    {
+      "name": "get_defect_pareto",
+      "arguments": "{\"section\": \"TE\", \"date_from\": \"2026-10-01\", \"date_to\": \"2026-10-31\", \"metric\": \"removed_boards\"}",
+      "result": {
+        "schema_version": 1,
+        "source": {
+          "kind": "synthetic",
+          "dataset_id": "synthetic-defects-v1"
+        },
+        "filters": {
+          "section": "TE",
+          "date_from": "2026-10-01",
+          "date_to": "2026-10-31"
+        },
+        "metric_semantics": {
+          "status": "prototype_only_not_validated_erp_rules",
+          "date_basis": "synthetic_control_date_inclusive",
+          "sample_quantity": "sum_once_per_control_not_unique_boards",
+          "board_counts": "sum_of_recorded_occurrences_not_unique_boards",
+          "percentage_basis": "share_of_selected_metric_not_defect_rate"
+        },
+        "metric": "removed_boards",
+        "total_quantity": 0,
+        "items": [
+          {
+            "defect_code": "DEMO-CODE-C",
+            "quantity": 0,
+            "records": [
+              {
+                "job_id": "DEMO-JOB-B",
+                "control_id": "DEMO-CTRL-006",
+                "record_id": "DEMO-DEF-006",
+                "quantity": 0
+              }
+            ],
+            "percentage": null,
+            "cumulative_percentage": null
+          }
+        ]
+      }
+    }
+  ]
+}
+Judge model: gpt-4o-mini
+Judge feedback:
+{
+  "criteria": [
+    {
+      "criterion_description": "The agent calls get_defect_pareto with section='TE', date_from='2026-10-01', date_to='2026-10-31' and metric='removed_boards'.",
+      "passed": true,
+      "judgement": "The tool trace shows that 'get_defect_pareto' was called with the correct parameters: section='TE', date_from='2026-10-01', date_to='2026-10-31', and metric='removed_boards'."
+    },
+    {
+      "criterion_description": "The final answer identifies DEMO-CODE-C with zero removed boards and explains that defect records exist despite zero removals. It must not claim that there are no matching records or that coverage is unknown.",
+      "passed": true,
+      "judgement": "The final answer mentions 'DEMO-CODE-C' with zero removed boards and states that 'Hi ha registres de defecte', indicating defect records exist despite the removals being zero."
+    },
+    {
+      "criterion_description": "The final answer must not present a defect rate or a numeric Pareto percentage, including 0%. Reporting zero removed boards is a quantity, not a percentage. If the answer omits percentages entirely, this criterion passes. If it discusses percentages, it must explain that they are undefined because total removed boards is zero.",
+      "passed": true,
+      "judgement": "The final answer does not present a defect rate or a numeric Pareto percentage. It states that 'Els percentatges són indefinits perquè el total de plaques retirades és zero', correctly explaining that percentages are undefined due to the total removed boards being zero."
+    }
+  ],
+  "feedback": "All criteria were met successfully."
+}
+Human labels: [True, True, True]; judge labels: [True, True, True]
+PASSED
+tests/test_judge_calibration.py::test_judge_agrees_with_fixed_labels[historical-missing-records-error-run-1] Fixed example: historical-missing-records-error; repetition: 1
+{
+  "answer": "Dades sintètiques del Pareto de retirades de TE durant octubre de 2026:\n\n- Total de plaques retirades: 0\n- Codi de defecte: DEMO-CODE-C\n  - Quantitat: 0\n  - Registres: \n    - ID de feina: DEMO-JOB-B\n    - ID de control: DEMO-CTRL-006\n    - ID de registre: DEMO-DEF-006\n\nSense registres coincidents; cobertura desconeguda.",
+  "tool_calls": [
+    {
+      "name": "get_defect_pareto",
+      "arguments": "{\"section\": \"TE\", \"date_from\": \"2026-10-01\", \"date_to\": \"2026-10-31\", \"metric\": \"removed_boards\"}",
+      "result": {
+        "schema_version": 1,
+        "source": {
+          "kind": "synthetic",
+          "dataset_id": "synthetic-defects-v1"
+        },
+        "filters": {
+          "section": "TE",
+          "date_from": "2026-10-01",
+          "date_to": "2026-10-31"
+        },
+        "metric_semantics": {
+          "status": "prototype_only_not_validated_erp_rules",
+          "date_basis": "synthetic_control_date_inclusive",
+          "sample_quantity": "sum_once_per_control_not_unique_boards",
+          "board_counts": "sum_of_recorded_occurrences_not_unique_boards",
+          "percentage_basis": "share_of_selected_metric_not_defect_rate"
+        },
+        "metric": "removed_boards",
+        "total_quantity": 0,
+        "items": [
+          {
+            "defect_code": "DEMO-CODE-C",
+            "quantity": 0,
+            "records": [
+              {
+                "job_id": "DEMO-JOB-B",
+                "control_id": "DEMO-CTRL-006",
+                "record_id": "DEMO-DEF-006",
+                "quantity": 0
+              }
+            ],
+            "percentage": null,
+            "cumulative_percentage": null
+          }
+        ]
+      }
+    }
+  ]
+}
+Judge model: gpt-4o-mini
+Judge feedback:
+{
+  "criteria": [
+    {
+      "criterion_description": "The agent calls get_defect_pareto with section='TE', date_from='2026-10-01', date_to='2026-10-31' and metric='removed_boards'.",
+      "passed": true,
+      "judgement": "The tool trace confirms that the agent called get_defect_pareto with the specified section, date range, and metric."
+    },
+    {
+      "criterion_description": "The final answer identifies DEMO-CODE-C with zero removed boards and explains that defect records exist despite zero removals. It must not claim that there are no matching records or that coverage is unknown.",
+      "passed": false,
+      "judgement": "The final answer states 'Sense registres coincidents; cobertura desconeguda', which contradicts the requirement of explaining that defect records exist despite zero removals."
+    },
+    {
+      "criterion_description": "The final answer must not present a defect rate or a numeric Pareto percentage, including 0%. Reporting zero removed boards is a quantity, not a percentage. If the answer omits percentages entirely, this criterion passes. If it discusses percentages, it must explain that they are undefined because total removed boards is zero.",
+      "passed": false,
+      "judgement": "The final answer does not discuss percentages as it claims zero removed boards, but includes a statement about 'Sense registres coincidents; cobertura desconeguda', which implies a lack of clarity regarding data coverage and connection to percentage reporting."
+    }
+  ],
+  "feedback": "The evaluation indicates issues with the explanation of defect records and implicit coverage, leading to failed criteria."
+}
+Human labels: [True, False, True]; judge labels: [True, False, False]
+FAILED
+tests/test_judge_calibration.py::test_judge_agrees_with_fixed_labels[historical-missing-records-error-run-2] Fixed example: historical-missing-records-error; repetition: 2
+{
+  "answer": "Dades sintètiques del Pareto de retirades de TE durant octubre de 2026:\n\n- Total de plaques retirades: 0\n- Codi de defecte: DEMO-CODE-C\n  - Quantitat: 0\n  - Registres: \n    - ID de feina: DEMO-JOB-B\n    - ID de control: DEMO-CTRL-006\n    - ID de registre: DEMO-DEF-006\n\nSense registres coincidents; cobertura desconeguda.",
+  "tool_calls": [
+    {
+      "name": "get_defect_pareto",
+      "arguments": "{\"section\": \"TE\", \"date_from\": \"2026-10-01\", \"date_to\": \"2026-10-31\", \"metric\": \"removed_boards\"}",
+      "result": {
+        "schema_version": 1,
+        "source": {
+          "kind": "synthetic",
+          "dataset_id": "synthetic-defects-v1"
+        },
+        "filters": {
+          "section": "TE",
+          "date_from": "2026-10-01",
+          "date_to": "2026-10-31"
+        },
+        "metric_semantics": {
+          "status": "prototype_only_not_validated_erp_rules",
+          "date_basis": "synthetic_control_date_inclusive",
+          "sample_quantity": "sum_once_per_control_not_unique_boards",
+          "board_counts": "sum_of_recorded_occurrences_not_unique_boards",
+          "percentage_basis": "share_of_selected_metric_not_defect_rate"
+        },
+        "metric": "removed_boards",
+        "total_quantity": 0,
+        "items": [
+          {
+            "defect_code": "DEMO-CODE-C",
+            "quantity": 0,
+            "records": [
+              {
+                "job_id": "DEMO-JOB-B",
+                "control_id": "DEMO-CTRL-006",
+                "record_id": "DEMO-DEF-006",
+                "quantity": 0
+              }
+            ],
+            "percentage": null,
+            "cumulative_percentage": null
+          }
+        ]
+      }
+    }
+  ]
+}
+Judge model: gpt-4o-mini
+Judge feedback:
+{
+  "criteria": [
+    {
+      "criterion_description": "The agent calls get_defect_pareto with section='TE', date_from='2026-10-01', date_to='2026-10-31' and metric='removed_boards'.",
+      "passed": true,
+      "judgement": "The tool trace confirms that 'get_defect_pareto' was called with the specified parameters: section='TE', date_from='2026-10-01', date_to='2026-10-31', and metric='removed_boards'."
+    },
+    {
+      "criterion_description": "The final answer identifies DEMO-CODE-C with zero removed boards and explains that defect records exist despite zero removals. It must not claim that there are no matching records or that coverage is unknown.",
+      "passed": false,
+      "judgement": "The final answer correctly identifies 'DEMO-CODE-C' with zero removed boards, but it incorrectly states 'Sense registres coincidents; cobertura desconeguda', which claims that there are no matching records and indicates unknown coverage. This violates the requirement."
+    },
+    {
+      "criterion_description": "The final answer must not present a defect rate or a numeric Pareto percentage, including 0%. Reporting zero removed boards is a quantity, not a percentage. If the answer omits percentages entirely, this criterion passes. If it discusses percentages, it must explain that they are undefined because total removed boards is zero.",
+      "passed": false,
+      "judgement": "The answer does not present a defect rate or a numeric Pareto percentage, which is correct. However, by stating zero removed boards and including the note 'Sense registres coincidents; cobertura desconeguda', it introduces a notion of undefined coverage without discussing percentages as undefined due to zero removals. Thus, it fails to meet this criterion."
+    }
+  ],
+  "feedback": "The evaluation of the criteria reveals that while the tool successfully processed the request, the final answer contained inaccuracies regarding record coverage and handling of percentage information."
+}
+Human labels: [True, False, True]; judge labels: [True, False, False]
+FAILED
+tests/test_judge_calibration.py::test_judge_agrees_with_fixed_labels[incorrect-zero-percent-run-1] Fixed example: incorrect-zero-percent; repetition: 1
+{
+  "answer": "Dades sintètiques: TE, del 2026-10-01 al 2026-10-31, ambdues dates incloses. Dataset: synthetic-defects-v1. Hi ha registres de defecte, però zero plaques retirades.\n\n| Codi de defecte | Plaques retirades |\n|---|---:|\n| DEMO-CODE-C | 0 |\n\nEl percentatge de DEMO-CODE-C és 0%.",
+  "tool_calls": [
+    {
+      "name": "get_defect_pareto",
+      "arguments": "{\"section\": \"TE\", \"date_from\": \"2026-10-01\", \"date_to\": \"2026-10-31\", \"metric\": \"removed_boards\"}",
+      "result": {
+        "schema_version": 1,
+        "source": {
+          "kind": "synthetic",
+          "dataset_id": "synthetic-defects-v1"
+        },
+        "filters": {
+          "section": "TE",
+          "date_from": "2026-10-01",
+          "date_to": "2026-10-31"
+        },
+        "metric_semantics": {
+          "status": "prototype_only_not_validated_erp_rules",
+          "date_basis": "synthetic_control_date_inclusive",
+          "sample_quantity": "sum_once_per_control_not_unique_boards",
+          "board_counts": "sum_of_recorded_occurrences_not_unique_boards",
+          "percentage_basis": "share_of_selected_metric_not_defect_rate"
+        },
+        "metric": "removed_boards",
+        "total_quantity": 0,
+        "items": [
+          {
+            "defect_code": "DEMO-CODE-C",
+            "quantity": 0,
+            "records": [
+              {
+                "job_id": "DEMO-JOB-B",
+                "control_id": "DEMO-CTRL-006",
+                "record_id": "DEMO-DEF-006",
+                "quantity": 0
+              }
+            ],
+            "percentage": null,
+            "cumulative_percentage": null
+          }
+        ]
+      }
+    }
+  ]
+}
+Judge model: gpt-4o-mini
+Judge feedback:
+{
+  "criteria": [
+    {
+      "criterion_description": "The agent calls get_defect_pareto with section='TE', date_from='2026-10-01', date_to='2026-10-31' and metric='removed_boards'.",
+      "passed": true,
+      "judgement": "The final answer mentions that `get_defect_pareto` was called with the correct parameters: section='TE', date_from='2026-10-01', date_to='2026-10-31', and metric='removed_boards'."
+    },
+    {
+      "criterion_description": "The final answer identifies DEMO-CODE-C with zero removed boards and explains that defect records exist despite zero removals. It must not claim that there are no matching records or that coverage is unknown.",
+      "passed": false,
+      "judgement": "The final answer correctly identifies DEMO-CODE-C with zero removed boards and states that there are defect records. However, it states 'zero plaques retirades' without any mention of whether matching records exist or if coverage is unknown, failing the criterion's requirement."
+    },
+    {
+      "criterion_description": "The final answer must not present a defect rate or a numeric Pareto percentage, including 0%. Reporting zero removed boards is a quantity, not a percentage. If the answer omits percentages entirely, this criterion passes. If it discusses percentages, it must explain that they are undefined because total removed boards is zero.",
+      "passed": false,
+      "judgement": "The final answer incorrectly presents a percentage of 0% for DEMO-CODE-C, violating the condition that percentages, including 0%, must not be included. Therefore, it fails the criterion."
+    }
+  ],
+  "feedback": "The evaluation determined that while the call to `get_defect_pareto` was correctly made, the reporting on defect records and the inclusion of a percentage led to failures in the subsequent criteria."
+}
+Human labels: [True, True, False]; judge labels: [True, False, False]
+FAILED
+tests/test_judge_calibration.py::test_judge_agrees_with_fixed_labels[incorrect-zero-percent-run-2] Fixed example: incorrect-zero-percent; repetition: 2
+{
+  "answer": "Dades sintètiques: TE, del 2026-10-01 al 2026-10-31, ambdues dates incloses. Dataset: synthetic-defects-v1. Hi ha registres de defecte, però zero plaques retirades.\n\n| Codi de defecte | Plaques retirades |\n|---|---:|\n| DEMO-CODE-C | 0 |\n\nEl percentatge de DEMO-CODE-C és 0%.",
+  "tool_calls": [
+    {
+      "name": "get_defect_pareto",
+      "arguments": "{\"section\": \"TE\", \"date_from\": \"2026-10-01\", \"date_to\": \"2026-10-31\", \"metric\": \"removed_boards\"}",
+      "result": {
+        "schema_version": 1,
+        "source": {
+          "kind": "synthetic",
+          "dataset_id": "synthetic-defects-v1"
+        },
+        "filters": {
+          "section": "TE",
+          "date_from": "2026-10-01",
+          "date_to": "2026-10-31"
+        },
+        "metric_semantics": {
+          "status": "prototype_only_not_validated_erp_rules",
+          "date_basis": "synthetic_control_date_inclusive",
+          "sample_quantity": "sum_once_per_control_not_unique_boards",
+          "board_counts": "sum_of_recorded_occurrences_not_unique_boards",
+          "percentage_basis": "share_of_selected_metric_not_defect_rate"
+        },
+        "metric": "removed_boards",
+        "total_quantity": 0,
+        "items": [
+          {
+            "defect_code": "DEMO-CODE-C",
+            "quantity": 0,
+            "records": [
+              {
+                "job_id": "DEMO-JOB-B",
+                "control_id": "DEMO-CTRL-006",
+                "record_id": "DEMO-DEF-006",
+                "quantity": 0
+              }
+            ],
+            "percentage": null,
+            "cumulative_percentage": null
+          }
+        ]
+      }
+    }
+  ]
+}
+Judge model: gpt-4o-mini
+Judge feedback:
+{
+  "criteria": [
+    {
+      "criterion_description": "The agent calls get_defect_pareto with section='TE', date_from='2026-10-01', date_to='2026-10-31' and metric='removed_boards'.",
+      "passed": true,
+      "judgement": "The tool trace confirms that the `get_defect_pareto` function was called with the specified parameters: section='TE', date_from='2026-10-01', date_to='2026-10-31', and metric='removed_boards'."
+    },
+    {
+      "criterion_description": "The final answer identifies DEMO-CODE-C with zero removed boards and explains that defect records exist despite zero removals. It must not claim that there are no matching records or that coverage is unknown.",
+      "passed": false,
+      "judgement": "The final answer correctly identifies DEMO-CODE-C with zero removed boards and states that there are defect records, which satisfies part of the criterion. However, it fails to fully meet the criterion since it does not explicitly mention that matching records exist, and instead implies through phrasing that coverage might be unclear."
+    },
+    {
+      "criterion_description": "The final answer must not present a defect rate or a numeric Pareto percentage, including 0%. Reporting zero removed boards is a quantity, not a percentage. If the answer omits percentages entirely, this criterion passes. If it discusses percentages, it must explain that they are undefined because total removed boards is zero.",
+      "passed": false,
+      "judgement": "The final answer incorrectly presents a defect rate of 0% for DEMO-CODE-C. According to the criterion, it should not present a percentage in any form when removed boards is zero, which it fails to do."
+    }
+  ],
+  "feedback": "The final answer meets the first criterion but fails the second and third due to incorrect phrasing about defect records and the inclusion of a percentage."
+}
+Human labels: [True, True, False]; judge labels: [True, False, False]
+FAILED
+tests/test_judge_calibration.py::test_judge_agrees_with_fixed_labels[unsupported-defect-rate-run-1] Fixed example: unsupported-defect-rate; repetition: 1
+{
+  "answer": "Dades sintètiques: TE, del 2026-10-01 al 2026-10-31, ambdues dates incloses. Dataset: synthetic-defects-v1. Hi ha registres de defecte, però zero plaques retirades.\n\n| Codi de defecte | Plaques retirades |\n|---|---:|\n| DEMO-CODE-C | 0 |\n\nLa taxa de defectuositat és del 0%.",
+  "tool_calls": [
+    {
+      "name": "get_defect_pareto",
+      "arguments": "{\"section\": \"TE\", \"date_from\": \"2026-10-01\", \"date_to\": \"2026-10-31\", \"metric\": \"removed_boards\"}",
+      "result": {
+        "schema_version": 1,
+        "source": {
+          "kind": "synthetic",
+          "dataset_id": "synthetic-defects-v1"
+        },
+        "filters": {
+          "section": "TE",
+          "date_from": "2026-10-01",
+          "date_to": "2026-10-31"
+        },
+        "metric_semantics": {
+          "status": "prototype_only_not_validated_erp_rules",
+          "date_basis": "synthetic_control_date_inclusive",
+          "sample_quantity": "sum_once_per_control_not_unique_boards",
+          "board_counts": "sum_of_recorded_occurrences_not_unique_boards",
+          "percentage_basis": "share_of_selected_metric_not_defect_rate"
+        },
+        "metric": "removed_boards",
+        "total_quantity": 0,
+        "items": [
+          {
+            "defect_code": "DEMO-CODE-C",
+            "quantity": 0,
+            "records": [
+              {
+                "job_id": "DEMO-JOB-B",
+                "control_id": "DEMO-CTRL-006",
+                "record_id": "DEMO-DEF-006",
+                "quantity": 0
+              }
+            ],
+            "percentage": null,
+            "cumulative_percentage": null
+          }
+        ]
+      }
+    }
+  ]
+}
+Judge model: gpt-4o-mini
+Judge feedback:
+{
+  "criteria": [
+    {
+      "criterion_description": "The agent calls get_defect_pareto with section='TE', date_from='2026-10-01', date_to='2026-10-31' and metric='removed_boards'.",
+      "passed": true,
+      "judgement": "The final answer indicates that the agent successfully called `get_defect_pareto` with the specified parameters: section='TE', date_from='2026-10-01', date_to='2026-10-31', and metric='removed_boards'."
+    },
+    {
+      "criterion_description": "The final answer identifies DEMO-CODE-C with zero removed boards and explains that defect records exist despite zero removals. It must not claim that there are no matching records or that coverage is unknown.",
+      "passed": false,
+      "judgement": "The final answer correctly identifies DEMO-CODE-C with zero removed boards and states that there are defect records. However, it does not clarify about matching records or coverage, violating the requirement to provide those details."
+    },
+    {
+      "criterion_description": "The final answer must not present a defect rate or a numeric Pareto percentage, including 0%. Reporting zero removed boards is a quantity, not a percentage. If the answer omits percentages entirely, this criterion passes. If it discusses percentages, it must explain that they are undefined because total removed boards is zero.",
+      "passed": false,
+      "judgement": "The final answer presents a defect rate of 0%, which violates the criterion as it explicitly states that the defect rate must not be reported."
+    }
+  ],
+  "feedback": "The evaluation shows that while the first criterion is satisfied, the final answer fails on the second and third criteria due to insufficient explanation about matching records and the erroneous inclusion of a defect rate."
+}
+Human labels: [True, True, False]; judge labels: [True, False, False]
+FAILED
+tests/test_judge_calibration.py::test_judge_agrees_with_fixed_labels[unsupported-defect-rate-run-2] Fixed example: unsupported-defect-rate; repetition: 2
+{
+  "answer": "Dades sintètiques: TE, del 2026-10-01 al 2026-10-31, ambdues dates incloses. Dataset: synthetic-defects-v1. Hi ha registres de defecte, però zero plaques retirades.\n\n| Codi de defecte | Plaques retirades |\n|---|---:|\n| DEMO-CODE-C | 0 |\n\nLa taxa de defectuositat és del 0%.",
+  "tool_calls": [
+    {
+      "name": "get_defect_pareto",
+      "arguments": "{\"section\": \"TE\", \"date_from\": \"2026-10-01\", \"date_to\": \"2026-10-31\", \"metric\": \"removed_boards\"}",
+      "result": {
+        "schema_version": 1,
+        "source": {
+          "kind": "synthetic",
+          "dataset_id": "synthetic-defects-v1"
+        },
+        "filters": {
+          "section": "TE",
+          "date_from": "2026-10-01",
+          "date_to": "2026-10-31"
+        },
+        "metric_semantics": {
+          "status": "prototype_only_not_validated_erp_rules",
+          "date_basis": "synthetic_control_date_inclusive",
+          "sample_quantity": "sum_once_per_control_not_unique_boards",
+          "board_counts": "sum_of_recorded_occurrences_not_unique_boards",
+          "percentage_basis": "share_of_selected_metric_not_defect_rate"
+        },
+        "metric": "removed_boards",
+        "total_quantity": 0,
+        "items": [
+          {
+            "defect_code": "DEMO-CODE-C",
+            "quantity": 0,
+            "records": [
+              {
+                "job_id": "DEMO-JOB-B",
+                "control_id": "DEMO-CTRL-006",
+                "record_id": "DEMO-DEF-006",
+                "quantity": 0
+              }
+            ],
+            "percentage": null,
+            "cumulative_percentage": null
+          }
+        ]
+      }
+    }
+  ]
+}
+Judge model: gpt-4o-mini
+Judge feedback:
+{
+  "criteria": [
+    {
+      "criterion_description": "The agent calls get_defect_pareto with section='TE', date_from='2026-10-01', date_to='2026-10-31' and metric='removed_boards'.",
+      "passed": true,
+      "judgement": "The tool trace shows that get_defect_pareto was called with the correct parameters: section='TE', date_from='2026-10-01', date_to='2026-10-31', and metric='removed_boards'."
+    },
+    {
+      "criterion_description": "The final answer identifies DEMO-CODE-C with zero removed boards and explains that defect records exist despite zero removals. It must not claim that there are no matching records or that coverage is unknown.",
+      "passed": false,
+      "judgement": "The final answer correctly identifies DEMO-CODE-C with zero removed boards and mentions that there are defect records, which is a positive aspect. However, it does not explicitly satisfy the requirement to clarify that there are defect records despite zero removals and incorrectly includes the statement that there are 'zero plaques retirades', which could be interpreted as no matching records."
+    },
+    {
+      "criterion_description": "The final answer must not present a defect rate or a numeric Pareto percentage, including 0%. Reporting zero removed boards is a quantity, not a percentage. If the answer omits percentages entirely, this criterion passes. If it discusses percentages, it must explain that they are undefined because total removed boards is zero.",
+      "passed": false,
+      "judgement": "The final answer reports a defect rate of 0%, which explicitly violates the criterion stating that it must not present a defect rate or numeric Pareto percentage. This constitutes a failure."
+    }
+  ],
+  "feedback": "The evaluation reveals that while the first criterion is satisfied, the second and third criteria are not, mainly due to issues with how the presence of defect records was depicted and the inclusion of a defect rate."
+}
+Human labels: [True, True, False]; judge labels: [True, False, False]
+FAILED
+tests/test_judge_calibration.py::test_judge_agrees_with_fixed_labels[wrong-end-date-run-1] Fixed example: wrong-end-date; repetition: 1
+{
+  "answer": "Dades sintètiques: TE, del 2026-10-01 al 2026-10-16, ambdues dates incloses. Dataset: synthetic-defects-v1. Hi ha registres de defecte, però zero plaques retirades.\n\n| Codi de defecte | Plaques retirades |\n|---|---:|\n| DEMO-CODE-C | 0 |",
+  "tool_calls": [
+    {
+      "name": "get_defect_pareto",
+      "arguments": "{\"section\": \"TE\", \"date_from\": \"2026-10-01\", \"date_to\": \"2026-10-16\", \"metric\": \"removed_boards\"}",
+      "result": {
+        "schema_version": 1,
+        "source": {
+          "kind": "synthetic",
+          "dataset_id": "synthetic-defects-v1"
+        },
+        "filters": {
+          "section": "TE",
+          "date_from": "2026-10-01",
+          "date_to": "2026-10-16"
+        },
+        "metric_semantics": {
+          "status": "prototype_only_not_validated_erp_rules",
+          "date_basis": "synthetic_control_date_inclusive",
+          "sample_quantity": "sum_once_per_control_not_unique_boards",
+          "board_counts": "sum_of_recorded_occurrences_not_unique_boards",
+          "percentage_basis": "share_of_selected_metric_not_defect_rate"
+        },
+        "metric": "removed_boards",
+        "total_quantity": 0,
+        "items": [
+          {
+            "defect_code": "DEMO-CODE-C",
+            "quantity": 0,
+            "records": [
+              {
+                "job_id": "DEMO-JOB-B",
+                "control_id": "DEMO-CTRL-006",
+                "record_id": "DEMO-DEF-006",
+                "quantity": 0
+              }
+            ],
+            "percentage": null,
+            "cumulative_percentage": null
+          }
+        ]
+      }
+    }
+  ]
+}
+Judge model: gpt-4o-mini
+Judge feedback:
+{
+  "criteria": [
+    {
+      "criterion_description": "The agent calls get_defect_pareto with section='TE', date_from='2026-10-01', date_to='2026-10-31' and metric='removed_boards'.",
+      "passed": false,
+      "judgement": "The tool trace shows the agent called get_defect_pareto with date_to='2026-10-16', not '2026-10-31', which is a direct violation of the specified criterion."
+    },
+    {
+      "criterion_description": "The final answer identifies DEMO-CODE-C with zero removed boards and explains that defect records exist despite zero removals. It must not claim that there are no matching records or that coverage is unknown.",
+      "passed": true,
+      "judgement": "The final answer correctly identifies DEMO-CODE-C with zero removed boards, while also stating that there are defect records available, thus fulfilling the criterion requirements."
+    },
+    {
+      "criterion_description": "The final answer must not present a defect rate or a numeric Pareto percentage, including 0%. Reporting zero removed boards is a quantity, not a percentage. If the answer omits percentages entirely, this criterion passes. If it discusses percentages, it must explain that they are undefined because total removed boards is zero.",
+      "passed": true,
+      "judgement": "The final answer does not present any defect rate or numeric Pareto percentage. It only reports zero removed boards as a quantity, which means the criterion passes."
+    }
+  ],
+  "feedback": ""
+}
+Human labels: [False, True, True]; judge labels: [False, True, True]
+PASSED
+tests/test_judge_calibration.py::test_judge_agrees_with_fixed_labels[wrong-end-date-run-2] Fixed example: wrong-end-date; repetition: 2
+{
+  "answer": "Dades sintètiques: TE, del 2026-10-01 al 2026-10-16, ambdues dates incloses. Dataset: synthetic-defects-v1. Hi ha registres de defecte, però zero plaques retirades.\n\n| Codi de defecte | Plaques retirades |\n|---|---:|\n| DEMO-CODE-C | 0 |",
+  "tool_calls": [
+    {
+      "name": "get_defect_pareto",
+      "arguments": "{\"section\": \"TE\", \"date_from\": \"2026-10-01\", \"date_to\": \"2026-10-16\", \"metric\": \"removed_boards\"}",
+      "result": {
+        "schema_version": 1,
+        "source": {
+          "kind": "synthetic",
+          "dataset_id": "synthetic-defects-v1"
+        },
+        "filters": {
+          "section": "TE",
+          "date_from": "2026-10-01",
+          "date_to": "2026-10-16"
+        },
+        "metric_semantics": {
+          "status": "prototype_only_not_validated_erp_rules",
+          "date_basis": "synthetic_control_date_inclusive",
+          "sample_quantity": "sum_once_per_control_not_unique_boards",
+          "board_counts": "sum_of_recorded_occurrences_not_unique_boards",
+          "percentage_basis": "share_of_selected_metric_not_defect_rate"
+        },
+        "metric": "removed_boards",
+        "total_quantity": 0,
+        "items": [
+          {
+            "defect_code": "DEMO-CODE-C",
+            "quantity": 0,
+            "records": [
+              {
+                "job_id": "DEMO-JOB-B",
+                "control_id": "DEMO-CTRL-006",
+                "record_id": "DEMO-DEF-006",
+                "quantity": 0
+              }
+            ],
+            "percentage": null,
+            "cumulative_percentage": null
+          }
+        ]
+      }
+    }
+  ]
+}
+Judge model: gpt-4o-mini
+Judge feedback:
+{
+  "criteria": [
+    {
+      "criterion_description": "The agent calls get_defect_pareto with section='TE', date_from='2026-10-01', date_to='2026-10-31' and metric='removed_boards'.",
+      "passed": false,
+      "judgement": "The tool trace indicates that get_defect_pareto was called with date_to='2026-10-16' instead of '2026-10-31'. This does not meet the criterion."
+    },
+    {
+      "criterion_description": "The final answer identifies DEMO-CODE-C with zero removed boards and explains that defect records exist despite zero removals. It must not claim that there are no matching records or that coverage is unknown.",
+      "passed": true,
+      "judgement": "The final answer correctly identifies DEMO-CODE-C with zero removed boards and states that there are defect records, thus fulfilling the criterion."
+    },
+    {
+      "criterion_description": "The final answer must not present a defect rate or a numeric Pareto percentage, including 0%. Reporting zero removed boards is a quantity, not a percentage. If the answer omits percentages entirely, this criterion passes. If it discusses percentages, it must explain that they are undefined because total removed boards is zero.",
+      "passed": true,
+      "judgement": "The final answer does not present a defect rate or a numeric Pareto percentage. It only reports zero removed boards as a quantity, which meets the criterion."
+    }
+  ],
+  "feedback": "The first criterion failed because the date_to was incorrect in the method call. The other two criteria passed."
+}
+Human labels: [False, True, True]; judge labels: [False, True, True]
+PASSED
+
+=================================== FAILURES ===================================
+_ test_judge_agrees_with_fixed_labels[historical-missing-records-error-run-1] __
+tests/test_judge_calibration.py:34: in test_judge_agrees_with_fixed_labels
+    assert observed == case["expected"], feedback.model_dump_json(indent=2)
+E   AssertionError: {
+E       "criteria": [
+E         {
+E           "criterion_description": "The agent calls get_defect_pareto with section='TE', date_from='2026-10-01', date_to='2026-10-31' and metric='removed_boards'.",
+E           "passed": true,
+E           "judgement": "The tool trace confirms that the agent called get_defect_pareto with the specified section, date range, and metric."
+E         },
+E         {
+E           "criterion_description": "The final answer identifies DEMO-CODE-C with zero removed boards and explains that defect records exist despite zero removals. It must not claim that there are no matching records or that coverage is unknown.",
+E           "passed": false,
+E           "judgement": "The final answer states 'Sense registres coincidents; cobertura desconeguda', which contradicts the requirement of explaining that defect records exist despite zero removals."
+E         },
+E         {
+E           "criterion_description": "The final answer must not present a defect rate or a numeric Pareto percentage, including 0%. Reporting zero removed boards is a quantity, not a percentage. If the answer omits percentages entirely, this criterion passes. If it discusses percentages, it must explain that they are undefined because total removed boards is zero.",
+E           "passed": false,
+E           "judgement": "The final answer does not discuss percentages as it claims zero removed boards, but includes a statement about 'Sense registres coincidents; cobertura desconeguda', which implies a lack of clarity regarding data coverage and connection to percentage reporting."
+E         }
+E       ],
+E       "feedback": "The evaluation indicates issues with the explanation of defect records and implicit coverage, leading to failed criteria."
+E     }
+E   assert [True, False, False] == [True, False, True]
+E     
+E     At index 2 diff: False != True
+E     
+E     Full diff: (-: missing in left side, +: extra in left side)
+E       [
+E           True,
+E           False,...
+E     
+E     ...Full output truncated, use '-vv' to show
+_ test_judge_agrees_with_fixed_labels[historical-missing-records-error-run-2] __
+tests/test_judge_calibration.py:34: in test_judge_agrees_with_fixed_labels
+    assert observed == case["expected"], feedback.model_dump_json(indent=2)
+E   AssertionError: {
+E       "criteria": [
+E         {
+E           "criterion_description": "The agent calls get_defect_pareto with section='TE', date_from='2026-10-01', date_to='2026-10-31' and metric='removed_boards'.",
+E           "passed": true,
+E           "judgement": "The tool trace confirms that 'get_defect_pareto' was called with the specified parameters: section='TE', date_from='2026-10-01', date_to='2026-10-31', and metric='removed_boards'."
+E         },
+E         {
+E           "criterion_description": "The final answer identifies DEMO-CODE-C with zero removed boards and explains that defect records exist despite zero removals. It must not claim that there are no matching records or that coverage is unknown.",
+E           "passed": false,
+E           "judgement": "The final answer correctly identifies 'DEMO-CODE-C' with zero removed boards, but it incorrectly states 'Sense registres coincidents; cobertura desconeguda', which claims that there are no matching records and indicates unknown coverage. This violates the requirement."
+E         },
+E         {
+E           "criterion_description": "The final answer must not present a defect rate or a numeric Pareto percentage, including 0%. Reporting zero removed boards is a quantity, not a percentage. If the answer omits percentages entirely, this criterion passes. If it discusses percentages, it must explain that they are undefined because total removed boards is zero.",
+E           "passed": false,
+E           "judgement": "The answer does not present a defect rate or a numeric Pareto percentage, which is correct. However, by stating zero removed boards and including the note 'Sense registres coincidents; cobertura desconeguda', it introduces a notion of undefined coverage without discussing percentages as undefined due to zero removals. Thus, it fails to meet this criterion."
+E         }
+E       ],
+E       "feedback": "The evaluation of the criteria reveals that while the tool successfully processed the request, the final answer contained inaccuracies regarding record coverage and handling of percentage information."
+E     }
+E   assert [True, False, False] == [True, False, True]
+E     
+E     At index 2 diff: False != True
+E     
+E     Full diff: (-: missing in left side, +: extra in left side)
+E       [
+E           True,
+E           False,...
+E     
+E     ...Full output truncated, use '-vv' to show
+______ test_judge_agrees_with_fixed_labels[incorrect-zero-percent-run-1] _______
+tests/test_judge_calibration.py:34: in test_judge_agrees_with_fixed_labels
+    assert observed == case["expected"], feedback.model_dump_json(indent=2)
+E   AssertionError: {
+E       "criteria": [
+E         {
+E           "criterion_description": "The agent calls get_defect_pareto with section='TE', date_from='2026-10-01', date_to='2026-10-31' and metric='removed_boards'.",
+E           "passed": true,
+E           "judgement": "The final answer mentions that `get_defect_pareto` was called with the correct parameters: section='TE', date_from='2026-10-01', date_to='2026-10-31', and metric='removed_boards'."
+E         },
+E         {
+E           "criterion_description": "The final answer identifies DEMO-CODE-C with zero removed boards and explains that defect records exist despite zero removals. It must not claim that there are no matching records or that coverage is unknown.",
+E           "passed": false,
+E           "judgement": "The final answer correctly identifies DEMO-CODE-C with zero removed boards and states that there are defect records. However, it states 'zero plaques retirades' without any mention of whether matching records exist or if coverage is unknown, failing the criterion's requirement."
+E         },
+E         {
+E           "criterion_description": "The final answer must not present a defect rate or a numeric Pareto percentage, including 0%. Reporting zero removed boards is a quantity, not a percentage. If the answer omits percentages entirely, this criterion passes. If it discusses percentages, it must explain that they are undefined because total removed boards is zero.",
+E           "passed": false,
+E           "judgement": "The final answer incorrectly presents a percentage of 0% for DEMO-CODE-C, violating the condition that percentages, including 0%, must not be included. Therefore, it fails the criterion."
+E         }
+E       ],
+E       "feedback": "The evaluation determined that while the call to `get_defect_pareto` was correctly made, the reporting on defect records and the inclusion of a percentage led to failures in the subsequent criteria."
+E     }
+E   assert [True, False, False] == [True, True, False]
+E     
+E     At index 1 diff: False != True
+E     
+E     Full diff: (-: missing in left side, +: extra in left side)
+E       [
+E           True,
+E     -     True,...
+E     
+E     ...Full output truncated, use '-vv' to show
+______ test_judge_agrees_with_fixed_labels[incorrect-zero-percent-run-2] _______
+tests/test_judge_calibration.py:34: in test_judge_agrees_with_fixed_labels
+    assert observed == case["expected"], feedback.model_dump_json(indent=2)
+E   AssertionError: {
+E       "criteria": [
+E         {
+E           "criterion_description": "The agent calls get_defect_pareto with section='TE', date_from='2026-10-01', date_to='2026-10-31' and metric='removed_boards'.",
+E           "passed": true,
+E           "judgement": "The tool trace confirms that the `get_defect_pareto` function was called with the specified parameters: section='TE', date_from='2026-10-01', date_to='2026-10-31', and metric='removed_boards'."
+E         },
+E         {
+E           "criterion_description": "The final answer identifies DEMO-CODE-C with zero removed boards and explains that defect records exist despite zero removals. It must not claim that there are no matching records or that coverage is unknown.",
+E           "passed": false,
+E           "judgement": "The final answer correctly identifies DEMO-CODE-C with zero removed boards and states that there are defect records, which satisfies part of the criterion. However, it fails to fully meet the criterion since it does not explicitly mention that matching records exist, and instead implies through phrasing that coverage might be unclear."
+E         },
+E         {
+E           "criterion_description": "The final answer must not present a defect rate or a numeric Pareto percentage, including 0%. Reporting zero removed boards is a quantity, not a percentage. If the answer omits percentages entirely, this criterion passes. If it discusses percentages, it must explain that they are undefined because total removed boards is zero.",
+E           "passed": false,
+E           "judgement": "The final answer incorrectly presents a defect rate of 0% for DEMO-CODE-C. According to the criterion, it should not present a percentage in any form when removed boards is zero, which it fails to do."
+E         }
+E       ],
+E       "feedback": "The final answer meets the first criterion but fails the second and third due to incorrect phrasing about defect records and the inclusion of a percentage."
+E     }
+E   assert [True, False, False] == [True, True, False]
+E     
+E     At index 1 diff: False != True
+E     
+E     Full diff: (-: missing in left side, +: extra in left side)
+E       [
+E           True,
+E     -     True,...
+E     
+E     ...Full output truncated, use '-vv' to show
+______ test_judge_agrees_with_fixed_labels[unsupported-defect-rate-run-1] ______
+tests/test_judge_calibration.py:34: in test_judge_agrees_with_fixed_labels
+    assert observed == case["expected"], feedback.model_dump_json(indent=2)
+E   AssertionError: {
+E       "criteria": [
+E         {
+E           "criterion_description": "The agent calls get_defect_pareto with section='TE', date_from='2026-10-01', date_to='2026-10-31' and metric='removed_boards'.",
+E           "passed": true,
+E           "judgement": "The final answer indicates that the agent successfully called `get_defect_pareto` with the specified parameters: section='TE', date_from='2026-10-01', date_to='2026-10-31', and metric='removed_boards'."
+E         },
+E         {
+E           "criterion_description": "The final answer identifies DEMO-CODE-C with zero removed boards and explains that defect records exist despite zero removals. It must not claim that there are no matching records or that coverage is unknown.",
+E           "passed": false,
+E           "judgement": "The final answer correctly identifies DEMO-CODE-C with zero removed boards and states that there are defect records. However, it does not clarify about matching records or coverage, violating the requirement to provide those details."
+E         },
+E         {
+E           "criterion_description": "The final answer must not present a defect rate or a numeric Pareto percentage, including 0%. Reporting zero removed boards is a quantity, not a percentage. If the answer omits percentages entirely, this criterion passes. If it discusses percentages, it must explain that they are undefined because total removed boards is zero.",
+E           "passed": false,
+E           "judgement": "The final answer presents a defect rate of 0%, which violates the criterion as it explicitly states that the defect rate must not be reported."
+E         }
+E       ],
+E       "feedback": "The evaluation shows that while the first criterion is satisfied, the final answer fails on the second and third criteria due to insufficient explanation about matching records and the erroneous inclusion of a defect rate."
+E     }
+E   assert [True, False, False] == [True, True, False]
+E     
+E     At index 1 diff: False != True
+E     
+E     Full diff: (-: missing in left side, +: extra in left side)
+E       [
+E           True,
+E     -     True,...
+E     
+E     ...Full output truncated, use '-vv' to show
+______ test_judge_agrees_with_fixed_labels[unsupported-defect-rate-run-2] ______
+tests/test_judge_calibration.py:34: in test_judge_agrees_with_fixed_labels
+    assert observed == case["expected"], feedback.model_dump_json(indent=2)
+E   AssertionError: {
+E       "criteria": [
+E         {
+E           "criterion_description": "The agent calls get_defect_pareto with section='TE', date_from='2026-10-01', date_to='2026-10-31' and metric='removed_boards'.",
+E           "passed": true,
+E           "judgement": "The tool trace shows that get_defect_pareto was called with the correct parameters: section='TE', date_from='2026-10-01', date_to='2026-10-31', and metric='removed_boards'."
+E         },
+E         {
+E           "criterion_description": "The final answer identifies DEMO-CODE-C with zero removed boards and explains that defect records exist despite zero removals. It must not claim that there are no matching records or that coverage is unknown.",
+E           "passed": false,
+E           "judgement": "The final answer correctly identifies DEMO-CODE-C with zero removed boards and mentions that there are defect records, which is a positive aspect. However, it does not explicitly satisfy the requirement to clarify that there are defect records despite zero removals and incorrectly includes the statement that there are 'zero plaques retirades', which could be interpreted as no matching records."
+E         },
+E         {
+E           "criterion_description": "The final answer must not present a defect rate or a numeric Pareto percentage, including 0%. Reporting zero removed boards is a quantity, not a percentage. If the answer omits percentages entirely, this criterion passes. If it discusses percentages, it must explain that they are undefined because total removed boards is zero.",
+E           "passed": false,
+E           "judgement": "The final answer reports a defect rate of 0%, which explicitly violates the criterion stating that it must not present a defect rate or numeric Pareto percentage. This constitutes a failure."
+E         }
+E       ],
+E       "feedback": "The evaluation reveals that while the first criterion is satisfied, the second and third criteria are not, mainly due to issues with how the presence of defect records was depicted and the inclusion of a defect rate."
+E     }
+E   assert [True, False, False] == [True, True, False]
+E     
+E     At index 1 diff: False != True
+E     
+E     Full diff: (-: missing in left side, +: extra in left side)
+E       [
+E           True,
+E     -     True,...
+E     
+E     ...Full output truncated, use '-vv' to show
+=========================== short test summary info ============================
+FAILED tests/test_judge_calibration.py::test_judge_agrees_with_fixed_labels[historical-missing-records-error-run-1]
+FAILED tests/test_judge_calibration.py::test_judge_agrees_with_fixed_labels[historical-missing-records-error-run-2]
+FAILED tests/test_judge_calibration.py::test_judge_agrees_with_fixed_labels[incorrect-zero-percent-run-1]
+FAILED tests/test_judge_calibration.py::test_judge_agrees_with_fixed_labels[incorrect-zero-percent-run-2]
+FAILED tests/test_judge_calibration.py::test_judge_agrees_with_fixed_labels[unsupported-defect-rate-run-1]
+FAILED tests/test_judge_calibration.py::test_judge_agrees_with_fixed_labels[unsupported-defect-rate-run-2]
+========================= 6 failed, 6 passed in 55.04s =========================

@@ -6,6 +6,12 @@ __pycache__/
 *.pyo
 .ipynb_checkpoints/
 .DS_Store
+.pytest_cache/
+.cache/
+tmp/
 
 # Local implementation snapshots for comparison; do not publish.
 /local-comparisons/
+
+#Repositori del curs
+course_repository/

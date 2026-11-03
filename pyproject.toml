@@ -8,9 +8,20 @@ dependencies = [
     "minsearch>=0.2.0",
     "openai>=3.16.2",
     "python-dotenv>=1.2.3",
+    "streamlit>=1.40,<2",
 ]
 
 [dependency-groups]
 dev = [
     "jupyter>=1.1.1",
+    "pydantic>=2.13.5",
+    "pytest>=9.2.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = [
+    "integration: calls the real model API and may incur usage costs",
+    "judge_calibration: real judge on fixed answers with human-assigned expected labels",
 ]
