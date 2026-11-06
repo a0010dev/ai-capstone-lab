@@ -8,6 +8,7 @@ dependencies = [
     "logfire>=5.4.0",
     "minsearch>=0.2.0",
     "openai>=3.16.2",
+    "pydantic-ai-slim[openai]>=2.66.0",
     "python-dotenv>=1.2.3",
     "streamlit>=1.40,<2",
 ]

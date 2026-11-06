@@ -70,6 +70,48 @@ Run the UI checks without model calls:
 uv run pytest tests/test_app.py -q
 ```
 
+## PydanticAI exploration
+
+The `explore/pydanticai` branch adds an opt-in runtime, keeping the manual
+Responses API implementation as the default for comparison. Both use the same
+reporting instructions, async fixture tools, deterministic calculations and
+Streamlit result/event contract.
+
+```sh
+uv sync --locked
+REPORTING_AGENT_BACKEND=pydanticai uv run --locked streamlit run app.py
+# Baseline:
+REPORTING_AGENT_BACKEND=manual uv run --locked streamlit run app.py
+```
+
+Alternatively set `REPORTING_AGENT_BACKEND=pydanticai` in `.env`, or call
+`await run_agent(question, backend="pydanticai")`. Changing the runtime resets
+the UI conversation because the two implementations store different native
+history formats. Direct callers must start with an empty history when switching.
+
+The alternative lives in `est_prog/capstone_reporting/pydantic_agent.py`:
+PydanticAI derives tool schemas from typed functions, validates arguments,
+handles validation retries and the model/tool cycle, stores native message
+history, and instruments model/tool activity. A typed dependency provides the
+reference date. An adapter retains the current live UI events and cost/session
+fields. An output validator requests a corrected answer if a dataset ID from
+this turn's tool results is missing. It does not validate the answer's numbers
+or all reporting semantics.
+
+The dependency is `pydantic-ai-slim[openai]`, locked at 2.66.0. Resolution also
+updates the OpenAI SDK from 3.16.2 to 3.46.0. Run local checks without model calls:
+
+```sh
+uv run --locked pytest -m 'not integration and not judge_calibration' -q
+```
+
+Tests use `FunctionModel` with external model requests disabled. They cover
+actual fixture tools, native history round-trips, streaming, invalid arguments,
+output correction, request limits, cancellation, resource ownership, native
+telemetry and session costs. Existing manual-runtime tests remain in place.
+See [the exploration findings](submissions/pydanticai-exploration.md) for results,
+tradeoffs and remaining work before making this runtime the default.
+
 ## Week 5: monitoring and session costs
 
 The reference files were reviewed before implementation:

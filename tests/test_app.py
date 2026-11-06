@@ -191,3 +191,18 @@ def test_failed_ui_turn_keeps_question_context_without_partial_tool_calls(monkey
         assert histories[1][1]["role"] == "assistant"
         assert "private-error" not in histories[1][1]["content"]
         assert not any(item.get("type") == "function_call" for item in histories[1])
+
+
+def test_switching_runtime_clears_incompatible_conversation_history(monkeypatch):
+    monkeypatch.setenv('OPENAI_API_KEY', 'test-key')
+    monkeypatch.setenv('REPORTING_AGENT_BACKEND', 'manual')
+    with patch('est_prog.capstone_reporting.agent.run_agent', return_value=result()) as run:
+        app = AppTest.from_file(APP).run()
+        app.chat_input[0].set_value(QUESTION).run()
+        assert len(app.chat_message) == 2
+        monkeypatch.setenv('REPORTING_AGENT_BACKEND', 'pydanticai')
+        app.run()
+        assert not app.exception
+        assert not app.chat_message
+        assert app.session_state.agent_history == []
+        run.assert_awaited_once()

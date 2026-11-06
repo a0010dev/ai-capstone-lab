@@ -126,6 +126,12 @@ def main():
     load_dotenv(Path(__file__).resolve().parent / ".env")
     st.session_state.setdefault("messages", [])
     st.session_state.setdefault("pending_prompt", None)
+    backend = os.getenv("REPORTING_AGENT_BACKEND", "manual")
+    if st.session_state.get("agent_backend", backend) != backend:
+        st.session_state.messages = []
+        st.session_state.agent_history = []
+        st.session_state.pending_prompt = None
+    st.session_state.agent_backend = backend
     # Recover the visible conversation for sessions opened before history support.
     # New turns retain full tool-call/output items from the agent's result.
     if "agent_history" not in st.session_state:
