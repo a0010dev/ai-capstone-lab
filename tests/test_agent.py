@@ -1,6 +1,6 @@
 """Week 4 behavioral tests: real query, tool trace, and response assertions.
 
-These tests intentionally use the model rather than scripted FakeClient answers.
+These tests intentionally use the model rather than scripted offline model answers.
 Run: uv run pytest tests/test_agent.py -v -s
 Each case starts an independent conversation and makes paid API calls.
 """

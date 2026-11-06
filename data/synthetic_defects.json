@@ -46,6 +46,5914 @@
       "defects": [
         {"record_id": "DEMO-DEF-006", "defect_code": "DEMO-CODE-C", "errors": 4, "affected_boards": 3, "repaired_boards": 0, "removed_boards": 0}
       ]
+    },
+    {
+      "control_id": "DEMO-CTRL-007",
+      "job_id": "DEMO-JOB-202401-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-01-01",
+      "sample_quantity": 73,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-007",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 4,
+          "repaired_boards": 1,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-008",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 9,
+          "repaired_boards": 2,
+          "removed_boards": 3
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-008",
+      "job_id": "DEMO-JOB-202401-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-01-10",
+      "sample_quantity": 93,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-009",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 9,
+          "affected_boards": 7,
+          "repaired_boards": 2,
+          "removed_boards": 2
+        },
+        {
+          "record_id": "DEMO-DEF-010",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 15,
+          "affected_boards": 12,
+          "repaired_boards": 3,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-011",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 5,
+          "affected_boards": 1,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-009",
+      "job_id": "DEMO-JOB-202401-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-01-20",
+      "sample_quantity": 113,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-012",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 10,
+          "repaired_boards": 3,
+          "removed_boards": 3
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-010",
+      "job_id": "DEMO-JOB-202401-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-01-31",
+      "sample_quantity": 133,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-013",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 17,
+          "affected_boards": 13,
+          "repaired_boards": 4,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-014",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 7,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-011",
+      "job_id": "DEMO-JOB-202401-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-01-01",
+      "sample_quantity": 112,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-015",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 17,
+          "affected_boards": 13,
+          "repaired_boards": 4,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-016",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 7,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-012",
+      "job_id": "DEMO-JOB-202401-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-01-10",
+      "sample_quantity": 132,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-017",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 21,
+          "affected_boards": 16,
+          "repaired_boards": 16,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-018",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 5,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-019",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 10,
+          "repaired_boards": 10,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-013",
+      "job_id": "DEMO-JOB-202401-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-01-20",
+      "sample_quantity": 152,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-020",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-014",
+      "job_id": "DEMO-JOB-202401-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-01-31",
+      "sample_quantity": 172,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-015",
+      "job_id": "DEMO-JOB-202402-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-02-01",
+      "sample_quantity": 86,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-021",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 9,
+          "affected_boards": 7,
+          "repaired_boards": 2,
+          "removed_boards": 2
+        },
+        {
+          "record_id": "DEMO-DEF-022",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 15,
+          "affected_boards": 12,
+          "repaired_boards": 3,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-023",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 5,
+          "affected_boards": 1,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-016",
+      "job_id": "DEMO-JOB-202402-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-02-10",
+      "sample_quantity": 106,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-024",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 10,
+          "repaired_boards": 3,
+          "removed_boards": 3
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-017",
+      "job_id": "DEMO-JOB-202402-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-02-20",
+      "sample_quantity": 126,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-025",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 17,
+          "affected_boards": 13,
+          "repaired_boards": 4,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-026",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 7,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-018",
+      "job_id": "DEMO-JOB-202402-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-02-29",
+      "sample_quantity": 146,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-027",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 21,
+          "affected_boards": 16,
+          "repaired_boards": 16,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-028",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 5,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-029",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 10,
+          "repaired_boards": 10,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-019",
+      "job_id": "DEMO-JOB-202402-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-02-01",
+      "sample_quantity": 125,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-030",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 21,
+          "affected_boards": 16,
+          "repaired_boards": 16,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-031",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 5,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-032",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 10,
+          "repaired_boards": 10,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-020",
+      "job_id": "DEMO-JOB-202402-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-02-10",
+      "sample_quantity": 145,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-033",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-021",
+      "job_id": "DEMO-JOB-202402-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-02-20",
+      "sample_quantity": 165,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-022",
+      "job_id": "DEMO-JOB-202402-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-02-29",
+      "sample_quantity": 185,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-034",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 11,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-035",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 17,
+          "affected_boards": 14,
+          "repaired_boards": 9,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-036",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 7,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-023",
+      "job_id": "DEMO-JOB-202403-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-03-01",
+      "sample_quantity": 99,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-037",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 10,
+          "repaired_boards": 3,
+          "removed_boards": 3
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-024",
+      "job_id": "DEMO-JOB-202403-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-03-10",
+      "sample_quantity": 119,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-038",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 17,
+          "affected_boards": 13,
+          "repaired_boards": 4,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-039",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 7,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-025",
+      "job_id": "DEMO-JOB-202403-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-03-20",
+      "sample_quantity": 139,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-040",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 21,
+          "affected_boards": 16,
+          "repaired_boards": 16,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-041",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 5,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-042",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 10,
+          "repaired_boards": 10,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-026",
+      "job_id": "DEMO-JOB-202403-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-03-31",
+      "sample_quantity": 159,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-043",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-027",
+      "job_id": "DEMO-JOB-202403-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-03-01",
+      "sample_quantity": 138,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-044",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-028",
+      "job_id": "DEMO-JOB-202403-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-03-10",
+      "sample_quantity": 158,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-029",
+      "job_id": "DEMO-JOB-202403-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-03-20",
+      "sample_quantity": 178,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-045",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 11,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-046",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 17,
+          "affected_boards": 14,
+          "repaired_boards": 9,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-047",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 7,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-030",
+      "job_id": "DEMO-JOB-202403-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-03-31",
+      "sample_quantity": 198,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-048",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 12,
+          "repaired_boards": 9,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-031",
+      "job_id": "DEMO-JOB-202404-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-04-01",
+      "sample_quantity": 112,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-049",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 17,
+          "affected_boards": 13,
+          "repaired_boards": 4,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-050",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 7,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-032",
+      "job_id": "DEMO-JOB-202404-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-04-10",
+      "sample_quantity": 132,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-051",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 21,
+          "affected_boards": 16,
+          "repaired_boards": 16,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-052",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 5,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-053",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 10,
+          "repaired_boards": 10,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-033",
+      "job_id": "DEMO-JOB-202404-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-04-20",
+      "sample_quantity": 152,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-054",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-034",
+      "job_id": "DEMO-JOB-202404-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-04-30",
+      "sample_quantity": 172,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-035",
+      "job_id": "DEMO-JOB-202404-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-04-01",
+      "sample_quantity": 151,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-036",
+      "job_id": "DEMO-JOB-202404-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-04-10",
+      "sample_quantity": 171,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-055",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 11,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-056",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 17,
+          "affected_boards": 14,
+          "repaired_boards": 9,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-057",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 7,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-037",
+      "job_id": "DEMO-JOB-202404-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-04-20",
+      "sample_quantity": 191,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-058",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 12,
+          "repaired_boards": 9,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-038",
+      "job_id": "DEMO-JOB-202404-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-04-30",
+      "sample_quantity": 70,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-059",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 19,
+          "affected_boards": 15,
+          "repaired_boards": 15,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-060",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 9,
+          "affected_boards": 4,
+          "repaired_boards": 4,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-039",
+      "job_id": "DEMO-JOB-202405-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-05-01",
+      "sample_quantity": 125,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-061",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 21,
+          "affected_boards": 16,
+          "repaired_boards": 16,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-062",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 5,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-063",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 10,
+          "repaired_boards": 10,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-040",
+      "job_id": "DEMO-JOB-202405-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-05-10",
+      "sample_quantity": 145,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-064",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-041",
+      "job_id": "DEMO-JOB-202405-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-05-20",
+      "sample_quantity": 165,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-042",
+      "job_id": "DEMO-JOB-202405-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-05-31",
+      "sample_quantity": 185,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-065",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 11,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-066",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 17,
+          "affected_boards": 14,
+          "repaired_boards": 9,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-067",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 7,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-043",
+      "job_id": "DEMO-JOB-202405-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-05-01",
+      "sample_quantity": 164,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-068",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 11,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-069",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 17,
+          "affected_boards": 14,
+          "repaired_boards": 9,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-070",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 7,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-044",
+      "job_id": "DEMO-JOB-202405-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-05-10",
+      "sample_quantity": 184,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-071",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 12,
+          "repaired_boards": 9,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-045",
+      "job_id": "DEMO-JOB-202405-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-05-20",
+      "sample_quantity": 63,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-072",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 19,
+          "affected_boards": 15,
+          "repaired_boards": 15,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-073",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 9,
+          "affected_boards": 4,
+          "repaired_boards": 4,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-046",
+      "job_id": "DEMO-JOB-202405-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-05-31",
+      "sample_quantity": 83,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-074",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 7,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-075",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 7,
+          "repaired_boards": 4,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-076",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 12,
+          "repaired_boards": 0,
+          "removed_boards": 2
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-047",
+      "job_id": "DEMO-JOB-202406-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-06-01",
+      "sample_quantity": 138,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-077",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-048",
+      "job_id": "DEMO-JOB-202406-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-06-10",
+      "sample_quantity": 158,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-049",
+      "job_id": "DEMO-JOB-202406-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-06-20",
+      "sample_quantity": 178,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-078",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 11,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-079",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 17,
+          "affected_boards": 14,
+          "repaired_boards": 9,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-080",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 7,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-050",
+      "job_id": "DEMO-JOB-202406-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-06-30",
+      "sample_quantity": 198,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-081",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 12,
+          "repaired_boards": 9,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-051",
+      "job_id": "DEMO-JOB-202406-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-06-01",
+      "sample_quantity": 177,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-082",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 12,
+          "repaired_boards": 9,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-052",
+      "job_id": "DEMO-JOB-202406-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-06-10",
+      "sample_quantity": 197,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-083",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 19,
+          "affected_boards": 15,
+          "repaired_boards": 15,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-084",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 9,
+          "affected_boards": 4,
+          "repaired_boards": 4,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-053",
+      "job_id": "DEMO-JOB-202406-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-06-20",
+      "sample_quantity": 76,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-085",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 7,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-086",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 7,
+          "repaired_boards": 4,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-087",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 12,
+          "repaired_boards": 0,
+          "removed_boards": 2
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-054",
+      "job_id": "DEMO-JOB-202406-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-06-30",
+      "sample_quantity": 96,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-088",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 5,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-055",
+      "job_id": "DEMO-JOB-202407-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-07-01",
+      "sample_quantity": 151,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-056",
+      "job_id": "DEMO-JOB-202407-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-07-10",
+      "sample_quantity": 171,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-089",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 11,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-090",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 17,
+          "affected_boards": 14,
+          "repaired_boards": 9,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-091",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 7,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-057",
+      "job_id": "DEMO-JOB-202407-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-07-20",
+      "sample_quantity": 191,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-092",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 12,
+          "repaired_boards": 9,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-058",
+      "job_id": "DEMO-JOB-202407-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-07-31",
+      "sample_quantity": 70,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-093",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 19,
+          "affected_boards": 15,
+          "repaired_boards": 15,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-094",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 9,
+          "affected_boards": 4,
+          "repaired_boards": 4,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-059",
+      "job_id": "DEMO-JOB-202407-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-07-01",
+      "sample_quantity": 190,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-095",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 19,
+          "affected_boards": 15,
+          "repaired_boards": 15,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-096",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 9,
+          "affected_boards": 4,
+          "repaired_boards": 4,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-060",
+      "job_id": "DEMO-JOB-202407-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-07-10",
+      "sample_quantity": 69,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-097",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 7,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-098",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 7,
+          "repaired_boards": 4,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-099",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 12,
+          "repaired_boards": 0,
+          "removed_boards": 2
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-061",
+      "job_id": "DEMO-JOB-202407-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-07-20",
+      "sample_quantity": 89,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-100",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 5,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-062",
+      "job_id": "DEMO-JOB-202407-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-07-31",
+      "sample_quantity": 109,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-101",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 8,
+          "repaired_boards": 4,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-102",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 13,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-063",
+      "job_id": "DEMO-JOB-202408-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-08-01",
+      "sample_quantity": 164,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-103",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 11,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-104",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 17,
+          "affected_boards": 14,
+          "repaired_boards": 9,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-105",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 7,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-064",
+      "job_id": "DEMO-JOB-202408-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-08-10",
+      "sample_quantity": 184,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-106",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 12,
+          "repaired_boards": 9,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-065",
+      "job_id": "DEMO-JOB-202408-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-08-20",
+      "sample_quantity": 63,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-107",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 19,
+          "affected_boards": 15,
+          "repaired_boards": 15,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-108",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 9,
+          "affected_boards": 4,
+          "repaired_boards": 4,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-066",
+      "job_id": "DEMO-JOB-202408-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-08-31",
+      "sample_quantity": 83,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-109",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 7,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-110",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 7,
+          "repaired_boards": 4,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-111",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 12,
+          "repaired_boards": 0,
+          "removed_boards": 2
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-067",
+      "job_id": "DEMO-JOB-202408-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-08-01",
+      "sample_quantity": 62,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-112",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 7,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-113",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 7,
+          "repaired_boards": 4,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-114",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 12,
+          "repaired_boards": 0,
+          "removed_boards": 2
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-068",
+      "job_id": "DEMO-JOB-202408-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-08-10",
+      "sample_quantity": 82,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-115",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 5,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-069",
+      "job_id": "DEMO-JOB-202408-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-08-20",
+      "sample_quantity": 102,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-116",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 8,
+          "repaired_boards": 4,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-117",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 13,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-070",
+      "job_id": "DEMO-JOB-202408-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-08-31",
+      "sample_quantity": 122,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-071",
+      "job_id": "DEMO-JOB-202409-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-09-01",
+      "sample_quantity": 177,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-118",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 12,
+          "repaired_boards": 9,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-072",
+      "job_id": "DEMO-JOB-202409-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-09-10",
+      "sample_quantity": 197,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-119",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 19,
+          "affected_boards": 15,
+          "repaired_boards": 15,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-120",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 9,
+          "affected_boards": 4,
+          "repaired_boards": 4,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-073",
+      "job_id": "DEMO-JOB-202409-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-09-20",
+      "sample_quantity": 76,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-121",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 7,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-122",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 7,
+          "repaired_boards": 4,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-123",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 12,
+          "repaired_boards": 0,
+          "removed_boards": 2
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-074",
+      "job_id": "DEMO-JOB-202409-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-09-30",
+      "sample_quantity": 96,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-124",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 5,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-075",
+      "job_id": "DEMO-JOB-202409-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-09-01",
+      "sample_quantity": 75,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-125",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 5,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-076",
+      "job_id": "DEMO-JOB-202409-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-09-10",
+      "sample_quantity": 95,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-126",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 8,
+          "repaired_boards": 4,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-127",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 13,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-077",
+      "job_id": "DEMO-JOB-202409-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-09-20",
+      "sample_quantity": 115,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-078",
+      "job_id": "DEMO-JOB-202409-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-09-30",
+      "sample_quantity": 135,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-128",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 14,
+          "repaired_boards": 14,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-079",
+      "job_id": "DEMO-JOB-202410-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-10-01",
+      "sample_quantity": 190,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-129",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 19,
+          "affected_boards": 15,
+          "repaired_boards": 15,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-130",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 9,
+          "affected_boards": 4,
+          "repaired_boards": 4,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-080",
+      "job_id": "DEMO-JOB-202410-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-10-10",
+      "sample_quantity": 69,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-131",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 7,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-132",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 7,
+          "repaired_boards": 4,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-133",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 12,
+          "repaired_boards": 0,
+          "removed_boards": 2
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-081",
+      "job_id": "DEMO-JOB-202410-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-10-20",
+      "sample_quantity": 89,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-134",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 5,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-082",
+      "job_id": "DEMO-JOB-202410-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-10-31",
+      "sample_quantity": 109,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-135",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 8,
+          "repaired_boards": 4,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-136",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 13,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-083",
+      "job_id": "DEMO-JOB-202410-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-10-01",
+      "sample_quantity": 88,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-137",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 8,
+          "repaired_boards": 4,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-138",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 13,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-084",
+      "job_id": "DEMO-JOB-202410-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-10-10",
+      "sample_quantity": 108,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-085",
+      "job_id": "DEMO-JOB-202410-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-10-20",
+      "sample_quantity": 128,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-139",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 14,
+          "repaired_boards": 14,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-086",
+      "job_id": "DEMO-JOB-202410-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-10-31",
+      "sample_quantity": 148,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-140",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 1,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-141",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 6,
+          "repaired_boards": 3,
+          "removed_boards": 2
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-087",
+      "job_id": "DEMO-JOB-202411-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-11-01",
+      "sample_quantity": 62,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-142",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 7,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-143",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 7,
+          "repaired_boards": 4,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-144",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 12,
+          "repaired_boards": 0,
+          "removed_boards": 2
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-088",
+      "job_id": "DEMO-JOB-202411-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-11-10",
+      "sample_quantity": 82,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-145",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 5,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-089",
+      "job_id": "DEMO-JOB-202411-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-11-20",
+      "sample_quantity": 102,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-146",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 8,
+          "repaired_boards": 4,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-147",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 13,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-090",
+      "job_id": "DEMO-JOB-202411-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-11-30",
+      "sample_quantity": 122,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-091",
+      "job_id": "DEMO-JOB-202411-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-11-01",
+      "sample_quantity": 101,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-092",
+      "job_id": "DEMO-JOB-202411-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-11-10",
+      "sample_quantity": 121,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-148",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 14,
+          "repaired_boards": 14,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-093",
+      "job_id": "DEMO-JOB-202411-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-11-20",
+      "sample_quantity": 141,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-149",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 1,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-150",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 6,
+          "repaired_boards": 3,
+          "removed_boards": 2
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-094",
+      "job_id": "DEMO-JOB-202411-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-11-30",
+      "sample_quantity": 161,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-151",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 9,
+          "affected_boards": 4,
+          "repaired_boards": 2,
+          "removed_boards": 2
+        },
+        {
+          "record_id": "DEMO-DEF-152",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-153",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 14,
+          "repaired_boards": 4,
+          "removed_boards": 10
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-095",
+      "job_id": "DEMO-JOB-202412-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-12-01",
+      "sample_quantity": 75,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-154",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 5,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-096",
+      "job_id": "DEMO-JOB-202412-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-12-10",
+      "sample_quantity": 95,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-155",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 8,
+          "repaired_boards": 4,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-156",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 13,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-097",
+      "job_id": "DEMO-JOB-202412-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-12-20",
+      "sample_quantity": 115,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-098",
+      "job_id": "DEMO-JOB-202412-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2024-12-31",
+      "sample_quantity": 135,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-157",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 14,
+          "repaired_boards": 14,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-099",
+      "job_id": "DEMO-JOB-202412-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-12-01",
+      "sample_quantity": 114,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-158",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 14,
+          "repaired_boards": 14,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-100",
+      "job_id": "DEMO-JOB-202412-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-12-10",
+      "sample_quantity": 134,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-159",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 1,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-160",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 6,
+          "repaired_boards": 3,
+          "removed_boards": 2
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-101",
+      "job_id": "DEMO-JOB-202412-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-12-20",
+      "sample_quantity": 154,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-161",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 9,
+          "affected_boards": 4,
+          "repaired_boards": 2,
+          "removed_boards": 2
+        },
+        {
+          "record_id": "DEMO-DEF-162",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-163",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 14,
+          "repaired_boards": 4,
+          "removed_boards": 10
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-102",
+      "job_id": "DEMO-JOB-202412-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2024-12-31",
+      "sample_quantity": 174,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-164",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 7,
+          "affected_boards": 7,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-103",
+      "job_id": "DEMO-JOB-202501-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-01-01",
+      "sample_quantity": 88,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-165",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 8,
+          "repaired_boards": 4,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-166",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 13,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-104",
+      "job_id": "DEMO-JOB-202501-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-01-10",
+      "sample_quantity": 108,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-105",
+      "job_id": "DEMO-JOB-202501-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-01-20",
+      "sample_quantity": 128,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-167",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 14,
+          "repaired_boards": 14,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-106",
+      "job_id": "DEMO-JOB-202501-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-01-31",
+      "sample_quantity": 148,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-168",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 1,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-169",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 6,
+          "repaired_boards": 3,
+          "removed_boards": 2
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-107",
+      "job_id": "DEMO-JOB-202501-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-01-01",
+      "sample_quantity": 127,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-170",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 1,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-171",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 6,
+          "repaired_boards": 3,
+          "removed_boards": 2
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-108",
+      "job_id": "DEMO-JOB-202501-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-01-10",
+      "sample_quantity": 147,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-172",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 9,
+          "affected_boards": 4,
+          "repaired_boards": 2,
+          "removed_boards": 2
+        },
+        {
+          "record_id": "DEMO-DEF-173",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-174",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 14,
+          "repaired_boards": 4,
+          "removed_boards": 10
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-109",
+      "job_id": "DEMO-JOB-202501-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-01-20",
+      "sample_quantity": 167,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-175",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 7,
+          "affected_boards": 7,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-110",
+      "job_id": "DEMO-JOB-202501-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-01-31",
+      "sample_quantity": 187,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-176",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 10,
+          "repaired_boards": 8,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-177",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 15,
+          "repaired_boards": 4,
+          "removed_boards": 9
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-111",
+      "job_id": "DEMO-JOB-202502-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-02-01",
+      "sample_quantity": 101,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-112",
+      "job_id": "DEMO-JOB-202502-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-02-10",
+      "sample_quantity": 121,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-178",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 14,
+          "repaired_boards": 14,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-113",
+      "job_id": "DEMO-JOB-202502-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-02-20",
+      "sample_quantity": 141,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-179",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 1,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-180",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 6,
+          "repaired_boards": 3,
+          "removed_boards": 2
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-114",
+      "job_id": "DEMO-JOB-202502-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-02-28",
+      "sample_quantity": 161,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-181",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 9,
+          "affected_boards": 4,
+          "repaired_boards": 2,
+          "removed_boards": 2
+        },
+        {
+          "record_id": "DEMO-DEF-182",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-183",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 14,
+          "repaired_boards": 4,
+          "removed_boards": 10
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-115",
+      "job_id": "DEMO-JOB-202502-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-02-01",
+      "sample_quantity": 140,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-184",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 9,
+          "affected_boards": 4,
+          "repaired_boards": 2,
+          "removed_boards": 2
+        },
+        {
+          "record_id": "DEMO-DEF-185",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-186",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 14,
+          "repaired_boards": 4,
+          "removed_boards": 10
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-116",
+      "job_id": "DEMO-JOB-202502-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-02-10",
+      "sample_quantity": 160,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-187",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 7,
+          "affected_boards": 7,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-117",
+      "job_id": "DEMO-JOB-202502-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-02-20",
+      "sample_quantity": 180,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-188",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 10,
+          "repaired_boards": 8,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-189",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 15,
+          "repaired_boards": 4,
+          "removed_boards": 9
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-118",
+      "job_id": "DEMO-JOB-202502-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-02-28",
+      "sample_quantity": 200,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-190",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 15,
+          "affected_boards": 13,
+          "repaired_boards": 13,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-191",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-192",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 7,
+          "repaired_boards": 7,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-119",
+      "job_id": "DEMO-JOB-202503-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-03-01",
+      "sample_quantity": 114,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-193",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 14,
+          "repaired_boards": 14,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-120",
+      "job_id": "DEMO-JOB-202503-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-03-10",
+      "sample_quantity": 134,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-194",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 1,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-195",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 6,
+          "repaired_boards": 3,
+          "removed_boards": 2
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-121",
+      "job_id": "DEMO-JOB-202503-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-03-20",
+      "sample_quantity": 154,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-196",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 9,
+          "affected_boards": 4,
+          "repaired_boards": 2,
+          "removed_boards": 2
+        },
+        {
+          "record_id": "DEMO-DEF-197",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-198",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 14,
+          "repaired_boards": 4,
+          "removed_boards": 10
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-122",
+      "job_id": "DEMO-JOB-202503-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-03-31",
+      "sample_quantity": 174,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-199",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 7,
+          "affected_boards": 7,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-123",
+      "job_id": "DEMO-JOB-202503-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-03-01",
+      "sample_quantity": 153,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-200",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 7,
+          "affected_boards": 7,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-124",
+      "job_id": "DEMO-JOB-202503-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-03-10",
+      "sample_quantity": 173,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-201",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 10,
+          "repaired_boards": 8,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-202",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 15,
+          "repaired_boards": 4,
+          "removed_boards": 9
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-125",
+      "job_id": "DEMO-JOB-202503-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-03-20",
+      "sample_quantity": 193,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-203",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 15,
+          "affected_boards": 13,
+          "repaired_boards": 13,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-204",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-205",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 7,
+          "repaired_boards": 7,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-126",
+      "job_id": "DEMO-JOB-202503-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-03-31",
+      "sample_quantity": 72,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-127",
+      "job_id": "DEMO-JOB-202504-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-04-01",
+      "sample_quantity": 127,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-206",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 1,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-207",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 6,
+          "repaired_boards": 3,
+          "removed_boards": 2
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-128",
+      "job_id": "DEMO-JOB-202504-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-04-10",
+      "sample_quantity": 147,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-208",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 9,
+          "affected_boards": 4,
+          "repaired_boards": 2,
+          "removed_boards": 2
+        },
+        {
+          "record_id": "DEMO-DEF-209",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-210",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 14,
+          "repaired_boards": 4,
+          "removed_boards": 10
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-129",
+      "job_id": "DEMO-JOB-202504-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-04-20",
+      "sample_quantity": 167,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-211",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 7,
+          "affected_boards": 7,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-130",
+      "job_id": "DEMO-JOB-202504-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-04-30",
+      "sample_quantity": 187,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-212",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 10,
+          "repaired_boards": 8,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-213",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 15,
+          "repaired_boards": 4,
+          "removed_boards": 9
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-131",
+      "job_id": "DEMO-JOB-202504-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-04-01",
+      "sample_quantity": 166,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-214",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 10,
+          "repaired_boards": 8,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-215",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 15,
+          "repaired_boards": 4,
+          "removed_boards": 9
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-132",
+      "job_id": "DEMO-JOB-202504-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-04-10",
+      "sample_quantity": 186,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-216",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 15,
+          "affected_boards": 13,
+          "repaired_boards": 13,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-217",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-218",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 7,
+          "repaired_boards": 7,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-133",
+      "job_id": "DEMO-JOB-202504-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-04-20",
+      "sample_quantity": 65,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-134",
+      "job_id": "DEMO-JOB-202504-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-04-30",
+      "sample_quantity": 85,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-219",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-220",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 8,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-135",
+      "job_id": "DEMO-JOB-202505-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-05-01",
+      "sample_quantity": 140,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-221",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 9,
+          "affected_boards": 4,
+          "repaired_boards": 2,
+          "removed_boards": 2
+        },
+        {
+          "record_id": "DEMO-DEF-222",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-223",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 14,
+          "repaired_boards": 4,
+          "removed_boards": 10
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-136",
+      "job_id": "DEMO-JOB-202505-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-05-10",
+      "sample_quantity": 160,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-224",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 7,
+          "affected_boards": 7,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-137",
+      "job_id": "DEMO-JOB-202505-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-05-20",
+      "sample_quantity": 180,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-225",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 10,
+          "repaired_boards": 8,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-226",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 15,
+          "repaired_boards": 4,
+          "removed_boards": 9
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-138",
+      "job_id": "DEMO-JOB-202505-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-05-31",
+      "sample_quantity": 200,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-227",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 15,
+          "affected_boards": 13,
+          "repaired_boards": 13,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-228",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-229",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 7,
+          "repaired_boards": 7,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-139",
+      "job_id": "DEMO-JOB-202505-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-05-01",
+      "sample_quantity": 179,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-230",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 15,
+          "affected_boards": 13,
+          "repaired_boards": 13,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-231",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-232",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 7,
+          "repaired_boards": 7,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-140",
+      "job_id": "DEMO-JOB-202505-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-05-10",
+      "sample_quantity": 199,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-141",
+      "job_id": "DEMO-JOB-202505-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-05-20",
+      "sample_quantity": 78,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-233",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-234",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 8,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-142",
+      "job_id": "DEMO-JOB-202505-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-05-31",
+      "sample_quantity": 98,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-235",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 11,
+          "affected_boards": 6,
+          "repaired_boards": 2,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-236",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 11,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-237",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 16,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-143",
+      "job_id": "DEMO-JOB-202506-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-06-01",
+      "sample_quantity": 153,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-238",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 7,
+          "affected_boards": 7,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-144",
+      "job_id": "DEMO-JOB-202506-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-06-10",
+      "sample_quantity": 173,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-239",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 10,
+          "repaired_boards": 8,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-240",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 15,
+          "repaired_boards": 4,
+          "removed_boards": 9
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-145",
+      "job_id": "DEMO-JOB-202506-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-06-20",
+      "sample_quantity": 193,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-241",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 15,
+          "affected_boards": 13,
+          "repaired_boards": 13,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-242",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-243",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 7,
+          "repaired_boards": 7,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-146",
+      "job_id": "DEMO-JOB-202506-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-06-30",
+      "sample_quantity": 72,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-147",
+      "job_id": "DEMO-JOB-202506-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-06-01",
+      "sample_quantity": 192,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-148",
+      "job_id": "DEMO-JOB-202506-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-06-10",
+      "sample_quantity": 71,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-244",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-245",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 8,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-149",
+      "job_id": "DEMO-JOB-202506-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-06-20",
+      "sample_quantity": 91,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-246",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 11,
+          "affected_boards": 6,
+          "repaired_boards": 2,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-247",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 11,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-248",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 16,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-150",
+      "job_id": "DEMO-JOB-202506-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-06-30",
+      "sample_quantity": 111,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-249",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 9,
+          "affected_boards": 9,
+          "repaired_boards": 4,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-151",
+      "job_id": "DEMO-JOB-202507-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-07-01",
+      "sample_quantity": 166,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-250",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 10,
+          "repaired_boards": 8,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-251",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 15,
+          "repaired_boards": 4,
+          "removed_boards": 9
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-152",
+      "job_id": "DEMO-JOB-202507-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-07-10",
+      "sample_quantity": 186,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-252",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 15,
+          "affected_boards": 13,
+          "repaired_boards": 13,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-253",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-254",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 7,
+          "repaired_boards": 7,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-153",
+      "job_id": "DEMO-JOB-202507-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-07-20",
+      "sample_quantity": 65,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-154",
+      "job_id": "DEMO-JOB-202507-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-07-31",
+      "sample_quantity": 85,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-255",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-256",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 8,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-155",
+      "job_id": "DEMO-JOB-202507-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-07-01",
+      "sample_quantity": 64,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-257",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-258",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 8,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-156",
+      "job_id": "DEMO-JOB-202507-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-07-10",
+      "sample_quantity": 84,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-259",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 11,
+          "affected_boards": 6,
+          "repaired_boards": 2,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-260",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 11,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-261",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 16,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-157",
+      "job_id": "DEMO-JOB-202507-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-07-20",
+      "sample_quantity": 104,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-262",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 9,
+          "affected_boards": 9,
+          "repaired_boards": 4,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-158",
+      "job_id": "DEMO-JOB-202507-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-07-31",
+      "sample_quantity": 124,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-263",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 13,
+          "affected_boards": 12,
+          "repaired_boards": 12,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-264",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 1,
+          "repaired_boards": 1,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-159",
+      "job_id": "DEMO-JOB-202508-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-08-01",
+      "sample_quantity": 179,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-265",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 15,
+          "affected_boards": 13,
+          "repaired_boards": 13,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-266",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 5,
+          "affected_boards": 2,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-267",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 11,
+          "affected_boards": 7,
+          "repaired_boards": 7,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-160",
+      "job_id": "DEMO-JOB-202508-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-08-10",
+      "sample_quantity": 199,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-161",
+      "job_id": "DEMO-JOB-202508-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-08-20",
+      "sample_quantity": 78,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-268",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-269",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 8,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-162",
+      "job_id": "DEMO-JOB-202508-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-08-31",
+      "sample_quantity": 98,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-270",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 11,
+          "affected_boards": 6,
+          "repaired_boards": 2,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-271",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 11,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-272",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 16,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-163",
+      "job_id": "DEMO-JOB-202508-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-08-01",
+      "sample_quantity": 77,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-273",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 11,
+          "affected_boards": 6,
+          "repaired_boards": 2,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-274",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 11,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-275",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 16,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-164",
+      "job_id": "DEMO-JOB-202508-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-08-10",
+      "sample_quantity": 97,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-276",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 9,
+          "affected_boards": 9,
+          "repaired_boards": 4,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-165",
+      "job_id": "DEMO-JOB-202508-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-08-20",
+      "sample_quantity": 117,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-277",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 13,
+          "affected_boards": 12,
+          "repaired_boards": 12,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-278",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 1,
+          "repaired_boards": 1,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-166",
+      "job_id": "DEMO-JOB-202508-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-08-31",
+      "sample_quantity": 137,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-279",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 17,
+          "affected_boards": 15,
+          "repaired_boards": 10,
+          "removed_boards": 2
+        },
+        {
+          "record_id": "DEMO-DEF-280",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 4,
+          "repaired_boards": 2,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-281",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-167",
+      "job_id": "DEMO-JOB-202509-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-09-01",
+      "sample_quantity": 192,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-168",
+      "job_id": "DEMO-JOB-202509-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-09-10",
+      "sample_quantity": 71,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-282",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-283",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 8,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-169",
+      "job_id": "DEMO-JOB-202509-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-09-20",
+      "sample_quantity": 91,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-284",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 11,
+          "affected_boards": 6,
+          "repaired_boards": 2,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-285",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 11,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-286",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 16,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-170",
+      "job_id": "DEMO-JOB-202509-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-09-30",
+      "sample_quantity": 111,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-287",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 9,
+          "affected_boards": 9,
+          "repaired_boards": 4,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-171",
+      "job_id": "DEMO-JOB-202509-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-09-01",
+      "sample_quantity": 90,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-288",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 9,
+          "affected_boards": 9,
+          "repaired_boards": 4,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-172",
+      "job_id": "DEMO-JOB-202509-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-09-10",
+      "sample_quantity": 110,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-289",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 13,
+          "affected_boards": 12,
+          "repaired_boards": 12,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-290",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 1,
+          "repaired_boards": 1,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-173",
+      "job_id": "DEMO-JOB-202509-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-09-20",
+      "sample_quantity": 130,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-291",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 17,
+          "affected_boards": 15,
+          "repaired_boards": 10,
+          "removed_boards": 2
+        },
+        {
+          "record_id": "DEMO-DEF-292",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 4,
+          "repaired_boards": 2,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-293",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-174",
+      "job_id": "DEMO-JOB-202509-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-09-30",
+      "sample_quantity": 150,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-294",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 2,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-175",
+      "job_id": "DEMO-JOB-202510-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-10-01",
+      "sample_quantity": 64,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-295",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-296",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 8,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-176",
+      "job_id": "DEMO-JOB-202510-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-10-10",
+      "sample_quantity": 84,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-297",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 11,
+          "affected_boards": 6,
+          "repaired_boards": 2,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-298",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 11,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-299",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 16,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-177",
+      "job_id": "DEMO-JOB-202510-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-10-20",
+      "sample_quantity": 104,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-300",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 9,
+          "affected_boards": 9,
+          "repaired_boards": 4,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-178",
+      "job_id": "DEMO-JOB-202510-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-10-31",
+      "sample_quantity": 124,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-301",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 13,
+          "affected_boards": 12,
+          "repaired_boards": 12,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-302",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 1,
+          "repaired_boards": 1,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-179",
+      "job_id": "DEMO-JOB-202510-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-10-01",
+      "sample_quantity": 103,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-303",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 13,
+          "affected_boards": 12,
+          "repaired_boards": 12,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-304",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 1,
+          "repaired_boards": 1,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-180",
+      "job_id": "DEMO-JOB-202510-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-10-10",
+      "sample_quantity": 123,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-305",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 17,
+          "affected_boards": 15,
+          "repaired_boards": 10,
+          "removed_boards": 2
+        },
+        {
+          "record_id": "DEMO-DEF-306",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 4,
+          "repaired_boards": 2,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-307",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-181",
+      "job_id": "DEMO-JOB-202510-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-10-20",
+      "sample_quantity": 143,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-308",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 2,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-182",
+      "job_id": "DEMO-JOB-202510-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-10-31",
+      "sample_quantity": 163,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-183",
+      "job_id": "DEMO-JOB-202511-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-11-01",
+      "sample_quantity": 77,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-309",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 11,
+          "affected_boards": 6,
+          "repaired_boards": 2,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-310",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 11,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-311",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 16,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-184",
+      "job_id": "DEMO-JOB-202511-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-11-10",
+      "sample_quantity": 97,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-312",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 9,
+          "affected_boards": 9,
+          "repaired_boards": 4,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-185",
+      "job_id": "DEMO-JOB-202511-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-11-20",
+      "sample_quantity": 117,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-313",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 13,
+          "affected_boards": 12,
+          "repaired_boards": 12,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-314",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 1,
+          "repaired_boards": 1,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-186",
+      "job_id": "DEMO-JOB-202511-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-11-30",
+      "sample_quantity": 137,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-315",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 17,
+          "affected_boards": 15,
+          "repaired_boards": 10,
+          "removed_boards": 2
+        },
+        {
+          "record_id": "DEMO-DEF-316",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 4,
+          "repaired_boards": 2,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-317",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-187",
+      "job_id": "DEMO-JOB-202511-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-11-01",
+      "sample_quantity": 116,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-318",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 17,
+          "affected_boards": 15,
+          "repaired_boards": 10,
+          "removed_boards": 2
+        },
+        {
+          "record_id": "DEMO-DEF-319",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 4,
+          "repaired_boards": 2,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-320",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-188",
+      "job_id": "DEMO-JOB-202511-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-11-10",
+      "sample_quantity": 136,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-321",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 2,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-189",
+      "job_id": "DEMO-JOB-202511-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-11-20",
+      "sample_quantity": 156,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-190",
+      "job_id": "DEMO-JOB-202511-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-11-30",
+      "sample_quantity": 176,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-322",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 13,
+          "affected_boards": 8,
+          "repaired_boards": 2,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-323",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 13,
+          "affected_boards": 13,
+          "repaired_boards": 2,
+          "removed_boards": 7
+        },
+        {
+          "record_id": "DEMO-DEF-324",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 2,
+          "repaired_boards": 1,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-191",
+      "job_id": "DEMO-JOB-202512-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-12-01",
+      "sample_quantity": 90,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-325",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 9,
+          "affected_boards": 9,
+          "repaired_boards": 4,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-192",
+      "job_id": "DEMO-JOB-202512-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-12-10",
+      "sample_quantity": 110,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-326",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 13,
+          "affected_boards": 12,
+          "repaired_boards": 12,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-327",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 1,
+          "repaired_boards": 1,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-193",
+      "job_id": "DEMO-JOB-202512-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-12-20",
+      "sample_quantity": 130,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-328",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 17,
+          "affected_boards": 15,
+          "repaired_boards": 10,
+          "removed_boards": 2
+        },
+        {
+          "record_id": "DEMO-DEF-329",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 4,
+          "repaired_boards": 2,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-330",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-194",
+      "job_id": "DEMO-JOB-202512-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2025-12-31",
+      "sample_quantity": 150,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-331",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 2,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-195",
+      "job_id": "DEMO-JOB-202512-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-12-01",
+      "sample_quantity": 129,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-332",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 2,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-196",
+      "job_id": "DEMO-JOB-202512-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-12-10",
+      "sample_quantity": 149,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-197",
+      "job_id": "DEMO-JOB-202512-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-12-20",
+      "sample_quantity": 169,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-333",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 13,
+          "affected_boards": 8,
+          "repaired_boards": 2,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-334",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 13,
+          "affected_boards": 13,
+          "repaired_boards": 2,
+          "removed_boards": 7
+        },
+        {
+          "record_id": "DEMO-DEF-335",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 2,
+          "repaired_boards": 1,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-198",
+      "job_id": "DEMO-JOB-202512-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2025-12-31",
+      "sample_quantity": 189,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-336",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 11,
+          "affected_boards": 11,
+          "repaired_boards": 11,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-199",
+      "job_id": "DEMO-JOB-202601-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-01-01",
+      "sample_quantity": 103,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-337",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 13,
+          "affected_boards": 12,
+          "repaired_boards": 12,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-338",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 1,
+          "repaired_boards": 1,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-200",
+      "job_id": "DEMO-JOB-202601-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-01-10",
+      "sample_quantity": 123,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-339",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 17,
+          "affected_boards": 15,
+          "repaired_boards": 10,
+          "removed_boards": 2
+        },
+        {
+          "record_id": "DEMO-DEF-340",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 4,
+          "repaired_boards": 2,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-341",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-201",
+      "job_id": "DEMO-JOB-202601-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-01-20",
+      "sample_quantity": 143,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-342",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 2,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-202",
+      "job_id": "DEMO-JOB-202601-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-01-31",
+      "sample_quantity": 163,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-203",
+      "job_id": "DEMO-JOB-202601-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-01-01",
+      "sample_quantity": 142,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-204",
+      "job_id": "DEMO-JOB-202601-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-01-10",
+      "sample_quantity": 162,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-343",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 13,
+          "affected_boards": 8,
+          "repaired_boards": 2,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-344",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 13,
+          "affected_boards": 13,
+          "repaired_boards": 2,
+          "removed_boards": 7
+        },
+        {
+          "record_id": "DEMO-DEF-345",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 2,
+          "repaired_boards": 1,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-205",
+      "job_id": "DEMO-JOB-202601-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-01-20",
+      "sample_quantity": 182,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-346",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 11,
+          "affected_boards": 11,
+          "repaired_boards": 11,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-206",
+      "job_id": "DEMO-JOB-202601-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-01-31",
+      "sample_quantity": 61,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-347",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 15,
+          "affected_boards": 14,
+          "repaired_boards": 1,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-348",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 3,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-207",
+      "job_id": "DEMO-JOB-202602-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-02-01",
+      "sample_quantity": 116,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-349",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 17,
+          "affected_boards": 15,
+          "repaired_boards": 10,
+          "removed_boards": 2
+        },
+        {
+          "record_id": "DEMO-DEF-350",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 7,
+          "affected_boards": 4,
+          "repaired_boards": 2,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-351",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 13,
+          "affected_boards": 9,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-208",
+      "job_id": "DEMO-JOB-202602-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-02-10",
+      "sample_quantity": 136,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-352",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 2,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-209",
+      "job_id": "DEMO-JOB-202602-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-02-20",
+      "sample_quantity": 156,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-210",
+      "job_id": "DEMO-JOB-202602-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-02-28",
+      "sample_quantity": 176,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-353",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 13,
+          "affected_boards": 8,
+          "repaired_boards": 2,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-354",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 13,
+          "affected_boards": 13,
+          "repaired_boards": 2,
+          "removed_boards": 7
+        },
+        {
+          "record_id": "DEMO-DEF-355",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 2,
+          "repaired_boards": 1,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-211",
+      "job_id": "DEMO-JOB-202602-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-02-01",
+      "sample_quantity": 155,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-356",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 13,
+          "affected_boards": 8,
+          "repaired_boards": 2,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-357",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 13,
+          "affected_boards": 13,
+          "repaired_boards": 2,
+          "removed_boards": 7
+        },
+        {
+          "record_id": "DEMO-DEF-358",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 2,
+          "repaired_boards": 1,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-212",
+      "job_id": "DEMO-JOB-202602-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-02-10",
+      "sample_quantity": 175,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-359",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 11,
+          "affected_boards": 11,
+          "repaired_boards": 11,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-213",
+      "job_id": "DEMO-JOB-202602-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-02-20",
+      "sample_quantity": 195,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-360",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 15,
+          "affected_boards": 14,
+          "repaired_boards": 1,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-361",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 3,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-214",
+      "job_id": "DEMO-JOB-202602-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-02-28",
+      "sample_quantity": 74,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-362",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 3,
+          "affected_boards": 1,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-363",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 6,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-364",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 11,
+          "repaired_boards": 10,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-215",
+      "job_id": "DEMO-JOB-202603-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-03-01",
+      "sample_quantity": 129,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-365",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 2,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-216",
+      "job_id": "DEMO-JOB-202603-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-03-10",
+      "sample_quantity": 149,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-217",
+      "job_id": "DEMO-JOB-202603-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-03-20",
+      "sample_quantity": 169,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-366",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 13,
+          "affected_boards": 8,
+          "repaired_boards": 2,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-367",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 13,
+          "affected_boards": 13,
+          "repaired_boards": 2,
+          "removed_boards": 7
+        },
+        {
+          "record_id": "DEMO-DEF-368",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 2,
+          "repaired_boards": 1,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-218",
+      "job_id": "DEMO-JOB-202603-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-03-31",
+      "sample_quantity": 189,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-369",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 11,
+          "affected_boards": 11,
+          "repaired_boards": 11,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-219",
+      "job_id": "DEMO-JOB-202603-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-03-01",
+      "sample_quantity": 168,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-370",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 11,
+          "affected_boards": 11,
+          "repaired_boards": 11,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-220",
+      "job_id": "DEMO-JOB-202603-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-03-10",
+      "sample_quantity": 188,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-371",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 15,
+          "affected_boards": 14,
+          "repaired_boards": 1,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-372",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 3,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-221",
+      "job_id": "DEMO-JOB-202603-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-03-20",
+      "sample_quantity": 67,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-373",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 3,
+          "affected_boards": 1,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-374",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 6,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-375",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 11,
+          "repaired_boards": 10,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-222",
+      "job_id": "DEMO-JOB-202603-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-03-31",
+      "sample_quantity": 87,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-376",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 7,
+          "affected_boards": 4,
+          "repaired_boards": 3,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-223",
+      "job_id": "DEMO-JOB-202604-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-04-01",
+      "sample_quantity": 142,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-224",
+      "job_id": "DEMO-JOB-202604-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-04-10",
+      "sample_quantity": 162,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-377",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 13,
+          "affected_boards": 8,
+          "repaired_boards": 2,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-378",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 13,
+          "affected_boards": 13,
+          "repaired_boards": 2,
+          "removed_boards": 7
+        },
+        {
+          "record_id": "DEMO-DEF-379",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 2,
+          "repaired_boards": 1,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-225",
+      "job_id": "DEMO-JOB-202604-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-04-20",
+      "sample_quantity": 182,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-380",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 11,
+          "affected_boards": 11,
+          "repaired_boards": 11,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-226",
+      "job_id": "DEMO-JOB-202604-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-04-30",
+      "sample_quantity": 61,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-381",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 15,
+          "affected_boards": 14,
+          "repaired_boards": 1,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-382",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 3,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-227",
+      "job_id": "DEMO-JOB-202604-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-04-01",
+      "sample_quantity": 181,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-383",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 15,
+          "affected_boards": 14,
+          "repaired_boards": 1,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-384",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 3,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-228",
+      "job_id": "DEMO-JOB-202604-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-04-10",
+      "sample_quantity": 60,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-385",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 3,
+          "affected_boards": 1,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-386",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 6,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-387",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 11,
+          "repaired_boards": 10,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-229",
+      "job_id": "DEMO-JOB-202604-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-04-20",
+      "sample_quantity": 80,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-388",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 7,
+          "affected_boards": 4,
+          "repaired_boards": 3,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-230",
+      "job_id": "DEMO-JOB-202604-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-04-30",
+      "sample_quantity": 100,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-389",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 7,
+          "repaired_boards": 2,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-390",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 12,
+          "repaired_boards": 9,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-231",
+      "job_id": "DEMO-JOB-202605-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-05-01",
+      "sample_quantity": 155,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-391",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 13,
+          "affected_boards": 8,
+          "repaired_boards": 2,
+          "removed_boards": 1
+        },
+        {
+          "record_id": "DEMO-DEF-392",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 13,
+          "affected_boards": 13,
+          "repaired_boards": 2,
+          "removed_boards": 7
+        },
+        {
+          "record_id": "DEMO-DEF-393",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 3,
+          "affected_boards": 2,
+          "repaired_boards": 1,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-232",
+      "job_id": "DEMO-JOB-202605-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-05-10",
+      "sample_quantity": 175,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-394",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 11,
+          "affected_boards": 11,
+          "repaired_boards": 11,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-233",
+      "job_id": "DEMO-JOB-202605-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-05-20",
+      "sample_quantity": 195,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-395",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 15,
+          "affected_boards": 14,
+          "repaired_boards": 1,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-396",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 3,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-234",
+      "job_id": "DEMO-JOB-202605-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-05-31",
+      "sample_quantity": 74,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-397",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 3,
+          "affected_boards": 1,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-398",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 6,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-399",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 11,
+          "repaired_boards": 10,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-235",
+      "job_id": "DEMO-JOB-202605-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-05-01",
+      "sample_quantity": 194,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-400",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 3,
+          "affected_boards": 1,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-401",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 6,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-402",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 11,
+          "repaired_boards": 10,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-236",
+      "job_id": "DEMO-JOB-202605-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-05-10",
+      "sample_quantity": 73,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-403",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 7,
+          "affected_boards": 4,
+          "repaired_boards": 3,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-237",
+      "job_id": "DEMO-JOB-202605-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-05-20",
+      "sample_quantity": 93,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-404",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 7,
+          "repaired_boards": 2,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-405",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 12,
+          "repaired_boards": 9,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-238",
+      "job_id": "DEMO-JOB-202605-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-05-31",
+      "sample_quantity": 113,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-239",
+      "job_id": "DEMO-JOB-202606-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-06-01",
+      "sample_quantity": 168,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-406",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 11,
+          "affected_boards": 11,
+          "repaired_boards": 11,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-240",
+      "job_id": "DEMO-JOB-202606-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-06-10",
+      "sample_quantity": 188,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-407",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 15,
+          "affected_boards": 14,
+          "repaired_boards": 1,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-408",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 3,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-241",
+      "job_id": "DEMO-JOB-202606-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-06-20",
+      "sample_quantity": 67,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-409",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 3,
+          "affected_boards": 1,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-410",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 6,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-411",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 11,
+          "repaired_boards": 10,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-242",
+      "job_id": "DEMO-JOB-202606-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-06-30",
+      "sample_quantity": 87,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-412",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 7,
+          "affected_boards": 4,
+          "repaired_boards": 3,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-243",
+      "job_id": "DEMO-JOB-202606-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-06-01",
+      "sample_quantity": 66,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-413",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 7,
+          "affected_boards": 4,
+          "repaired_boards": 3,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-244",
+      "job_id": "DEMO-JOB-202606-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-06-10",
+      "sample_quantity": 86,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-414",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 7,
+          "repaired_boards": 2,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-415",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 12,
+          "repaired_boards": 9,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-245",
+      "job_id": "DEMO-JOB-202606-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-06-20",
+      "sample_quantity": 106,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-246",
+      "job_id": "DEMO-JOB-202606-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-06-30",
+      "sample_quantity": 126,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-416",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 13,
+          "affected_boards": 13,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-247",
+      "job_id": "DEMO-JOB-202607-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-07-01",
+      "sample_quantity": 181,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-417",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 15,
+          "affected_boards": 14,
+          "repaired_boards": 1,
+          "removed_boards": 3
+        },
+        {
+          "record_id": "DEMO-DEF-418",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 5,
+          "affected_boards": 3,
+          "repaired_boards": 0,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-248",
+      "job_id": "DEMO-JOB-202607-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-07-10",
+      "sample_quantity": 60,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-419",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 3,
+          "affected_boards": 1,
+          "repaired_boards": 0,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-420",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 9,
+          "affected_boards": 6,
+          "repaired_boards": 5,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-421",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 15,
+          "affected_boards": 11,
+          "repaired_boards": 10,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-249",
+      "job_id": "DEMO-JOB-202607-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-07-20",
+      "sample_quantity": 80,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-422",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 7,
+          "affected_boards": 4,
+          "repaired_boards": 3,
+          "removed_boards": 1
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-250",
+      "job_id": "DEMO-JOB-202607-TE-2",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-07-31",
+      "sample_quantity": 100,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-423",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 7,
+          "repaired_boards": 2,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-424",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 12,
+          "repaired_boards": 9,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-251",
+      "job_id": "DEMO-JOB-202607-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-07-01",
+      "sample_quantity": 79,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-425",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 7,
+          "repaired_boards": 2,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-426",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 12,
+          "repaired_boards": 9,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-252",
+      "job_id": "DEMO-JOB-202607-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-07-10",
+      "sample_quantity": 99,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-253",
+      "job_id": "DEMO-JOB-202607-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-07-20",
+      "sample_quantity": 119,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-427",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 13,
+          "affected_boards": 13,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-254",
+      "job_id": "DEMO-JOB-202607-TV-2",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-07-31",
+      "sample_quantity": 139,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-428",
+          "defect_code": "DEMO-CODE-C",
+          "errors": 17,
+          "affected_boards": 16,
+          "repaired_boards": 3,
+          "removed_boards": 9
+        },
+        {
+          "record_id": "DEMO-DEF-429",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 7,
+          "affected_boards": 5,
+          "repaired_boards": 2,
+          "removed_boards": 3
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-255",
+      "job_id": "DEMO-JOB-202611-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-11-01",
+      "sample_quantity": 92,
+      "defects": []
+    },
+    {
+      "control_id": "DEMO-CTRL-256",
+      "job_id": "DEMO-JOB-202611-TE-1",
+      "section": "TE",
+      "operation": "DEMO-TEST",
+      "date": "2026-11-06",
+      "sample_quantity": 112,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-430",
+          "defect_code": "DEMO-CODE-B",
+          "errors": 13,
+          "affected_boards": 13,
+          "repaired_boards": 8,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-257",
+      "job_id": "DEMO-JOB-202611-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-11-01",
+      "sample_quantity": 131,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-431",
+          "defect_code": "DEMO-CODE-D",
+          "errors": 5,
+          "affected_boards": 3,
+          "repaired_boards": 2,
+          "removed_boards": 0
+        },
+        {
+          "record_id": "DEMO-DEF-432",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 11,
+          "affected_boards": 8,
+          "repaired_boards": 3,
+          "removed_boards": 4
+        },
+        {
+          "record_id": "DEMO-DEF-433",
+          "defect_code": "DEMO-CODE-A",
+          "errors": 17,
+          "affected_boards": 13,
+          "repaired_boards": 12,
+          "removed_boards": 0
+        }
+      ]
+    },
+    {
+      "control_id": "DEMO-CTRL-258",
+      "job_id": "DEMO-JOB-202611-TV-1",
+      "section": "TV",
+      "operation": "DEMO-INSPECT",
+      "date": "2026-11-06",
+      "sample_quantity": 151,
+      "defects": [
+        {
+          "record_id": "DEMO-DEF-434",
+          "defect_code": "DEMO-CODE-E",
+          "errors": 9,
+          "affected_boards": 6,
+          "repaired_boards": 4,
+          "removed_boards": 0
+        }
+      ]
     }
   ]
 }

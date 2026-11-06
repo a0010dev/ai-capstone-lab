@@ -63,10 +63,10 @@ class CapstoneDefectsTest(unittest.TestCase):
             json.dumps(pareto, allow_nan=False)
 
     def test_all_data(self):
-        self.check_reconciliation({}, [6, 360, 36, 31, 6, 17])
+        self.check_reconciliation({}, [258, 33197, 4604, 3555, 2046, 560])
 
     def test_one_section(self):
-        self.check_reconciliation({'section': 'TE'}, [4, 250, 27, 22, 4, 12])
+        self.check_reconciliation({'section': 'TE'}, [130, 16679, 2340, 1807, 1032, 287])
 
     def test_date_range(self):
         self.check_reconciliation(dict(date_from='2026-09-01', date_to='2026-09-30'),
@@ -88,8 +88,8 @@ class CapstoneDefectsTest(unittest.TestCase):
         self.check_reconciliation({'date_from': '2027-01-01'}, [0, 0, 0, 0, 0, 0])
 
     def test_open_date_boundaries(self):
-        self.check_reconciliation({'date_from': '2026-10-01'}, [1, 30, 4, 3, 0, 0])
-        self.check_reconciliation({'date_to': '2026-08-31'}, [1, 50, 2, 2, 2, 0])
+        self.check_reconciliation({'date_from': '2026-10-01'}, [5, 516, 59, 46, 29, 4])
+        self.check_reconciliation({'date_to': '2026-08-31'}, [249, 32401, 4515, 3483, 2013, 539])
 
     def test_invalid_filters(self):
         bad_filters = [dict(section=2), dict(section=''), dict(date_from='2026-9-01'),
@@ -106,7 +106,7 @@ class CapstoneDefectsTest(unittest.TestCase):
         changed['controls'][1]['defects'][0]['removed_boards'] = 999
         self.assertEqual(original, get_defect_detail())
         self.assertEqual(get_defect_summary(), get_defect_summary())
-        self.assertEqual(get_defect_summary()['totals']['removed_boards'], 17)
+        self.assertEqual(get_defect_summary()['totals']['removed_boards'], 560)
 
     def test_fixture_identifiers_and_relationships(self):
         controls = get_defect_detail()['controls']
@@ -117,9 +117,17 @@ class CapstoneDefectsTest(unittest.TestCase):
             self.assertTrue(control['job_id'].startswith('DEMO-JOB-'))
             self.assertTrue(control['control_id'].startswith('DEMO-CTRL-'))
             self.assertTrue(control['operation'].startswith('DEMO-'))
+            self.assertGreater(control['sample_quantity'], 0)
             for defect in control['defects']:
                 self.assertTrue(defect['record_id'].startswith('DEMO-DEF-'))
                 self.assertTrue(defect['defect_code'].startswith('DEMO-CODE-'))
+                for metric in ('errors', 'affected_boards', 'repaired_boards', 'removed_boards'):
+                    self.assertIsInstance(defect[metric], int)
+                    self.assertGreaterEqual(defect[metric], 0)
+                self.assertLessEqual(defect['affected_boards'], control['sample_quantity'])
+                self.assertGreaterEqual(defect['errors'], defect['affected_boards'])
+                self.assertLessEqual(defect['repaired_boards'] + defect['removed_boards'],
+                                     defect['affected_boards'])
 
     def test_pareto_demo_ranking_and_percentages(self):
         pareto = get_defect_pareto(section='TE', date_from='2026-09-01',
@@ -137,14 +145,14 @@ class CapstoneDefectsTest(unittest.TestCase):
             'record_id': 'DEMO-DEF-004', 'quantity': 8}])
 
     def test_pareto_ties_and_multiple_records(self):
-        items = get_defect_pareto()['items']
+        items = get_defect_pareto(date_from='2026-08-01', date_to='2026-10-31')['items']
         self.assertEqual([row['defect_code'] for row in items],
                          ['DEMO-CODE-A', 'DEMO-CODE-C', 'DEMO-CODE-B'])
         self.assertEqual([row['quantity'] for row in items], [8, 8, 1])
         self.assertEqual(len(items[0]['records']), 2)
 
     def test_pareto_zero_and_empty(self):
-        pareto = get_defect_pareto(date_from='2026-10-01')
+        pareto = get_defect_pareto(date_from='2026-10-01', date_to='2026-10-31')
         self.assertEqual(pareto['total_quantity'], 0)
         self.assertEqual(len(pareto['items']), 1)
         self.assertEqual(pareto['items'][0]['quantity'], 0)
@@ -167,7 +175,7 @@ class CapstoneDefectsTest(unittest.TestCase):
         changed['items'][0]['records'][0]['quantity'] = 999
         changed['items'][0]['quantity'] = 999
         self.assertEqual(original, get_defect_pareto())
-        self.assertEqual(get_defect_summary()['totals']['removed_boards'], 17)
+        self.assertEqual(get_defect_summary()['totals']['removed_boards'], 560)
 
 
 if __name__ == '__main__':

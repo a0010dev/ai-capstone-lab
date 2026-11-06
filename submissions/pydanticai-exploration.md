@@ -1,4 +1,10 @@
-# PydanticAI runtime exploration
+# PydanticAI runtime exploration (historical)
+
+This report records the initial side-by-side experiment at `d9dcd2d`.
+The branch now uses PydanticAI exclusively: the manual runtime, runtime selector
+and SDK-specific tests have been removed. Current entry point: `agent.run_agent`.
+The judge also uses PydanticAI. Commands and file names below describe that
+historical experiment; use the root README for current operation.
 
 Date: 2026-11-06. Baseline: `9ca0e81` on `main`.
 Experimental branch: `explore/pydanticai`.

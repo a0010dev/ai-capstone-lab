@@ -1,0 +1,86 @@
+{
+  "scope": "Manual review of the 10 collected answers, tool evidence and remotely retrieved traces; observations, not a comprehensive evaluation score.",
+  "runtime": "Current PydanticAI implementation with native model/tool instrumentation",
+  "patterns": [
+    {
+      "query_ids": [
+        "Q01",
+        "Q05",
+        "Q06",
+        "Q08"
+      ],
+      "observation": "Simple data requests used 2 model calls and 1 tool call."
+    },
+    {
+      "query_ids": [
+        "Q10"
+      ],
+      "observation": "The incomplete query asked for a section using 1 model call and no tools."
+    },
+    {
+      "query_ids": [
+        "Q03",
+        "Q04",
+        "Q09"
+      ],
+      "observation": "The dataset_id output validator triggered a retry; each session required 3 model calls although Q03/Q09 each called only one data tool."
+    },
+    {
+      "query_ids": [
+        "Q07"
+      ],
+      "observation": "An empty Pareto triggered a summary lookup to distinguish an existing healthy control from absent controls; 3 model calls and 2 tools."
+    },
+    {
+      "query_ids": [
+        "Q05"
+      ],
+      "observation": "Lowercase te was normalized to TE; last month resolved to 2026-10-01 through 2026-10-31 using the November 6 reference date."
+    },
+    {
+      "query_ids": [
+        "Q06"
+      ],
+      "observation": "The zero-total Pareto retained the observed zero-quantity defect code and labelled null shares as undefined."
+    }
+  ],
+  "issues": [
+    {
+      "id": "detail_breakdown_mismatch",
+      "query_id": "Q02",
+      "trace_id": "01a1b1d6775cf053ec6c6e5a1a3a8ec9",
+      "observation": "The overall removal total was correctly stated as 12, but the displayed control breakdown gave 3 and 8 (sum 11).",
+      "tool_evidence": {
+        "DEMO-CTRL-002": {
+          "DEMO-DEF-001": 3,
+          "DEMO-DEF-002": 1
+        },
+        "DEMO-CTRL-004": {
+          "DEMO-DEF-004": 8
+        }
+      },
+      "expected": "List the original record quantities 3, 1 and 8 without treating the first defect row as the whole control."
+    },
+    {
+      "id": "missing_coverage_warning_in_comparison",
+      "query_id": "Q04",
+      "trace_id": "01a1b1d6b261c361c80975ffce8c2815",
+      "observation": "The comparison displayed control_count=0 for August but omitted the required unknown-coverage warning and described increased defect activity versus that month.",
+      "expected": "Explicitly state that August has no matching controls and unknown coverage; do not infer a real operational change from missing data."
+    }
+  ],
+  "technical_execution": {
+    "completed": 10,
+    "failed": 0,
+    "remote_spans": 65,
+    "llm_calls": 23,
+    "tool_calls": 12,
+    "exception_spans": 0
+  },
+  "limitations": [
+    "These are automated interactions through Streamlit AppTest and real model requests, not manual browser sessions or production-user traffic.",
+    "All reporting data is synthetic. Each query starts a fresh conversation; this collection does not measure multi-turn context growth.",
+    "Costs use the project rate table at standard input rates, without cache discounts; estimates are not invoice charges.",
+    "Logfire ingestion was verified through the query API; the dashboard UI was not inspected."
+  ]
+}

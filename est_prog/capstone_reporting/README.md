@@ -19,9 +19,21 @@ LLM, framework d'agents, cerca vectorial ni generació SQL. La capa Python 3
 
 ## Dades i contracte provisional
 
-[synthetic_defects.json](../../data/synthetic_defects.json) conté sis controls
-ficticis, quatre jobs, dues seccions i tres codis. Els identificadors `DEMO-*`
-són inventats. No hi ha dades reals, valors aleatoris ni dates relatives.
+[synthetic_defects.json](../../data/synthetic_defects.json) conté 258 controls
+ficticis, 434 línies de defectes, 130 jobs, dues seccions (TE i TV) i cinc codis
+(A–E). Cobreix del **2024-01-01 al 2026-11-06**, amb registres en cadascun dels
+35 mesos. Els identificadors `DEMO-*` són inventats. Les dades són fixes;
+no hi ha dades reals, valors aleatoris en carregar-les ni dates relatives.
+
+L'ampliació aporta quatre controls mensuals per secció (dies 1, 10, 20 i últim
+dia de mes), inclòs el 29 de febrer de 2024. El novembre de 2026 és parcial,
+amb controls els dies 1 i 6. Hi ha 37 controls sense defectes, línies totalment
+reparades i casos amb diverses línies i retirades. Els sis controls originals
+d'agost, setembre i octubre de 2026 es conserven sense afegir-ne en aquests tres
+mesos per mantenir els casos de referència: TE sense controls a l'agost i amb
+zero retirades a l'octubre. La presència d'un mes no implica cobertura completa.
+L'ordre del JSON conserva primer els sis controls originals i després els nous,
+ordenats per any, mes, secció i dia; no és un ordre cronològic global.
 
 ```python
 from est_prog.capstone_reporting import load_defects, filter_defects
@@ -95,11 +107,11 @@ registrats; el Pareto no demostra les causes del problema.
 
 ## Executar la demostració i les proves
 
-Des de l'arrel del repositori, sense dependències addicionals:
+Des de l'arrel del repositori (la demo només necessita la biblioteca estàndard):
 
 ```sh
 python3 -m est_prog.capstone_reporting
-python3 -m unittest discover -s tests -v
+uv run pytest -m "not integration" -q
 ```
 
 La demo imprimeix el resum, el Pareto, els jobs/controls/línies i `3 + 1 + 8 = 12`.
@@ -130,8 +142,8 @@ La consulta agregada específica de jobs afectats queda fora d'aquest increment.
 
 ## Migració asíncrona
 
-`agent.run_agent` i `agent.execute_tool` són ara coroutines: cal executar-les
-amb `await`. Els notebooks poden usar `await run_agent(...)` directament;
+`agent.run_agent` és una coroutine: cal executar-la amb `await`.
+PydanticAI gestiona les crides a eines i la validació dels arguments. Els notebooks poden usar `await run_agent(...)` directament;
 des d'un script síncron es pot usar `asyncio.run(run_agent(...))`.
 
 El mòdul `tools.py` proporciona les signatures asíncrones de les tres eines.
@@ -171,3 +183,15 @@ conversa». Això permet completar un aclariment amb «te» sense repetir les da
 L'historial no és una font per inventar producció: `sample_quantity` és mostra
 inspeccionada i `errors` són ocurrències d'error. Per a plaques afectades cal usar
 `affected_boards`, també com a ocurrències registrades, no com a plaques úniques.
+
+## Runtime PydanticAI
+
+`agent.py` conté l'única implementació de l'agent. PydanticAI genera els esquemes
+amb les eines tipades i gestiona els reintents, el cicle model/eines, els límits
+de peticions, l'historial i la instrumentació. El context asíncron de l'agent
+obre i tanca els recursos del proveïdor. No cal seleccionar cap backend.
+
+Les instruccions compartides són a `instructions.py`. L'adaptador d'aplicació
+manté els esdeveniments de Streamlit i els costos acumulats per sessió. El jutge
+també usa PydanticAI amb sortida tipada. Les proves locals injecten `FunctionModel`
+amb les peticions externes desactivades, mantenint les eines reals del fixture.

@@ -1,0 +1,234 @@
+{
+  "collection_method": "Automated Streamlit AppTest interactions with real app.py and model; no mocks",
+  "session_definition": "One fresh Streamlit conversation and one reporting_session per query",
+  "attempted_queries": 10,
+  "completed_sessions": 10,
+  "failed_queries": 0,
+  "unique_queries": 10,
+  "model": "gpt-4o-mini",
+  "dataset": "synthetic-defects-v1",
+  "dashboard_verification": "Stored traces read back using LogfireQueryClient; no dashboard UI inspection",
+  "remote_spans_verified": 65,
+  "statistics": {
+    "input_tokens": {
+      "sum": 47089,
+      "mean": 4708.9,
+      "median": 4164.0,
+      "min": 1855,
+      "max": 6621
+    },
+    "output_tokens": {
+      "sum": 2374,
+      "mean": 237.4,
+      "median": 176.0,
+      "min": 16,
+      "max": 603
+    },
+    "total_tokens": {
+      "sum": 49463,
+      "mean": 4946.3,
+      "median": 4487.5,
+      "min": 1871,
+      "max": 7224
+    },
+    "estimated_cost_usd": {
+      "sum": 0.00848775,
+      "mean": 0.000848775,
+      "median": 0.0008186999999999999,
+      "min": 0.00028785000000000003,
+      "max": 0.00135495
+    },
+    "model_requests": {
+      "sum": 23,
+      "mean": 2.3,
+      "median": 2.0,
+      "min": 1,
+      "max": 3
+    },
+    "tool_calls": {
+      "sum": 12,
+      "mean": 1.2,
+      "median": 1.0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  "tool_frequency": {
+    "get_defect_summary": 8,
+    "get_defect_detail": 1,
+    "get_defect_pareto": 3
+  },
+  "sessions": [
+    {
+      "id": "Q01",
+      "case": "typical_summary",
+      "trace_id": "01a1b1d664477dc8c3e7f05aea932323",
+      "input_tokens": 3921,
+      "output_tokens": 142,
+      "total_tokens": 4063,
+      "estimated_cost_usd": 0.0006733500000000001,
+      "model_requests": 2,
+      "tool_calls": 1,
+      "tools": [
+        "get_defect_summary"
+      ],
+      "remote_span_count": 6,
+      "exception_span_count": 0,
+      "source_validation_retry_seen": false
+    },
+    {
+      "id": "Q02",
+      "case": "supporting_detail",
+      "trace_id": "01a1b1d6775cf053ec6c6e5a1a3a8ec9",
+      "input_tokens": 4357,
+      "output_tokens": 483,
+      "total_tokens": 4840,
+      "estimated_cost_usd": 0.0009433499999999999,
+      "model_requests": 2,
+      "tool_calls": 2,
+      "tools": [
+        "get_defect_summary",
+        "get_defect_detail"
+      ],
+      "remote_span_count": 7,
+      "exception_span_count": 0,
+      "source_validation_retry_seen": false
+    },
+    {
+      "id": "Q03",
+      "case": "pareto_explicit_metric",
+      "trace_id": "01a1b1d69876e9dc87e7e2eeafbcf2c0",
+      "input_tokens": 6266,
+      "output_tokens": 250,
+      "total_tokens": 6516,
+      "estimated_cost_usd": 0.0010899,
+      "model_requests": 3,
+      "tool_calls": 1,
+      "tools": [
+        "get_defect_pareto"
+      ],
+      "remote_span_count": 7,
+      "exception_span_count": 0,
+      "source_validation_retry_seen": true
+    },
+    {
+      "id": "Q04",
+      "case": "period_comparison",
+      "trace_id": "01a1b1d6b261c361c80975ffce8c2815",
+      "input_tokens": 6621,
+      "output_tokens": 603,
+      "total_tokens": 7224,
+      "estimated_cost_usd": 0.00135495,
+      "model_requests": 3,
+      "tool_calls": 2,
+      "tools": [
+        "get_defect_summary",
+        "get_defect_summary"
+      ],
+      "remote_span_count": 8,
+      "exception_span_count": 0,
+      "source_validation_retry_seen": true
+    },
+    {
+      "id": "Q05",
+      "case": "relative_date_lowercase_section",
+      "trace_id": "01a1b1d6de766ba3adcc7ade4261a994",
+      "input_tokens": 3891,
+      "output_tokens": 152,
+      "total_tokens": 4043,
+      "estimated_cost_usd": 0.0006748500000000001,
+      "model_requests": 2,
+      "tool_calls": 1,
+      "tools": [
+        "get_defect_summary"
+      ],
+      "remote_span_count": 6,
+      "exception_span_count": 0,
+      "source_validation_retry_seen": false
+    },
+    {
+      "id": "Q06",
+      "case": "zero_removals_with_defect_records",
+      "trace_id": "01a1b1d6ed66f2a23c560bab14cb9c98",
+      "input_tokens": 3971,
+      "output_tokens": 164,
+      "total_tokens": 4135,
+      "estimated_cost_usd": 0.00069405,
+      "model_requests": 2,
+      "tool_calls": 1,
+      "tools": [
+        "get_defect_pareto"
+      ],
+      "remote_span_count": 6,
+      "exception_span_count": 0,
+      "source_validation_retry_seen": false
+    },
+    {
+      "id": "Q07",
+      "case": "healthy_control_without_defect_rows",
+      "trace_id": "01a1b1d6fc9a9fd88edb2c69b16094db",
+      "input_tokens": 6138,
+      "output_tokens": 188,
+      "total_tokens": 6326,
+      "estimated_cost_usd": 0.0010335,
+      "model_requests": 3,
+      "tool_calls": 2,
+      "tools": [
+        "get_defect_pareto",
+        "get_defect_summary"
+      ],
+      "remote_span_count": 8,
+      "exception_span_count": 0,
+      "source_validation_retry_seen": false
+    },
+    {
+      "id": "Q08",
+      "case": "future_period_without_records",
+      "trace_id": "01a1b1d7181bfc7cda5083fc904625d9",
+      "input_tokens": 3897,
+      "output_tokens": 145,
+      "total_tokens": 4042,
+      "estimated_cost_usd": 0.0006715499999999999,
+      "model_requests": 2,
+      "tool_calls": 1,
+      "tools": [
+        "get_defect_summary"
+      ],
+      "remote_span_count": 6,
+      "exception_span_count": 0,
+      "source_validation_retry_seen": false
+    },
+    {
+      "id": "Q09",
+      "case": "unsupported_production_and_supported_defects",
+      "trace_id": "01a1b1d72905bf1f986b685500d2949a",
+      "input_tokens": 6172,
+      "output_tokens": 231,
+      "total_tokens": 6403,
+      "estimated_cost_usd": 0.0010643999999999999,
+      "model_requests": 3,
+      "tool_calls": 1,
+      "tools": [
+        "get_defect_summary"
+      ],
+      "remote_span_count": 7,
+      "exception_span_count": 0,
+      "source_validation_retry_seen": true
+    },
+    {
+      "id": "Q10",
+      "case": "missing_section_clarification",
+      "trace_id": "01a1b1d74335e18d483b74c82bf572d4",
+      "input_tokens": 1855,
+      "output_tokens": 16,
+      "total_tokens": 1871,
+      "estimated_cost_usd": 0.00028785000000000003,
+      "model_requests": 1,
+      "tool_calls": 0,
+      "tools": [],
+      "remote_span_count": 4,
+      "exception_span_count": 0,
+      "source_validation_retry_seen": false
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[
+  {"id":"Q01","case":"typical_summary","query":"Quantes plaques retirades consten a TE entre el 2026-09-01 i el 2026-09-30?"},
+  {"id":"Q02","case":"supporting_detail","query":"Mostra el total de plaques retirades de TE del setembre de 2026 i els registres amb job, control i record ID que expliquen el total."},
+  {"id":"Q03","case":"pareto_explicit_metric","query":"Fes un Pareto d'errors per codi de defecte de TV entre el 2026-09-01 i el 2026-09-30."},
+  {"id":"Q04","case":"period_comparison","query":"Compara les plaques afectades registrades de TE entre l'agost i el setembre de 2026."},
+  {"id":"Q05","case":"relative_date_lowercase_section","query":"Mostra el resum de defectes de te del mes passat."},
+  {"id":"Q06","case":"zero_removals_with_defect_records","query":"Fes un Pareto de plaques retirades de TE només del dia 2026-10-01."},
+  {"id":"Q07","case":"healthy_control_without_defect_rows","query":"Fes un Pareto de plaques retirades de TE només del dia 2026-09-01."},
+  {"id":"Q08","case":"future_period_without_records","query":"Mostra el resum de defectes de TE del gener de 2027."},
+  {"id":"Q09","case":"unsupported_production_and_supported_defects","query":"Quantes plaques hem produït i quantes plaques afectades consten a TE durant setembre de 2026?"},
+  {"id":"Q10","case":"missing_section_clarification","query":"Quantes plaques retirades consten durant setembre de 2026?"}
+]

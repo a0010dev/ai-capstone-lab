@@ -4,6 +4,9 @@ import os
 from pathlib import Path
 
 import pytest
+from pydantic_ai import models
+
+from est_prog.capstone_reporting.monitoring import configure_monitoring
 from dotenv import load_dotenv
 
 from est_prog.capstone_reporting.agent import run_agent
@@ -31,3 +34,10 @@ def agent(api_access):
         return result
 
     return run
+
+
+@pytest.fixture(autouse=True)
+def local_models_for_unit_tests(request, monkeypatch):
+    if request.node.get_closest_marker("integration") is None:
+        monkeypatch.setattr(models, "ALLOW_MODEL_REQUESTS", False)
+        configure_monitoring(send_to_logfire=False)

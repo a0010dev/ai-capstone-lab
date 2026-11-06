@@ -1,4 +1,4 @@
-"""Logfire/OpenTelemetry spans for the custom Responses API agent loop."""
+"""Application sessions around PydanticAI's native model/tool instrumentation."""
 from contextlib import contextmanager
 from contextvars import ContextVar
 from pathlib import Path

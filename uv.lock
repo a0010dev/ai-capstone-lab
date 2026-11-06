@@ -635,7 +635,6 @@ source = { virtual = "." }
 dependencies = [
     { name = "logfire" },
     { name = "minsearch" },
-    { name = "openai" },
     { name = "pydantic-ai-slim", extra = ["openai"] },
     { name = "python-dotenv" },
     { name = "streamlit" },
@@ -653,7 +652,6 @@ dev = [
 requires-dist = [
     { name = "logfire", specifier = ">=5.4.0" },
     { name = "minsearch", specifier = ">=0.2.0" },
-    { name = "openai", specifier = ">=3.16.2" },
     { name = "pydantic-ai-slim", extras = ["openai"], specifier = ">=2.66.0" },
     { name = "python-dotenv", specifier = ">=1.2.3" },
     { name = "streamlit", specifier = ">=1.40,<2" },

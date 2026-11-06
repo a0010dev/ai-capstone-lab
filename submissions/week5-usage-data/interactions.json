@@ -1,0 +1,776 @@
+[
+  {
+    "id": "Q01",
+    "case": "typical_summary",
+    "query": "Quantes plaques retirades consten a TE entre el 2026-09-01 i el 2026-09-30?",
+    "started_at_utc": "2026-11-06T17:09:35.286921+00:00",
+    "completed_at_utc": "2026-11-06T17:09:44.428288+00:00",
+    "collection_method": "Streamlit AppTest driving real app.py; real model; no mocks",
+    "fresh_conversation": true,
+    "ui_exception_count": 0,
+    "ui_error_count": 0,
+    "status": "completed",
+    "answer": "Dades sintètiques per a la secció TE del 2026-09-01 al 2026-09-30 (dataset_id: synthetic-defects-v1):\n\n- Plaques retirades: **12**\n- Plaques afectades: **19**\n- Plaques reparades: **4**\n- Errors: **23**\n- Quantitat de mostra: **220**\n- Comptador de controls: **3** \n\nSi necessites més informació, no dubtis a demanar-ho!",
+    "result": {
+      "answer": "Dades sintètiques per a la secció TE del 2026-09-01 al 2026-09-30 (dataset_id: synthetic-defects-v1):\n\n- Plaques retirades: **12**\n- Plaques afectades: **19**\n- Plaques reparades: **4**\n- Errors: **23**\n- Quantitat de mostra: **220**\n- Comptador de controls: **3** \n\nSi necessites més informació, no dubtis a demanar-ho!",
+      "tool_calls": [
+        {
+          "name": "get_defect_summary",
+          "arguments": "{\"section\":\"TE\",\"date_from\":\"2026-09-01\",\"date_to\":\"2026-09-30\"}",
+          "result": {
+            "schema_version": 1,
+            "source": {
+              "kind": "synthetic",
+              "dataset_id": "synthetic-defects-v1"
+            },
+            "filters": {
+              "section": "TE",
+              "date_from": "2026-09-01",
+              "date_to": "2026-09-30"
+            },
+            "metric_semantics": {
+              "status": "prototype_only_not_validated_erp_rules",
+              "date_basis": "synthetic_control_date_inclusive",
+              "sample_quantity": "sum_once_per_control_not_unique_boards",
+              "board_counts": "sum_of_recorded_occurrences_not_unique_boards"
+            },
+            "totals": {
+              "errors": 23,
+              "affected_boards": 19,
+              "repaired_boards": 4,
+              "removed_boards": 12,
+              "control_count": 3,
+              "sample_quantity": 220
+            }
+          }
+        }
+      ],
+      "model": "gpt-4o-mini",
+      "reference_date": "2026-11-06",
+      "usage": {
+        "input_tokens": 3921,
+        "output_tokens": 142,
+        "requests": 2,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.0006733500000000001
+      },
+      "trace_id": "01a1b1d664477dc8c3e7f05aea932323",
+      "session_usage": {
+        "input_tokens": 3921,
+        "output_tokens": 142,
+        "requests": 2,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.0006733500000000001
+      }
+    }
+  },
+  {
+    "id": "Q02",
+    "case": "supporting_detail",
+    "query": "Mostra el total de plaques retirades de TE del setembre de 2026 i els registres amb job, control i record ID que expliquen el total.",
+    "started_at_utc": "2026-11-06T17:09:44.550848+00:00",
+    "completed_at_utc": "2026-11-06T17:09:53.075877+00:00",
+    "collection_method": "Streamlit AppTest driving real app.py; real model; no mocks",
+    "fresh_conversation": true,
+    "ui_exception_count": 0,
+    "ui_error_count": 0,
+    "status": "completed",
+    "answer": "Dades sintètiques del total de plaques retirades de la secció TE del setembre de 2026:\n\n- **Total de plaques retirades:** 12\n- **Quantitat total de la mostra:** 220\n- **Total d'errors:** 23\n- **Plaques afectades:** 19\n- **Plaques reparades:** 4\n- **Control count:** 3\n- **Dataset ID:** synthetic-defects-v1\n\nA continuació, es detallen els registres amb job, control i record ID que expliquen el total de plaques retirades:\n\n1. **Control ID:** DEMO-CTRL-002  \n   - **Job ID:** DEMO-JOB-B  \n   - **Data:** 2026-09-15  \n   - **Errors:** 8  \n   - **Plaques afectades:** 6  \n   - **Plaques reparades:** 2  \n   - **Plaques retirades:** 3  \n   - **Registres de defecte:**  \n     - **Record ID:** DEMO-DEF-001  \n       - **Defect Code:** DEMO-CODE-A  \n     - **Record ID:** DEMO-DEF-002  \n       - **Defect Code:** DEMO-CODE-B  \n\n2. **Control ID:** DEMO-CTRL-004  \n   - **Job ID:** DEMO-JOB-C  \n   - **Data:** 2026-09-30  \n   - **Errors:** 10  \n   - **Plaques afectades:** 9  \n   - **Plaques reparades:** 1  \n   - **Plaques retirades:** 8  \n   - **Registre de defecte:**  \n     - **Record ID:** DEMO-DEF-004  \n       - **Defect Code:** DEMO-CODE-C  \n\nSi necessites més informació, no dubtis en dir-ho!",
+    "result": {
+      "answer": "Dades sintètiques del total de plaques retirades de la secció TE del setembre de 2026:\n\n- **Total de plaques retirades:** 12\n- **Quantitat total de la mostra:** 220\n- **Total d'errors:** 23\n- **Plaques afectades:** 19\n- **Plaques reparades:** 4\n- **Control count:** 3\n- **Dataset ID:** synthetic-defects-v1\n\nA continuació, es detallen els registres amb job, control i record ID que expliquen el total de plaques retirades:\n\n1. **Control ID:** DEMO-CTRL-002  \n   - **Job ID:** DEMO-JOB-B  \n   - **Data:** 2026-09-15  \n   - **Errors:** 8  \n   - **Plaques afectades:** 6  \n   - **Plaques reparades:** 2  \n   - **Plaques retirades:** 3  \n   - **Registres de defecte:**  \n     - **Record ID:** DEMO-DEF-001  \n       - **Defect Code:** DEMO-CODE-A  \n     - **Record ID:** DEMO-DEF-002  \n       - **Defect Code:** DEMO-CODE-B  \n\n2. **Control ID:** DEMO-CTRL-004  \n   - **Job ID:** DEMO-JOB-C  \n   - **Data:** 2026-09-30  \n   - **Errors:** 10  \n   - **Plaques afectades:** 9  \n   - **Plaques reparades:** 1  \n   - **Plaques retirades:** 8  \n   - **Registre de defecte:**  \n     - **Record ID:** DEMO-DEF-004  \n       - **Defect Code:** DEMO-CODE-C  \n\nSi necessites més informació, no dubtis en dir-ho!",
+      "tool_calls": [
+        {
+          "name": "get_defect_summary",
+          "arguments": "{\"section\":\"TE\",\"date_from\":\"2026-09-01\",\"date_to\":\"2026-09-30\"}",
+          "result": {
+            "schema_version": 1,
+            "source": {
+              "kind": "synthetic",
+              "dataset_id": "synthetic-defects-v1"
+            },
+            "filters": {
+              "section": "TE",
+              "date_from": "2026-09-01",
+              "date_to": "2026-09-30"
+            },
+            "metric_semantics": {
+              "status": "prototype_only_not_validated_erp_rules",
+              "date_basis": "synthetic_control_date_inclusive",
+              "sample_quantity": "sum_once_per_control_not_unique_boards",
+              "board_counts": "sum_of_recorded_occurrences_not_unique_boards"
+            },
+            "totals": {
+              "errors": 23,
+              "affected_boards": 19,
+              "repaired_boards": 4,
+              "removed_boards": 12,
+              "control_count": 3,
+              "sample_quantity": 220
+            }
+          }
+        },
+        {
+          "name": "get_defect_detail",
+          "arguments": "{\"section\":\"TE\",\"date_from\":\"2026-09-01\",\"date_to\":\"2026-09-30\"}",
+          "result": {
+            "schema_version": 1,
+            "source": {
+              "kind": "synthetic",
+              "dataset_id": "synthetic-defects-v1"
+            },
+            "filters": {
+              "section": "TE",
+              "date_from": "2026-09-01",
+              "date_to": "2026-09-30"
+            },
+            "metric_semantics": {
+              "status": "prototype_only_not_validated_erp_rules",
+              "date_basis": "synthetic_control_date_inclusive",
+              "sample_quantity": "sum_once_per_control_not_unique_boards",
+              "board_counts": "sum_of_recorded_occurrences_not_unique_boards"
+            },
+            "controls": [
+              {
+                "control_id": "DEMO-CTRL-001",
+                "job_id": "DEMO-JOB-A",
+                "section": "TE",
+                "operation": "DEMO-TEST",
+                "date": "2026-09-01",
+                "sample_quantity": 100,
+                "defects": []
+              },
+              {
+                "control_id": "DEMO-CTRL-002",
+                "job_id": "DEMO-JOB-B",
+                "section": "TE",
+                "operation": "DEMO-TEST",
+                "date": "2026-09-15",
+                "sample_quantity": 80,
+                "defects": [
+                  {
+                    "record_id": "DEMO-DEF-001",
+                    "defect_code": "DEMO-CODE-A",
+                    "errors": 8,
+                    "affected_boards": 6,
+                    "repaired_boards": 2,
+                    "removed_boards": 3
+                  },
+                  {
+                    "record_id": "DEMO-DEF-002",
+                    "defect_code": "DEMO-CODE-B",
+                    "errors": 5,
+                    "affected_boards": 4,
+                    "repaired_boards": 1,
+                    "removed_boards": 1
+                  }
+                ]
+              },
+              {
+                "control_id": "DEMO-CTRL-004",
+                "job_id": "DEMO-JOB-C",
+                "section": "TE",
+                "operation": "DEMO-TEST",
+                "date": "2026-09-30",
+                "sample_quantity": 40,
+                "defects": [
+                  {
+                    "record_id": "DEMO-DEF-004",
+                    "defect_code": "DEMO-CODE-C",
+                    "errors": 10,
+                    "affected_boards": 9,
+                    "repaired_boards": 1,
+                    "removed_boards": 8
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "model": "gpt-4o-mini",
+      "reference_date": "2026-11-06",
+      "usage": {
+        "input_tokens": 4357,
+        "output_tokens": 483,
+        "requests": 2,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.0009433499999999999
+      },
+      "trace_id": "01a1b1d6775cf053ec6c6e5a1a3a8ec9",
+      "session_usage": {
+        "input_tokens": 4357,
+        "output_tokens": 483,
+        "requests": 2,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.0009433499999999999
+      }
+    }
+  },
+  {
+    "id": "Q03",
+    "case": "pareto_explicit_metric",
+    "query": "Fes un Pareto d'errors per codi de defecte de TV entre el 2026-09-01 i el 2026-09-30.",
+    "started_at_utc": "2026-11-06T17:09:53.143174+00:00",
+    "completed_at_utc": "2026-11-06T17:09:59.681226+00:00",
+    "collection_method": "Streamlit AppTest driving real app.py; real model; no mocks",
+    "fresh_conversation": true,
+    "ui_exception_count": 0,
+    "ui_error_count": 0,
+    "status": "completed",
+    "answer": "Dades sintètiques per al període de TV del 2026-09-01 al 2026-09-30 (dataset_id: synthetic-defects-v1):\n\n| Codi de defecte   | Quantitat | Percentatge | Percentatge acumulat |\n|-------------------|-----------|-------------|----------------------|\n| DEMO-CODE-A       | 7         | 100.0%      | 100.0%               |\n\nHi ha registres de defecte totals de 7 errors.",
+    "result": {
+      "answer": "Dades sintètiques per al període de TV del 2026-09-01 al 2026-09-30 (dataset_id: synthetic-defects-v1):\n\n| Codi de defecte   | Quantitat | Percentatge | Percentatge acumulat |\n|-------------------|-----------|-------------|----------------------|\n| DEMO-CODE-A       | 7         | 100.0%      | 100.0%               |\n\nHi ha registres de defecte totals de 7 errors.",
+      "tool_calls": [
+        {
+          "name": "get_defect_pareto",
+          "arguments": "{\"section\":\"TV\",\"date_from\":\"2026-09-01\",\"date_to\":\"2026-09-30\",\"metric\":\"errors\"}",
+          "result": {
+            "schema_version": 1,
+            "source": {
+              "kind": "synthetic",
+              "dataset_id": "synthetic-defects-v1"
+            },
+            "filters": {
+              "section": "TV",
+              "date_from": "2026-09-01",
+              "date_to": "2026-09-30"
+            },
+            "metric_semantics": {
+              "status": "prototype_only_not_validated_erp_rules",
+              "date_basis": "synthetic_control_date_inclusive",
+              "sample_quantity": "sum_once_per_control_not_unique_boards",
+              "board_counts": "sum_of_recorded_occurrences_not_unique_boards",
+              "percentage_basis": "share_of_selected_metric_not_defect_rate"
+            },
+            "metric": "errors",
+            "total_quantity": 7,
+            "items": [
+              {
+                "defect_code": "DEMO-CODE-A",
+                "quantity": 7,
+                "records": [
+                  {
+                    "job_id": "DEMO-JOB-A",
+                    "control_id": "DEMO-CTRL-003",
+                    "record_id": "DEMO-DEF-003",
+                    "quantity": 7
+                  }
+                ],
+                "percentage": 100.0,
+                "cumulative_percentage": 100.0
+              }
+            ]
+          }
+        }
+      ],
+      "model": "gpt-4o-mini",
+      "reference_date": "2026-11-06",
+      "usage": {
+        "input_tokens": 6266,
+        "output_tokens": 250,
+        "requests": 3,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.0010899
+      },
+      "trace_id": "01a1b1d69876e9dc87e7e2eeafbcf2c0",
+      "session_usage": {
+        "input_tokens": 6266,
+        "output_tokens": 250,
+        "requests": 3,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.0010899
+      }
+    }
+  },
+  {
+    "id": "Q04",
+    "case": "period_comparison",
+    "query": "Compara les plaques afectades registrades de TE entre l'agost i el setembre de 2026.",
+    "started_at_utc": "2026-11-06T17:09:59.777400+00:00",
+    "completed_at_utc": "2026-11-06T17:10:10.959787+00:00",
+    "collection_method": "Streamlit AppTest driving real app.py; real model; no mocks",
+    "fresh_conversation": true,
+    "ui_exception_count": 0,
+    "ui_error_count": 0,
+    "status": "completed",
+    "answer": "Dades sintètiques de TE per als mesos d'agost i setembre de 2026 (dataset_id: **synthetic-defects-v1**):\n\n### Agost 2026\n- **Plaques afectades:** 0\n- **Errors:** 0\n- **Plaques reparades:** 0\n- **Plaques retirades:** 0\n- **Control count:** 0\n- **Mostra:** 0\n\n### Setembre 2026\n- **Plaques afectades:** 19\n- **Errors:** 23\n- **Plaques reparades:** 4\n- **Plaques retirades:** 12\n- **Control count:** 3\n- **Mostra:** 220\n\n### Comparació\nEntre agost i setembre de 2026, no hi va haver plaques afectades registrades a agost, mentre que al setembre es van registrar 19 plaques afectades. També es van reportar 23 errors en setembre, amb 4 plaques reparades i 12 plaques retirades. En canvi, agost no va registrar cap error ni cap placa afectada. \n\nEn resum, setembre va mostrar una activitat significativa en termes de defectes comparat amb agost, que no va tenir registres.",
+    "result": {
+      "answer": "Dades sintètiques de TE per als mesos d'agost i setembre de 2026 (dataset_id: **synthetic-defects-v1**):\n\n### Agost 2026\n- **Plaques afectades:** 0\n- **Errors:** 0\n- **Plaques reparades:** 0\n- **Plaques retirades:** 0\n- **Control count:** 0\n- **Mostra:** 0\n\n### Setembre 2026\n- **Plaques afectades:** 19\n- **Errors:** 23\n- **Plaques reparades:** 4\n- **Plaques retirades:** 12\n- **Control count:** 3\n- **Mostra:** 220\n\n### Comparació\nEntre agost i setembre de 2026, no hi va haver plaques afectades registrades a agost, mentre que al setembre es van registrar 19 plaques afectades. També es van reportar 23 errors en setembre, amb 4 plaques reparades i 12 plaques retirades. En canvi, agost no va registrar cap error ni cap placa afectada. \n\nEn resum, setembre va mostrar una activitat significativa en termes de defectes comparat amb agost, que no va tenir registres.",
+      "tool_calls": [
+        {
+          "name": "get_defect_summary",
+          "arguments": "{\"section\":\"TE\",\"date_from\":\"2026-08-01\",\"date_to\":\"2026-08-31\"}",
+          "result": {
+            "schema_version": 1,
+            "source": {
+              "kind": "synthetic",
+              "dataset_id": "synthetic-defects-v1"
+            },
+            "filters": {
+              "section": "TE",
+              "date_from": "2026-08-01",
+              "date_to": "2026-08-31"
+            },
+            "metric_semantics": {
+              "status": "prototype_only_not_validated_erp_rules",
+              "date_basis": "synthetic_control_date_inclusive",
+              "sample_quantity": "sum_once_per_control_not_unique_boards",
+              "board_counts": "sum_of_recorded_occurrences_not_unique_boards"
+            },
+            "totals": {
+              "errors": 0,
+              "affected_boards": 0,
+              "repaired_boards": 0,
+              "removed_boards": 0,
+              "control_count": 0,
+              "sample_quantity": 0
+            }
+          }
+        },
+        {
+          "name": "get_defect_summary",
+          "arguments": "{\"section\":\"TE\",\"date_from\":\"2026-09-01\",\"date_to\":\"2026-09-30\"}",
+          "result": {
+            "schema_version": 1,
+            "source": {
+              "kind": "synthetic",
+              "dataset_id": "synthetic-defects-v1"
+            },
+            "filters": {
+              "section": "TE",
+              "date_from": "2026-09-01",
+              "date_to": "2026-09-30"
+            },
+            "metric_semantics": {
+              "status": "prototype_only_not_validated_erp_rules",
+              "date_basis": "synthetic_control_date_inclusive",
+              "sample_quantity": "sum_once_per_control_not_unique_boards",
+              "board_counts": "sum_of_recorded_occurrences_not_unique_boards"
+            },
+            "totals": {
+              "errors": 23,
+              "affected_boards": 19,
+              "repaired_boards": 4,
+              "removed_boards": 12,
+              "control_count": 3,
+              "sample_quantity": 220
+            }
+          }
+        }
+      ],
+      "model": "gpt-4o-mini",
+      "reference_date": "2026-11-06",
+      "usage": {
+        "input_tokens": 6621,
+        "output_tokens": 603,
+        "requests": 3,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.00135495
+      },
+      "trace_id": "01a1b1d6b261c361c80975ffce8c2815",
+      "session_usage": {
+        "input_tokens": 6621,
+        "output_tokens": 603,
+        "requests": 3,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.00135495
+      }
+    }
+  },
+  {
+    "id": "Q05",
+    "case": "relative_date_lowercase_section",
+    "query": "Mostra el resum de defectes de te del mes passat.",
+    "started_at_utc": "2026-11-06T17:10:11.002534+00:00",
+    "completed_at_utc": "2026-11-06T17:10:14.791028+00:00",
+    "collection_method": "Streamlit AppTest driving real app.py; real model; no mocks",
+    "fresh_conversation": true,
+    "ui_exception_count": 0,
+    "ui_error_count": 0,
+    "status": "completed",
+    "answer": "Dades sintètiques del resum de defectes de TE del mes d'octubre de 2026:\n\n- **ID del dataset**: synthetic-defects-v1\n- **Errors**: 4\n- **Plaques afectades**: 3\n- **Plaques reparades**: 0\n- **Plaques retirades**: 0\n- **Total de controls**: 1\n- **Mostra**: 30\n\nSi necessites més detalls o un altre període, fes-m'ho saber!",
+    "result": {
+      "answer": "Dades sintètiques del resum de defectes de TE del mes d'octubre de 2026:\n\n- **ID del dataset**: synthetic-defects-v1\n- **Errors**: 4\n- **Plaques afectades**: 3\n- **Plaques reparades**: 0\n- **Plaques retirades**: 0\n- **Total de controls**: 1\n- **Mostra**: 30\n\nSi necessites més detalls o un altre període, fes-m'ho saber!",
+      "tool_calls": [
+        {
+          "name": "get_defect_summary",
+          "arguments": "{\"section\":\"TE\",\"date_from\":\"2026-10-01\",\"date_to\":\"2026-10-31\"}",
+          "result": {
+            "schema_version": 1,
+            "source": {
+              "kind": "synthetic",
+              "dataset_id": "synthetic-defects-v1"
+            },
+            "filters": {
+              "section": "TE",
+              "date_from": "2026-10-01",
+              "date_to": "2026-10-31"
+            },
+            "metric_semantics": {
+              "status": "prototype_only_not_validated_erp_rules",
+              "date_basis": "synthetic_control_date_inclusive",
+              "sample_quantity": "sum_once_per_control_not_unique_boards",
+              "board_counts": "sum_of_recorded_occurrences_not_unique_boards"
+            },
+            "totals": {
+              "errors": 4,
+              "affected_boards": 3,
+              "repaired_boards": 0,
+              "removed_boards": 0,
+              "control_count": 1,
+              "sample_quantity": 30
+            }
+          }
+        }
+      ],
+      "model": "gpt-4o-mini",
+      "reference_date": "2026-11-06",
+      "usage": {
+        "input_tokens": 3891,
+        "output_tokens": 152,
+        "requests": 2,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.0006748500000000001
+      },
+      "trace_id": "01a1b1d6de766ba3adcc7ade4261a994",
+      "session_usage": {
+        "input_tokens": 3891,
+        "output_tokens": 152,
+        "requests": 2,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.0006748500000000001
+      }
+    }
+  },
+  {
+    "id": "Q06",
+    "case": "zero_removals_with_defect_records",
+    "query": "Fes un Pareto de plaques retirades de TE només del dia 2026-10-01.",
+    "started_at_utc": "2026-11-06T17:10:14.887984+00:00",
+    "completed_at_utc": "2026-11-06T17:10:18.688937+00:00",
+    "collection_method": "Streamlit AppTest driving real app.py; real model; no mocks",
+    "fresh_conversation": true,
+    "ui_exception_count": 0,
+    "ui_error_count": 0,
+    "status": "completed",
+    "answer": "Dades sintètiques per a TE, del 2026-10-01, dataset_id: synthetic-defects-v1.\n\nHi ha registres de defecte, però zero plaques retirades. \n\n| Codi de defecte   | Quantitat | Percentatge | Percentatge acumulatiu |\n|--------------------|-----------|-------------|------------------------|\n| DEMO-CODE-C        | 0         | no definit   | no definit              |\n\nAquest registre pertany al treball **DEMO-JOB-B** i al control **DEMO-CTRL-006**.",
+    "result": {
+      "answer": "Dades sintètiques per a TE, del 2026-10-01, dataset_id: synthetic-defects-v1.\n\nHi ha registres de defecte, però zero plaques retirades. \n\n| Codi de defecte   | Quantitat | Percentatge | Percentatge acumulatiu |\n|--------------------|-----------|-------------|------------------------|\n| DEMO-CODE-C        | 0         | no definit   | no definit              |\n\nAquest registre pertany al treball **DEMO-JOB-B** i al control **DEMO-CTRL-006**.",
+      "tool_calls": [
+        {
+          "name": "get_defect_pareto",
+          "arguments": "{\"section\":\"TE\",\"date_from\":\"2026-10-01\",\"date_to\":\"2026-10-01\",\"metric\":\"removed_boards\"}",
+          "result": {
+            "schema_version": 1,
+            "source": {
+              "kind": "synthetic",
+              "dataset_id": "synthetic-defects-v1"
+            },
+            "filters": {
+              "section": "TE",
+              "date_from": "2026-10-01",
+              "date_to": "2026-10-01"
+            },
+            "metric_semantics": {
+              "status": "prototype_only_not_validated_erp_rules",
+              "date_basis": "synthetic_control_date_inclusive",
+              "sample_quantity": "sum_once_per_control_not_unique_boards",
+              "board_counts": "sum_of_recorded_occurrences_not_unique_boards",
+              "percentage_basis": "share_of_selected_metric_not_defect_rate"
+            },
+            "metric": "removed_boards",
+            "total_quantity": 0,
+            "items": [
+              {
+                "defect_code": "DEMO-CODE-C",
+                "quantity": 0,
+                "records": [
+                  {
+                    "job_id": "DEMO-JOB-B",
+                    "control_id": "DEMO-CTRL-006",
+                    "record_id": "DEMO-DEF-006",
+                    "quantity": 0
+                  }
+                ],
+                "percentage": null,
+                "cumulative_percentage": null
+              }
+            ]
+          }
+        }
+      ],
+      "model": "gpt-4o-mini",
+      "reference_date": "2026-11-06",
+      "usage": {
+        "input_tokens": 3971,
+        "output_tokens": 164,
+        "requests": 2,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.00069405
+      },
+      "trace_id": "01a1b1d6ed66f2a23c560bab14cb9c98",
+      "session_usage": {
+        "input_tokens": 3971,
+        "output_tokens": 164,
+        "requests": 2,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.00069405
+      }
+    }
+  },
+  {
+    "id": "Q07",
+    "case": "healthy_control_without_defect_rows",
+    "query": "Fes un Pareto de plaques retirades de TE només del dia 2026-09-01.",
+    "started_at_utc": "2026-11-06T17:10:18.751191+00:00",
+    "completed_at_utc": "2026-11-06T17:10:25.712690+00:00",
+    "collection_method": "Streamlit AppTest driving real app.py; real model; no mocks",
+    "fresh_conversation": true,
+    "ui_exception_count": 0,
+    "ui_error_count": 0,
+    "status": "completed",
+    "answer": "Dades sintètiques per a la secció TE del dia 2026-09-01 (dataset_id: synthetic-defects-v1):\n\n- **Mostra**: 100\n- **Errors**: 0\n- **Plaques afectades**: 0\n- **Plaques reparades**: 0\n- **Plaques retirades**: 0\n- **Nombre de controls**: 1\n\nNo hi ha registres de defecte per a plaques retirades.",
+    "result": {
+      "answer": "Dades sintètiques per a la secció TE del dia 2026-09-01 (dataset_id: synthetic-defects-v1):\n\n- **Mostra**: 100\n- **Errors**: 0\n- **Plaques afectades**: 0\n- **Plaques reparades**: 0\n- **Plaques retirades**: 0\n- **Nombre de controls**: 1\n\nNo hi ha registres de defecte per a plaques retirades.",
+      "tool_calls": [
+        {
+          "name": "get_defect_pareto",
+          "arguments": "{\"section\":\"TE\",\"date_from\":\"2026-09-01\",\"date_to\":\"2026-09-01\",\"metric\":\"removed_boards\"}",
+          "result": {
+            "schema_version": 1,
+            "source": {
+              "kind": "synthetic",
+              "dataset_id": "synthetic-defects-v1"
+            },
+            "filters": {
+              "section": "TE",
+              "date_from": "2026-09-01",
+              "date_to": "2026-09-01"
+            },
+            "metric_semantics": {
+              "status": "prototype_only_not_validated_erp_rules",
+              "date_basis": "synthetic_control_date_inclusive",
+              "sample_quantity": "sum_once_per_control_not_unique_boards",
+              "board_counts": "sum_of_recorded_occurrences_not_unique_boards",
+              "percentage_basis": "share_of_selected_metric_not_defect_rate"
+            },
+            "metric": "removed_boards",
+            "total_quantity": 0,
+            "items": []
+          }
+        },
+        {
+          "name": "get_defect_summary",
+          "arguments": "{\"section\":\"TE\",\"date_from\":\"2026-09-01\",\"date_to\":\"2026-09-01\"}",
+          "result": {
+            "schema_version": 1,
+            "source": {
+              "kind": "synthetic",
+              "dataset_id": "synthetic-defects-v1"
+            },
+            "filters": {
+              "section": "TE",
+              "date_from": "2026-09-01",
+              "date_to": "2026-09-01"
+            },
+            "metric_semantics": {
+              "status": "prototype_only_not_validated_erp_rules",
+              "date_basis": "synthetic_control_date_inclusive",
+              "sample_quantity": "sum_once_per_control_not_unique_boards",
+              "board_counts": "sum_of_recorded_occurrences_not_unique_boards"
+            },
+            "totals": {
+              "errors": 0,
+              "affected_boards": 0,
+              "repaired_boards": 0,
+              "removed_boards": 0,
+              "control_count": 1,
+              "sample_quantity": 100
+            }
+          }
+        }
+      ],
+      "model": "gpt-4o-mini",
+      "reference_date": "2026-11-06",
+      "usage": {
+        "input_tokens": 6138,
+        "output_tokens": 188,
+        "requests": 3,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.0010335
+      },
+      "trace_id": "01a1b1d6fc9a9fd88edb2c69b16094db",
+      "session_usage": {
+        "input_tokens": 6138,
+        "output_tokens": 188,
+        "requests": 3,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.0010335
+      }
+    }
+  },
+  {
+    "id": "Q08",
+    "case": "future_period_without_records",
+    "query": "Mostra el resum de defectes de TE del gener de 2027.",
+    "started_at_utc": "2026-11-06T17:10:25.806593+00:00",
+    "completed_at_utc": "2026-11-06T17:10:30.017263+00:00",
+    "collection_method": "Streamlit AppTest driving real app.py; real model; no mocks",
+    "fresh_conversation": true,
+    "ui_exception_count": 0,
+    "ui_error_count": 0,
+    "status": "completed",
+    "answer": "Dades sintètiques per al resum de defectes de TE de gener de 2027.\n\n- **ID del conjunt de dades**: synthetic-defects-v1\n- **Errors**: 0\n- **Plaques afectades**: 0\n- **Plaques reparades**: 0\n- **Plaques retirades**: 0\n- **Número de controls**: 0\n- **Mostra**: 0\n\nSense registres coincidents; cobertura desconeguda.",
+    "result": {
+      "answer": "Dades sintètiques per al resum de defectes de TE de gener de 2027.\n\n- **ID del conjunt de dades**: synthetic-defects-v1\n- **Errors**: 0\n- **Plaques afectades**: 0\n- **Plaques reparades**: 0\n- **Plaques retirades**: 0\n- **Número de controls**: 0\n- **Mostra**: 0\n\nSense registres coincidents; cobertura desconeguda.",
+      "tool_calls": [
+        {
+          "name": "get_defect_summary",
+          "arguments": "{\"section\":\"TE\",\"date_from\":\"2027-01-01\",\"date_to\":\"2027-01-31\"}",
+          "result": {
+            "schema_version": 1,
+            "source": {
+              "kind": "synthetic",
+              "dataset_id": "synthetic-defects-v1"
+            },
+            "filters": {
+              "section": "TE",
+              "date_from": "2027-01-01",
+              "date_to": "2027-01-31"
+            },
+            "metric_semantics": {
+              "status": "prototype_only_not_validated_erp_rules",
+              "date_basis": "synthetic_control_date_inclusive",
+              "sample_quantity": "sum_once_per_control_not_unique_boards",
+              "board_counts": "sum_of_recorded_occurrences_not_unique_boards"
+            },
+            "totals": {
+              "errors": 0,
+              "affected_boards": 0,
+              "repaired_boards": 0,
+              "removed_boards": 0,
+              "control_count": 0,
+              "sample_quantity": 0
+            }
+          }
+        }
+      ],
+      "model": "gpt-4o-mini",
+      "reference_date": "2026-11-06",
+      "usage": {
+        "input_tokens": 3897,
+        "output_tokens": 145,
+        "requests": 2,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.0006715499999999999
+      },
+      "trace_id": "01a1b1d7181bfc7cda5083fc904625d9",
+      "session_usage": {
+        "input_tokens": 3897,
+        "output_tokens": 145,
+        "requests": 2,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.0006715499999999999
+      }
+    }
+  },
+  {
+    "id": "Q09",
+    "case": "unsupported_production_and_supported_defects",
+    "query": "Quantes plaques hem produït i quantes plaques afectades consten a TE durant setembre de 2026?",
+    "started_at_utc": "2026-11-06T17:10:30.128098+00:00",
+    "completed_at_utc": "2026-11-06T17:10:36.743954+00:00",
+    "collection_method": "Streamlit AppTest driving real app.py; real model; no mocks",
+    "fresh_conversation": true,
+    "ui_exception_count": 0,
+    "ui_error_count": 0,
+    "status": "completed",
+    "answer": "Dades sintètiques de TE del període del 1 de setembre de 2026 al 30 de setembre de 2026:\n\n- **Mostra**: 220 plaques\n- **Plaques afectades**: 19 plaques\n- **Errors**: 23\n\n**Dataset ID**: synthetic-defects-v1\n\nLa producció total no està disponible.",
+    "result": {
+      "answer": "Dades sintètiques de TE del període del 1 de setembre de 2026 al 30 de setembre de 2026:\n\n- **Mostra**: 220 plaques\n- **Plaques afectades**: 19 plaques\n- **Errors**: 23\n\n**Dataset ID**: synthetic-defects-v1\n\nLa producció total no està disponible.",
+      "tool_calls": [
+        {
+          "name": "get_defect_summary",
+          "arguments": "{\"section\":\"TE\",\"date_from\":\"2026-09-01\",\"date_to\":\"2026-09-30\"}",
+          "result": {
+            "schema_version": 1,
+            "source": {
+              "kind": "synthetic",
+              "dataset_id": "synthetic-defects-v1"
+            },
+            "filters": {
+              "section": "TE",
+              "date_from": "2026-09-01",
+              "date_to": "2026-09-30"
+            },
+            "metric_semantics": {
+              "status": "prototype_only_not_validated_erp_rules",
+              "date_basis": "synthetic_control_date_inclusive",
+              "sample_quantity": "sum_once_per_control_not_unique_boards",
+              "board_counts": "sum_of_recorded_occurrences_not_unique_boards"
+            },
+            "totals": {
+              "errors": 23,
+              "affected_boards": 19,
+              "repaired_boards": 4,
+              "removed_boards": 12,
+              "control_count": 3,
+              "sample_quantity": 220
+            }
+          }
+        }
+      ],
+      "model": "gpt-4o-mini",
+      "reference_date": "2026-11-06",
+      "usage": {
+        "input_tokens": 6172,
+        "output_tokens": 231,
+        "requests": 3,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.0010643999999999999
+      },
+      "trace_id": "01a1b1d72905bf1f986b685500d2949a",
+      "session_usage": {
+        "input_tokens": 6172,
+        "output_tokens": 231,
+        "requests": 3,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.0010643999999999999
+      }
+    }
+  },
+  {
+    "id": "Q10",
+    "case": "missing_section_clarification",
+    "query": "Quantes plaques retirades consten durant setembre de 2026?",
+    "started_at_utc": "2026-11-06T17:10:36.834927+00:00",
+    "completed_at_utc": "2026-11-06T17:10:37.877686+00:00",
+    "collection_method": "Streamlit AppTest driving real app.py; real model; no mocks",
+    "fresh_conversation": true,
+    "ui_exception_count": 0,
+    "ui_error_count": 0,
+    "status": "completed",
+    "answer": "Necessito que seleccionis una secció: TE o TV.",
+    "result": {
+      "answer": "Necessito que seleccionis una secció: TE o TV.",
+      "tool_calls": [],
+      "model": "gpt-4o-mini",
+      "reference_date": "2026-11-06",
+      "usage": {
+        "input_tokens": 1855,
+        "output_tokens": 16,
+        "requests": 1,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.00028785000000000003
+      },
+      "trace_id": "01a1b1d74335e18d483b74c82bf572d4",
+      "session_usage": {
+        "input_tokens": 1855,
+        "output_tokens": 16,
+        "requests": 1,
+        "missing_usage": 0,
+        "estimated_cost_usd": 0.00028785000000000003
+      }
+    }
+  }
+]

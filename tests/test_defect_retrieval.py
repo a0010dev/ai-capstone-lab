@@ -14,7 +14,7 @@ class DefectRetrievalTests(unittest.TestCase):
 
     def test_load_and_independent_reads(self):
         self.assertEqual(self.dataset['dataset_id'], 'synthetic-defects-v1')
-        self.assertEqual(len(self.dataset['controls']), 6)
+        self.assertEqual(len(self.dataset['controls']), 258)
         self.dataset['controls'][0]['section'] = 'changed'
         self.assertEqual(load_defects()['controls'][0]['section'], 'TE')
 
@@ -32,14 +32,32 @@ class DefectRetrievalTests(unittest.TestCase):
 
     def test_optional_filters_and_empty_selection(self):
         self.assertEqual(filter_defects(self.dataset), self.dataset['controls'])
-        self.assertEqual(len(filter_defects(self.dataset, section='TV')), 2)
+        self.assertEqual(len(filter_defects(self.dataset, section='TV')), 128)
         self.assertEqual(len(filter_defects(self.dataset,
-                                           date_to='2026-08-31')), 1)
+                                           date_to='2026-08-31')), 249)
         self.assertEqual(len(filter_defects(self.dataset,
-                                           date_from='2026-10-01')), 1)
+                                           date_from='2026-10-01')), 5)
         self.assertEqual(filter_defects(self.dataset, section='te'), [])
         self.assertEqual(filter_defects(self.dataset,
                                         date_from='2027-01-01'), [])
+
+    def test_expanded_calendar_coverage(self):
+        dates = [row['date'] for row in self.dataset['controls']]
+        self.assertEqual(min(dates), '2024-01-01')
+        self.assertEqual(max(dates), '2026-11-06')
+        expected_months = {f'{year}-{month:02d}'
+                           for year in (2024, 2025, 2026)
+                           for month in range(1, 13)
+                           if (year, month) <= (2026, 11)}
+        self.assertEqual({date[:7] for date in dates}, expected_months)
+        for section in ('TE', 'TV'):
+            with self.subTest(section=section):
+                self.assertEqual(len(filter_defects(
+                    self.dataset, section=section,
+                    date_from='2024-02-29', date_to='2024-02-29')), 1)
+                self.assertEqual(len(filter_defects(
+                    self.dataset, section=section,
+                    date_from='2026-11-06', date_to='2026-11-06')), 1)
 
     def test_invalid_filters(self):
         for filters in [dict(section=''), dict(section=2),

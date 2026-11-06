@@ -70,56 +70,47 @@ Run the UI checks without model calls:
 uv run pytest tests/test_app.py -q
 ```
 
-## PydanticAI exploration
+## PydanticAI runtime
 
-The `explore/pydanticai` branch adds an opt-in runtime, keeping the manual
-Responses API implementation as the default for comparison. Both use the same
-reporting instructions, async fixture tools, deterministic calculations and
-Streamlit result/event contract.
-
-```sh
-uv sync --locked
-REPORTING_AGENT_BACKEND=pydanticai uv run --locked streamlit run app.py
-# Baseline:
-REPORTING_AGENT_BACKEND=manual uv run --locked streamlit run app.py
-```
-
-Alternatively set `REPORTING_AGENT_BACKEND=pydanticai` in `.env`, or call
-`await run_agent(question, backend="pydanticai")`. Changing the runtime resets
-the UI conversation because the two implementations store different native
-history formats. Direct callers must start with an empty history when switching.
-
-The alternative lives in `est_prog/capstone_reporting/pydantic_agent.py`:
+`est_prog/capstone_reporting/agent.py` is the single reporting runtime.
 PydanticAI derives tool schemas from typed functions, validates arguments,
-handles validation retries and the model/tool cycle, stores native message
-history, and instruments model/tool activity. A typed dependency provides the
-reference date. An adapter retains the current live UI events and cost/session
-fields. An output validator requests a corrected answer if a dataset ID from
-this turn's tool results is missing. It does not validate the answer's numbers
-or all reporting semantics.
+handles retries and the model/tool cycle, serializes conversation history,
+limits requests with `UsageLimits` and instruments model/tool activity.
+The agent's async context manages provider resources, including cancellation.
+There is no manual OpenAI loop, dispatcher or runtime selector.
 
-The dependency is `pydantic-ai-slim[openai]`, locked at 2.66.0. Resolution also
-updates the OpenAI SDK from 3.16.2 to 3.46.0. Run local checks without model calls:
+Reporting policy lives in `instructions.py`; calculations and synthetic data
+access remain in `defects.py` and the async `tools.py` facade. The application
+adapter preserves Streamlit's live events and the per-run/session cost fields.
+An output validator requests a corrected answer if a dataset ID from this turn's
+tool results is missing; it does not prove numerical or semantic correctness.
+
+Launch normally with `uv run --locked streamlit run app.py`. `OPENAI_MODEL`
+accepts a bare model name (default `gpt-4o-mini`), resolved to PydanticAI's
+OpenAI Responses provider. `run_agent(..., model=...)` also accepts a PydanticAI
+model for offline tests. The judge uses a separate PydanticAI agent with typed
+`JudgeFeedback` output. The SDK is supplied by `pydantic-ai-slim[openai]`.
+Notebooks 01/02 retain their independent SDK examples as historical baselines.
 
 ```sh
+# Offline PydanticAI, domain, monitoring and UI regression checks.
 uv run --locked pytest -m 'not integration and not judge_calibration' -q
 ```
 
-Tests use `FunctionModel` with external model requests disabled. They cover
-actual fixture tools, native history round-trips, streaming, invalid arguments,
-output correction, request limits, cancellation, resource ownership, native
-telemetry and session costs. Existing manual-runtime tests remain in place.
-See [the exploration findings](submissions/pydanticai-exploration.md) for results,
-tradeoffs and remaining work before making this runtime the default.
+Unit tests disable external model requests and use `FunctionModel` with the real
+fixture tools. They cover invalid calls, native history, streaming, output
+correction, request limits, resource cleanup and session accounting. The
+[exploration report](submissions/pydanticai-exploration.md) preserves the earlier
+comparison with the manual implementation; that implementation is now removed.
 
 ## Week 5: monitoring and session costs
 
 The reference files were reviewed before implementation:
 `course_repository/ai-engineering-buildcamp-code/documentation-agent/otel_test.py`
-and `cost_tracker.py`. This adapts the course's `LogfireQueryClient` and
-`CostAccumulator` patterns to the existing async OpenAI Responses loop.
-The trivia homework used PydanticAI automatic instrumentation; this agent uses
-explicit Logfire spans because its runtime is a custom tool-calling loop.
+and `cost_tracker.py`. The application retains the course's `LogfireQueryClient` and
+`CostAccumulator` patterns for trace inspection and session accounting.
+PydanticAI supplies native model/tool instrumentation; explicit application
+spans group these under `reporting_session` and `agent_run`.
 
 Set `LOGFIRE_TOKEN` in the environment or `.env` to a write token from your
 Logfire project. `LOGFIRE_READ_TOKEN` is only required for remote trace queries.
@@ -147,9 +138,10 @@ To inspect the result:
 
 1. Copy the printed `trace_id`. In your Logfire project's Live view, filter by
    that trace ID (SQL filter: `trace_id = 'YOUR_TRACE_ID'`).
-2. Expand `reporting_session`, then `agent_run`. Each `llm_call` has the model,
-   round, instructions, input, output and usage; each `tool_call` has the name,
-   call ID, arguments and result. Failures appear on their enclosing spans.
+2. Expand `reporting_session`, then `agent_run`, and the native PydanticAI agent,
+   model and tool spans. Inspect model input/output/usage and tool arguments/results.
+   Failures appear on their enclosing spans. Historical exports from the manual
+   runtime instead use `llm_call` and `tool_call`.
 3. Read the session's token counts and `estimated_cost_usd`. Run and request
    spans repeat usage at different levels: sum **one level only**.
 4. Alternatively, inspect the local OpenTelemetry JSON or query completed spans
@@ -161,9 +153,8 @@ uv run --locked python -m est_prog.capstone_reporting.inspect_trace YOUR_TRACE_I
 ```
 
 The remote query requires the read token and searches the last two days (UTC).
-Unlike the course's PydanticAI `trace_replay`, it returns span data directly;
-it does not attempt to reconstruct a PydanticAI `AgentRunResult` from this custom
-runtime. Traces contain prompts, answers and tool data; the current backend is
+The inspector returns span data directly rather than reconstructing an
+`AgentRunResult`. Traces contain prompts, answers and tool data; the current backend is
 synthetic.
 
 A default `run_agent()` call creates one session covering the whole query,
@@ -197,7 +188,7 @@ batch discounts; it is not an invoice reconciliation. The trivia homework's
 5,692 input and 816 output tokens reproduce $0.00134340 with this formula;
 these are historical homework figures, not measurements of the capstone.
 
-Monitoring regression checks use fake model clients and actual exported spans:
+Monitoring regression checks use offline PydanticAI models and actual exported spans:
 
 ```sh
 uv run --locked pytest tests/test_monitoring.py -q
@@ -205,7 +196,7 @@ uv run --locked pytest tests/test_monitoring.py -q
 
 They verify shared trace IDs and parent spans across turns, request usage counted
 once, streaming parity, partial failures, unknown prices, and completed local
-span export. A real model run was recorded on November 4, 2026 in
+span export. A historical manual-runtime run was recorded on November 4, 2026 in
 [`submissions/week5-monitoring-run.json`](submissions/week5-monitoring-run.json):
 3 model requests and 2 tool calls, 6,853 input tokens and 394 output tokens,
 estimated at $0.00126435 USD. The answer reported 12 synthetic removed-board
@@ -224,6 +215,12 @@ In the project's Live view, filter by
 `trace_id = '01a1a7e00c28b18f10ed8d7cb11b5f8e'` and expand `reporting_session`.
 The remote inspector uses the records table's `kind = 'span'` filter.
 
+The November 6 collection added ten real interactions through Streamlit AppTest
+using the current PydanticAI runtime. The
+[session statistics](submissions/week5-usage-data/summary.json) and
+[Week 5 reflection](capstone_monitoring_reflection.md) describe the measured
+usage, validation retries and two observed answer-quality issues.
+
 ## Notebooks
 
 - `notebooks/01-setup.ipynb` - smoke test that confirms your environment works
@@ -240,14 +237,12 @@ for ranking defect codes by a selected metric. All three take `section`,
 synthetic source, and provisional metric semantics. A document search tool
 would not add value for these structured reporting queries.
 
-`est_prog/capstone_reporting/agent.py` adds a Python 3 Responses API loop over
-these functions, following the [official function-calling protocol](https://developers.openai.com/api/docs/guides/function-calling).
-The model selects tools; an allowlisted dispatcher validates the arguments,
-executes the functions, and returns their results to the model. The loop keeps
-a tool trace and stops after at most eight model rounds. The original RAG
-notebook remains available as a baseline; the deterministic backend has no
-OpenAI dependency. This capstone requires Python 3.13 or later. Python 2.7 is
-a constraint of the external ERP environment, not a local runtime or test requirement.
+`est_prog/capstone_reporting/agent.py` registers the three tools with PydanticAI.
+The model selects tools; PydanticAI validates arguments and returns their results.
+The application keeps a tool trace and defaults to at most eight model requests.
+The original RAG notebook remains a baseline; the deterministic backend has no
+model dependency. This capstone requires Python 3.13 or later. Python 2.7 is a
+constraint of the external ERP environment, not a local runtime requirement.
 
 Open notebook 04 and run all cells with `OPENAI_API_KEY` configured in `.env`.
 It uses the baseline model `gpt-4o-mini`; set `OPENAI_MODEL` to override it.
@@ -266,10 +261,8 @@ print(result["tool_calls"])
 ```
 
 In Jupyter or another async function, use `await run_agent(...)` instead of
-`asyncio.run`. `run_agent` and `execute_tool` are now coroutine functions.
-The OpenAI client is `AsyncOpenAI`; internally created clients are closed when
-the run finishes, fails or is cancelled. A caller-supplied async client remains
-the caller's responsibility.
+`asyncio.run`. `run_agent` is a coroutine. Inject models with `model=...`;
+PydanticAI manages provider resources through the agent's async context.
 
 `est_prog/capstone_reporting/tools.py` exposes the three awaitable reporting
 tools. It currently delegates fixture file access to `asyncio.to_thread`.
@@ -323,10 +316,9 @@ helper in `tests/judge.py`. A separate LLM judges the final answer and full tool
 trace against three concrete criteria for October's zero-removal Pareto: exact
 filters/metric, existing records despite zero removals, and undefined percentages
 without a defect rate. The helper follows the structured feedback pattern from
-the course, using the asynchronous OpenAI SDK and Pydantic without introducing
-PydanticAI. Tests use `pytest-asyncio` and await the agent and judge helpers.
-Structured output follows the
-[official OpenAI documentation](https://developers.openai.com/api/docs/guides/structured-outputs).
+the course, using a PydanticAI agent with `JudgeFeedback` as its structured
+output type. A validator requires exactly the requested criterion in each
+verdict. Tests use `pytest-asyncio` and await the reporting agent and judge.
 
 ```sh
 # Calls the agent and judges each of the three criteria separately; incurs costs.
@@ -374,7 +366,7 @@ the original failure evidence.
 
 The migration changes execution, while preserving the existing queries, tool
 schemas, metric definitions, criteria and answer/trace result shape. The agent,
-tool dispatcher and judge helpers must be awaited. Streamlit is the synchronous
+tools and judge helpers must be awaited. Streamlit is the synchronous
 boundary; it creates a fresh event loop per query and does not cache async clients
 between reruns. The async migration itself did not add streaming or memory;
 streaming and optional session context have since been added as described below.
@@ -395,7 +387,7 @@ the changes and their separate validation.
 
 ## Streaming responses and tool activity
 
-Supply an async `on_event` callback to `run_agent` to stream Responses API text
+Supply an async `on_event` callback to `run_agent` to stream model text
 and report tool execution while retaining the same final result. Streamlit
 enables this mode. Callers without a callback continue to receive a completed
 result through the non-streaming request path.
@@ -420,23 +412,22 @@ result = await run_agent(question, on_event=show_event)
 
 Text in rounds that call tools is provisional. The UI replaces it on the next
 round; only the final assembled answer is saved as a completed answer. Complete
-SDK output items, including reasoning context and function-call IDs, are reused
-for the next model round. SDK-only `parsed`/`parsed_arguments` fields are removed
-before sending those items back to the API. Tools never execute partial argument
-fragments. Streams and owned clients close on errors, cancellation and callback
-failures, and failed runs never emit `completed`.
+PydanticAI messages preserve model context and tool-call IDs between rounds.
+Tools never execute partial argument fragments. PydanticAI closes provider
+resources on errors, cancellation and callback failures; failed runs never emit
+`completed`.
 
 ```sh
 # Streaming protocol and UI regression, without API calls.
-uv run pytest tests/test_streaming_agent.py tests/test_app.py -m "not integration" -q
+uv run pytest tests/test_reporting_agent.py tests/test_streaming_agent.py tests/test_app.py -m "not integration" -q
 
 # Actual streamed tool call and text fragments; incurs API usage.
 uv run pytest tests/test_streaming_agent.py -m integration -v -s
 ```
 
-The implementation follows the [Responses streaming guide](https://developers.openai.com/api/docs/guides/streaming-responses).
-The [streaming report](submissions/streaming.md) preserves validation and the
-API protocol issue found during the first live check.
+PydanticAI manages the provider streaming protocol. The historical
+[streaming report](submissions/streaming.md) preserves the earlier manual-runtime
+validation and the API protocol issue found during its first live check.
 
 ## Conversation context
 
@@ -471,8 +462,8 @@ uv run pytest tests/test_conversation.py -m integration -v -s
 ```
 
 The [conversation-context report](submissions/conversation-context.md) records
-validation and remaining model limitations. History handling follows the
-[official Responses conversation-state guide](https://developers.openai.com/api/docs/guides/conversation-state).
+historical validation and remaining model limitations. Current history uses
+PydanticAI's native serialized messages, including tool evidence.
 
 ## Defect Pareto
 
@@ -508,7 +499,15 @@ python3 -m unittest discover -s tests -v
 ## Data
 
 The fixed synthetic fixture is
-`data/synthetic_defects.json`. Load and filter it
+`data/synthetic_defects.json`: 258 controls, 434 defect rows, 130 jobs,
+two sections (TE/TV), and five defect codes (A–E), spanning January 1, 2024
+through November 6, 2026. Every month has records, including leap day 2024;
+November 2026 is partial. The original six controls from August–October 2026
+remain unchanged, with no extra controls in those months, preserving the
+reference examples and their intentionally sparse coverage. Added periods
+include healthy controls, fully repaired defects, and mixed outcomes.
+Records retain the original six controls first, followed by the additions;
+the complete file is not globally sorted by date. Load and filter it
 with the standard-library retrieval functions:
 
 ```python

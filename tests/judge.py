@@ -1,10 +1,11 @@
 """Course-style LLM judge adapted to run_agent's answer/tool_calls result."""
 import json
-from contextlib import AsyncExitStack
 import os
 
-from openai import AsyncOpenAI
 from pydantic import BaseModel, Field
+from pydantic_ai import Agent, ModelRetry, RunContext
+
+from est_prog.capstone_reporting.models import resolve_model
 
 
 class JudgeCriterion(BaseModel):
@@ -39,7 +40,7 @@ violation in the answer rather than inventing additional requirements.
 """
 
 
-async def evaluate_criteria(result, criteria, *, client=None):
+async def evaluate_criteria(result, criteria, *, model=None):
     """Return all verdicts so calibration can compare them with human labels.
 
     Await this helper; each criterion is a separate async model request.
@@ -52,13 +53,17 @@ async def evaluate_criteria(result, criteria, *, client=None):
         dict(call, arguments=json.loads(call["arguments"]))
         for call in result["tool_calls"]
     ]
-    async with AsyncExitStack() as resources:
-        if client is None:
-            client = await resources.enter_async_context(
-                AsyncOpenAI(timeout=60.0, max_retries=1)
-            )
-        model = os.getenv("OPENAI_JUDGE_MODEL", "gpt-4o-mini")
-        print(f"Judge model: {model}")
+    runtime_model = resolve_model(model if model is not None else os.getenv("OPENAI_JUDGE_MODEL", "gpt-4o-mini"))
+    judge = Agent(runtime_model, instructions=JUDGE_INSTRUCTIONS, output_type=JudgeFeedback,
+                  deps_type=str, model_settings={"openai_store": False, "timeout": 60.0})
+
+    @judge.output_validator
+    def require_one_criterion(ctx: RunContext[str], feedback: JudgeFeedback) -> JudgeFeedback:
+        if [item.criterion_description for item in feedback.criteria] != [ctx.deps]:
+            raise ModelRetry("Evaluate the supplied criterion exactly once: " + ctx.deps)
+        return feedback
+
+    async with judge:
         verdicts = []
         summaries = []
         for criterion in criteria:
@@ -73,30 +78,19 @@ async def evaluate_criteria(result, criteria, *, client=None):
                 + json.dumps(tool_calls, ensure_ascii=False, indent=2)
                 + "\n</TOOL_CALLS>"
             )
-            response = await client.responses.parse(
-                model=model,
-                instructions=JUDGE_INSTRUCTIONS,
-                input=evidence,
-                text_format=JudgeFeedback,
-                store=False,
-            )
-            assert response.status == "completed", f"Judge response incomplete: {response.status}"
-            feedback = response.output_parsed
-            assert feedback is not None, "Judge returned no structured verdict (possibly a refusal)"
+            response = await judge.run(evidence, deps=criterion)
+            feedback = response.output
             print("Judge feedback:")
             print(feedback.model_dump_json(indent=2))
-            assert [item.criterion_description for item in feedback.criteria] == [criterion], (
-                "Judge must evaluate the supplied criterion exactly once"
-            )
             verdicts.extend(feedback.criteria)
             summaries.append(feedback.feedback)
         feedback = JudgeFeedback(criteria=verdicts, feedback="\n".join(summaries))
         return feedback
 
 
-async def assert_criteria(result, criteria, *, client=None):
+async def assert_criteria(result, criteria, *, model=None):
     """Fail with evidence if any criterion fails or a verdict is missing."""
-    feedback = await evaluate_criteria(result, criteria, client=client)
+    feedback = await evaluate_criteria(result, criteria, model=model)
     failures = [
         f"{item.criterion_description}: {item.judgement}"
         for item in feedback.criteria if not item.passed

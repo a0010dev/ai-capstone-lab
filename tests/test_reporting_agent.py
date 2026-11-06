@@ -1,125 +1,328 @@
+"""Reporting contracts with real fixture tools and offline PydanticAI models."""
 import json
-import unittest
-from types import SimpleNamespace
+from calendar import monthrange
+from copy import deepcopy
 
-from est_prog.capstone_reporting.agent import TOOLS, execute_tool, run_agent
+import pytest
+from pydantic_ai.exceptions import UsageLimitExceeded
+from pydantic_ai.messages import ModelResponse, TextPart, ToolCallPart, ToolReturnPart
+from pydantic_ai.models.function import FunctionModel
+from pydantic_ai.usage import RequestUsage
 
+from est_prog.capstone_reporting.agent import run_agent
+from est_prog.capstone_reporting.monitoring import configure_monitoring, monitoring_session
 
 FILTERS = dict(section="TE", date_from="2026-09-01", date_to="2026-09-30")
+pytestmark = pytest.mark.asyncio
 
 
-def call(name="get_defect_summary", arguments=None, call_id="call_1"):
-    return SimpleNamespace(type="function_call", name=name, call_id=call_id,
-                           arguments=json.dumps(FILTERS) if arguments is None else arguments)
+def summary_model():
+    def respond(messages, info):
+        returns = [p for m in messages for p in m.parts if isinstance(p, ToolReturnPart)]
+        if not returns:
+            return ModelResponse(parts=[ToolCallPart('get_defect_summary', FILTERS,
+                                                     tool_call_id='summary')],
+                                 usage=RequestUsage(input_tokens=100, output_tokens=20))
+        assert returns[-1].content['totals']['removed_boards'] == 12
+        return ModelResponse(parts=[TextPart('Dades sintètiques: 12 plaques retirades. synthetic-defects-v1')],
+                             usage=RequestUsage(input_tokens=200, output_tokens=30))
+    return FunctionModel(respond, model_name='gpt-4o-mini')
 
 
-def response(output, text="", status="completed"):
-    return SimpleNamespace(output=output, output_text=text, status=status)
+async def test_real_tools_result_history_and_cost_contract():
+    result = await run_agent('Resum TE setembre 2026',
+                             model=summary_model(), today='2026-10-16')
+    assert result['answer'] == 'Dades sintètiques: 12 plaques retirades. synthetic-defects-v1'
+    assert result['reference_date'] == '2026-10-16'
+    assert len(result['tool_calls']) == 1
+    assert json.loads(result['tool_calls'][0]['arguments']) == FILTERS
+    assert result['tool_calls'][0]['result']['totals']['removed_boards'] == 12
+    assert result['usage']['requests'] == 2
+    assert result['usage']['input_tokens'] == 300
+    assert result['usage']['output_tokens'] == 50
+    assert result['usage']['estimated_cost_usd'] == pytest.approx(.000075)
+    assert result['session_usage'] == result['usage']
+    json.dumps(result)  # Streamlit stores serializable dictionaries.
 
 
-class FakeClient:
-    def __init__(self, responses):
-        self.pending = iter(responses)
-        self.requests = []
-        self.responses = self
-
-    async def create(self, **kwargs):
-        self.requests.append(kwargs)
-        return next(self.pending)
-
-
-class ReportingAgentTests(unittest.IsolatedAsyncioTestCase):
-    async def test_pareto_dispatch_and_strict_argument_contract(self):
-        for metric, total in [('errors', 23), ('affected_boards', 19),
-                              ('repaired_boards', 4), ('removed_boards', 12)]:
-            result = await execute_tool('get_defect_pareto', json.dumps(dict(FILTERS, metric=metric)))
-            self.assertEqual(result['total_quantity'], total)
-            self.assertEqual(result['metric'], metric)
-        invalid = [FILTERS, dict(FILTERS, metric=None), dict(FILTERS, metric=1),
-                   dict(FILTERS, metric=[]), dict(FILTERS, metric='defect_rate'),
-                   dict(FILTERS, metric='removed_boards', sql='select 1'),
-                   dict(FILTERS, metric='removed_boards', date_to='2026-02-30')]
-        for arguments in invalid:
-            with self.subTest(arguments=arguments):
-                self.assertEqual((await execute_tool('get_defect_pareto', json.dumps(arguments)))['error'],
-                                 'invalid_arguments')
-        self.assertEqual((await execute_tool('get_defect_summary',
-            json.dumps(dict(FILTERS, metric='errors'))))['error'], 'invalid_arguments')
-
-    async def test_pareto_schema_and_output_round_trip(self):
-        arguments = dict(FILTERS, metric='removed_boards')
-        client = FakeClient([response([call('get_defect_pareto', json.dumps(arguments))]),
-                             response([], 'Dades sintètiques: C=8, A=3, B=1')])
-        result = await run_agent('Pareto de retirades de TE de setembre de 2026',
-                           client=client, today='2026-10-16')
-        registered = {tool['name']: tool for tool in client.requests[0]['tools']}
-        self.assertEqual(set(registered),
-                         {'get_defect_summary', 'get_defect_detail', 'get_defect_pareto'})
-        for tool in TOOLS:
-            self.assertTrue(tool['strict'])
-            self.assertFalse(tool['parameters']['additionalProperties'])
-            self.assertEqual(set(tool['parameters']['required']),
-                             set(tool['parameters']['properties']))
-        self.assertEqual(registered['get_defect_pareto']['parameters']['properties']['metric']['enum'],
-                         ['errors', 'affected_boards', 'repaired_boards', 'removed_boards'])
-        self.assertEqual(result['tool_calls'][0]['result']['total_quantity'], 12)
-        output = client.requests[1]['input'][-1]
-        self.assertEqual(output['call_id'], 'call_1')
-        self.assertEqual(json.loads(output['output'])['items'][0]['quantity'], 8)
-
-    async def test_real_tools_reconcile_and_keep_healthy_controls(self):
-        summary = await execute_tool("get_defect_summary", json.dumps(FILTERS))
-        detail = await execute_tool("get_defect_detail", json.dumps(FILTERS))
-        self.assertEqual(summary["totals"], dict(control_count=3, sample_quantity=220,
-            errors=23, affected_boards=19, repaired_boards=4, removed_boards=12))
-        self.assertEqual(detail["controls"][0]["defects"], [])
-        self.assertEqual(sum(d["removed_boards"] for c in detail["controls"]
-                             for d in c["defects"]), 12)
-
-    async def test_dispatch_rejects_unapproved_tools_and_invalid_arguments(self):
-        self.assertEqual((await execute_tool("run_sql", "{}"))['error'], 'unknown_tool')
-        for args in ['bad json', '[]', '{}', json.dumps(dict(FILTERS, sql='select 1')),
-                     json.dumps(dict(FILTERS, section=1)),
-                     json.dumps(dict(FILTERS, date_to='2026-02-30'))]:
-            with self.subTest(args=args):
-                self.assertEqual((await execute_tool('get_defect_summary', args))['error'],
-                                 'invalid_arguments')
-
-    async def test_multiple_calls_and_full_output_round_trip(self):
-        reasoning = SimpleNamespace(type="reasoning")
-        client = FakeClient([response([reasoning, call(), call('get_defect_detail', call_id='call_2')]),
-                             response([], "Synthetic result: 12")])
-        result = await run_agent("Explain removals", client=client, today="2026-10-16")
-        self.assertEqual(len(result['tool_calls']), 2)
-        self.assertEqual(result['answer'], 'Synthetic result: 12')
-        request = client.requests[1]
-        self.assertIn({"type": "reasoning"}, request['input'])
-        outputs = [x for x in request['input'] if isinstance(x, dict)
-                   and x.get('type') == 'function_call_output']
-        self.assertEqual([x['call_id'] for x in outputs], ['call_1', 'call_2'])
-        self.assertEqual(json.loads(outputs[0]['output'])['totals']['removed_boards'], 12)
-        self.assertIn("2026-10-16", request['instructions'])
-        self.assertFalse(request['store'])
-
-    async def test_error_is_returned_to_model_for_recovery(self):
-        client = FakeClient([response([call(arguments='{}')]), response([call()]),
-                             response([], 'Recovered')])
-        result = await run_agent('Summary', client=client)
-        self.assertEqual(result['tool_calls'][0]['result']['error'], 'invalid_arguments')
-        self.assertEqual(result['tool_calls'][1]['result']['totals']['control_count'], 3)
-
-    async def test_clarification_needs_no_tool(self):
-        client = FakeClient([response([], 'Which section and period?')])
-        self.assertEqual((await run_agent('Summary', client=client))['tool_calls'], [])
-
-    async def test_loop_limit_and_incomplete_responses_fail_explicitly(self):
-        with self.assertRaisesRegex(RuntimeError, 'max_rounds'):
-            await run_agent('Summary', client=FakeClient([response([call()])]), max_rounds=1)
-        with self.assertRaisesRegex(RuntimeError, 'did not complete'):
-            await run_agent('Summary', client=FakeClient([response([], status='incomplete')]))
-        with self.assertRaisesRegex(RuntimeError, 'neither'):
-            await run_agent('Summary', client=FakeClient([response([])]))
+async def test_followup_replays_evidence_without_mutating_input_and_groups_costs():
+    model = summary_model()
+    with monitoring_session('gpt-4o-mini') as costs:
+        first = await run_agent('Resum', model=model)
+        original = deepcopy(first['message_history'])
+        second = await run_agent('I el detall?', model=model,
+                                 message_history=first['message_history'])
+    assert first['message_history'] == original
+    assert len(second['message_history']) > len(original)
+    assert first['trace_id'] == second['trace_id']
+    assert second['usage']['requests'] == 1
+    assert costs.requests == 3
+    assert costs.input_tokens == 500
 
 
-if __name__ == '__main__':
-    unittest.main()
+@pytest.mark.parametrize('month,quantity,items', [('09', 12, 3), ('10', 0, 1), ('08', 0, 0)])
+async def test_pareto_preserves_zero_rows_null_shares_and_empty_results(month, quantity, items):
+    arguments = dict(FILTERS, date_from=f'2026-{month}-01', date_to=f'2026-{month}-{monthrange(2026, int(month))[1]}',
+                     metric='removed_boards')
+    def respond(messages, info):
+        if len(messages) == 1:
+            return ModelResponse(parts=[ToolCallPart('get_defect_pareto', arguments)])
+        result = next(p.content for p in messages[-1].parts if isinstance(p, ToolReturnPart))
+        assert result['total_quantity'] == quantity
+        assert len(result['items']) == items
+        if items and quantity == 0:
+            assert result['items'][0]['percentage'] is None
+        return ModelResponse(parts=[TextPart('Dades sintètiques: synthetic-defects-v1')])
+    await run_agent('Pareto', model=FunctionModel(respond))
+
+
+async def test_validation_retries_invalid_metric_before_executing_tool(monkeypatch):
+    from est_prog.capstone_reporting import tools
+    original = tools.get_defect_pareto
+    executed = []
+    async def record(**kwargs):
+        executed.append(kwargs)
+        return await original(**kwargs)
+    monkeypatch.setattr(tools, 'get_defect_pareto', record)
+    calls = 0
+    def respond(messages, info):
+        nonlocal calls
+        calls += 1
+        if calls < 3:
+            return ModelResponse(parts=[ToolCallPart('get_defect_pareto',
+                dict(FILTERS, metric='invalid' if calls == 1 else 'removed_boards'))])
+        return ModelResponse(parts=[TextPart('Recovered synthetic-defects-v1')])
+    result = await run_agent('Pareto', model=FunctionModel(respond))
+    assert result['answer'] == 'Recovered synthetic-defects-v1'
+    assert len(executed) == 1
+    assert result['tool_calls'][0]['result']['error'] == 'invalid_arguments'
+    assert 'items' in result['tool_calls'][1]['result']
+    assert result['usage']['requests'] == 3
+
+
+async def test_failed_model_call_keeps_known_usage(monkeypatch):
+    from logfire.testing import TestExporter
+    from opentelemetry.sdk.trace.export import SimpleSpanProcessor
+    exporter = TestExporter()
+    configure_monitoring(send_to_logfire=False,
+                         additional_span_processors=[SimpleSpanProcessor(exporter)])
+    calls = 0
+    def respond(messages, info):
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            return ModelResponse(parts=[ToolCallPart('get_defect_summary', FILTERS)],
+                                 usage=RequestUsage(input_tokens=100, output_tokens=20))
+        raise ConnectionError('offline')
+    try:
+        with pytest.raises(ConnectionError):
+            await run_agent('Summary', model=FunctionModel(respond))
+        sessions = [s for s in exporter.exported_spans if s.name == 'reporting_session'
+                    and s.attributes.get('logfire.span_type') == 'span']
+        assert sessions[-1].attributes['input_tokens'] == 100
+        assert sessions[-1].attributes['missing_usage'] == 1
+    finally:
+        configure_monitoring(send_to_logfire=False)
+
+
+@pytest.mark.parametrize("streaming", [False, True])
+async def test_request_limit_stops_before_extra_model_call(streaming):
+    calls = 0
+    def respond(messages, info):
+        nonlocal calls
+        calls += 1
+        return ModelResponse(parts=[ToolCallPart('get_defect_summary', FILTERS)])
+    from pydantic_ai.models.function import DeltaToolCall
+
+    async def stream(messages, info):
+        part = respond(messages, info).parts[0]
+        yield {0: DeltaToolCall(name=part.tool_name, json_args=part.args_as_json_str())}
+
+    async def collect(event):
+        pass
+
+    model = FunctionModel(respond, stream_function=stream, model_name="gpt-4o-mini")
+    with monitoring_session("gpt-4o-mini") as costs:
+        with pytest.raises(UsageLimitExceeded):
+            await run_agent('Summary', model=model, max_rounds=1,
+                            on_event=collect if streaming else None)
+    assert calls == 1
+    assert costs.requests == 1
+    assert costs.missing_usage == 0
+
+
+@pytest.mark.parametrize('query,kwargs', [('', {}), ('ok', {'max_rounds': 0}),
+                                        ('ok', {'message_history': [{}]})])
+async def test_invalid_input_fails_before_model_call(query, kwargs):
+    def unexpected(messages, info):
+        raise AssertionError('Model must not run')
+    with pytest.raises(ValueError):
+        await run_agent(query, model=FunctionModel(unexpected), **kwargs)
+
+
+async def test_streaming_executes_complete_arguments_and_resets_provisional_text():
+    from pydantic_ai.models.function import DeltaToolCall
+    events = []
+    async def stream(messages, info):
+        if not any(isinstance(p, ToolReturnPart) for m in messages for p in m.parts):
+            yield 'Consulto les dades…'
+            yield {0: DeltaToolCall(name='get_defect_summary', json_args='{"section":',
+                                   tool_call_id='summary')}
+            yield {0: DeltaToolCall(json_args='"TE","date_from":"2026-09-01",')}
+            yield {0: DeltaToolCall(json_args='"date_to":"2026-09-30"}')}
+        else:
+            yield 'Dades sintètiques: '
+            yield '12 plaques retirades. synthetic-defects-v1'
+    async def collect(event):
+        if event['type'] == 'tool_start':
+            assert json.loads(event['arguments']) == FILTERS
+        events.append(event)
+    result = await run_agent('Resum',
+        model=FunctionModel(stream_function=stream), on_event=collect)
+    assert result['answer'] == 'Dades sintètiques: 12 plaques retirades. synthetic-defects-v1'
+    assert [e['round'] for e in events if e['type'] == 'round_start'] == [1, 2]
+    assert [e['type'] for e in events].count('tool_start') == 1
+    assert [e['type'] for e in events].count('tool_end') == 1
+    assert events[-1] == {'type': 'completed', 'result': result}
+    assert ''.join(e['delta'] for e in events if e['type'] == 'text_delta'
+                   and e['round'] == 2) == result['answer']
+
+
+async def test_ui_failed_turn_messages_are_accepted_after_native_history():
+    first = await run_agent('Summary', model=summary_model())
+    history = first['message_history'] + [
+        {'role': 'user', 'content': 'Follow-up'},
+        {'role': 'assistant', 'content': 'No s’ha pogut completar la consulta.'},
+    ]
+    result = await run_agent('Torna-hi', model=summary_model(),
+                             message_history=history)
+    assert result['answer'].startswith('Dades sintètiques')
+
+
+async def test_callback_failure_and_cancellation_never_emit_completed():
+    import asyncio
+    async def stream(messages, info):
+        yield 'Partial'
+        yield ' answer'
+    for failure in (RuntimeError('consumer failed'), asyncio.CancelledError()):
+        events = []
+        async def collect(event):
+            events.append(event)
+            if event['type'] == 'text_delta':
+                raise failure
+        with pytest.raises(type(failure)):
+            await run_agent('Summary',
+                model=FunctionModel(stream_function=stream), on_event=collect)
+        assert not any(e['type'] == 'completed' for e in events)
+
+
+async def test_output_validator_recovers_missing_dataset_without_repeating_tools():
+    calls = 0
+    def respond(messages, info):
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            return ModelResponse(parts=[ToolCallPart('get_defect_summary', FILTERS)])
+        text = 'Dades sintètiques: 12' if calls == 2 else 'Dades sintètiques: 12 synthetic-defects-v1'
+        return ModelResponse(parts=[TextPart(text)])
+    result = await run_agent('Summary', model=FunctionModel(respond))
+    assert calls == 3
+    assert len(result['tool_calls']) == 1
+    assert 'synthetic-defects-v1' in result['answer']
+
+
+@pytest.mark.parametrize('outcome', ['success', 'failure', 'cancellation'])
+async def test_agent_context_releases_model_on_every_exit(outcome):
+    import asyncio
+
+    class ManagedModel(FunctionModel):
+        entered = False
+        closed = False
+
+        async def __aenter__(self):
+            self.entered = True
+            return self
+
+        async def __aexit__(self, *args):
+            self.closed = True
+
+    async def respond(messages, info):
+        assert model.entered
+        if outcome == 'failure':
+            raise ConnectionError('offline')
+        if outcome == 'cancellation':
+            raise asyncio.CancelledError()
+        return ModelResponse(parts=[TextPart('Quina secció?')])
+
+    model = ManagedModel(respond)
+    if outcome == 'success':
+        await run_agent('Resum', model=model)
+    else:
+        error = ConnectionError if outcome == 'failure' else asyncio.CancelledError
+        with pytest.raises(error):
+            await run_agent('Resum', model=model)
+    assert model.closed
+
+
+async def test_native_instrumentation_exports_model_and_tool_spans():
+    from logfire.testing import TestExporter
+    from opentelemetry.sdk.trace.export import SimpleSpanProcessor
+    exporter = TestExporter()
+    configure_monitoring(send_to_logfire=False,
+                         additional_span_processors=[SimpleSpanProcessor(exporter)])
+    try:
+        result = await run_agent('Summary', model=summary_model())
+        spans = [s for s in exporter.exported_spans
+                 if s.attributes.get('logfire.span_type') != 'pending_span']
+        model_spans = [s for s in spans if s.attributes.get('gen_ai.operation.name') == 'chat']
+        assert len(model_spans) == 2
+        assert any(s.attributes.get('gen_ai.tool.name') == 'get_defect_summary' for s in spans)
+        assert len({s.context.trace_id for s in spans}) == 1
+        assert f'{spans[0].context.trace_id:032x}' == result['trace_id']
+    finally:
+        configure_monitoring(send_to_logfire=False)
+
+
+@pytest.mark.parametrize('name,arguments', [
+    ('run_sql', {}),
+    ('get_defect_summary', {}),
+    ('get_defect_summary', dict(FILTERS, sql='select 1')),
+    ('get_defect_summary', dict(FILTERS, section=1)),
+    ('get_defect_summary', dict(FILTERS, date_to='2026-02-30')),
+    ('get_defect_summary', dict(FILTERS, date_from='2026-10-01')),
+])
+async def test_invalid_calls_recover_without_treating_errors_as_operational_data(name, arguments):
+    calls = 0
+
+    def respond(messages, info):
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            return ModelResponse(parts=[ToolCallPart(name, arguments)])
+        if calls == 2:
+            error = next(p for p in messages[-1].parts if isinstance(p, ToolReturnPart))
+            assert error.outcome == 'retried'
+            return ModelResponse(parts=[ToolCallPart('get_defect_summary', FILTERS)])
+        return ModelResponse(parts=[TextPart('12 synthetic-defects-v1')])
+
+    result = await run_agent('Summary', model=FunctionModel(respond))
+    assert result['tool_calls'][0]['result']['error']
+    assert result['tool_calls'][-1]['result']['totals']['removed_boards'] == 12
+    assert result['usage']['requests'] == 3
+
+
+async def test_multiple_tools_preserve_trace_ids_and_original_healthy_controls():
+    def respond(messages, info):
+        if len(messages) == 1:
+            return ModelResponse(parts=[
+                ToolCallPart('get_defect_summary', FILTERS, tool_call_id='summary'),
+                ToolCallPart('get_defect_detail', FILTERS, tool_call_id='detail'),
+            ])
+        results = [p for p in messages[-1].parts if isinstance(p, ToolReturnPart)]
+        assert [p.tool_call_id for p in results] == ['summary', 'detail']
+        assert results[1].content['controls'][0]['defects'] == []
+        return ModelResponse(parts=[TextPart('12 synthetic-defects-v1')])
+
+    result = await run_agent('Explain removals', model=FunctionModel(respond))
+    assert [call['name'] for call in result['tool_calls']] == ['get_defect_summary', 'get_defect_detail']
+    assert result['tool_calls'][1]['result']['controls'][0]['defects'] == []

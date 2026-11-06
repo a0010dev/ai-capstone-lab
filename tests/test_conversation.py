@@ -4,10 +4,11 @@ import json
 import re
 
 import pytest
+from pydantic_ai.messages import ModelResponse, TextPart, ToolReturnPart, UserPromptPart
+from pydantic_ai.models.function import FunctionModel
 
 from est_prog.capstone_reporting.agent import run_agent
-from tests.test_reporting_agent import FakeClient, call, response
-
+from tests.test_reporting_agent import summary_model
 
 pytestmark = pytest.mark.asyncio
 
@@ -15,59 +16,60 @@ pytestmark = pytest.mark.asyncio
 async def test_short_clarification_keeps_original_period_and_does_not_mutate_history():
     first = await run_agent(
         "Compara les plaques afectades de setembre i octubre de 2026.",
-        client=FakeClient([response([], "De quina secció?")]),
+        model=FunctionModel(lambda messages, info: ModelResponse(parts=[TextPart("De quina secció?")])),
     )
-    history = first["message_history"]
-    saved = copy.deepcopy(history)
-    client = FakeClient([response([], "TE: setembre i octubre de 2026.")])
-    second = await run_agent("te", client=client, message_history=history)
-    assert client.requests[0]["input"] == saved + [{"role": "user", "content": "te"}]
-    assert history == saved
-    assert second["message_history"][-1]["content"] == second["answer"]
-    second["message_history"][0]["content"] = "Changed returned copy"
-    assert history == saved
+    saved = copy.deepcopy(first["message_history"])
+    async def respond(messages, info):
+        questions = [p.content for m in messages for p in m.parts if isinstance(p, UserPromptPart)]
+        assert questions == ["Compara les plaques afectades de setembre i octubre de 2026.", "te"]
+        assert any(isinstance(p, TextPart) and p.content == "De quina secció?"
+                   for m in messages for p in m.parts)
+        return ModelResponse(parts=[TextPart("TE: setembre i octubre de 2026.")])
+    second = await run_agent("te", model=FunctionModel(respond), message_history=first["message_history"])
+    assert first["message_history"] == saved
+    second["message_history"][0]["parts"][0]["content"] = "Changed returned copy"
+    assert first["message_history"] == saved
 
 
 async def test_followup_replays_tool_evidence_and_final_answer():
-    first = await run_agent(
-        "Mostra les plaques afectades de TE durant setembre de 2026.",
-        client=FakeClient([response([call()]), response([], "19 plaques afectades.")]),
-        today="2026-11-03",
-    )
-    history = first["message_history"]
-    json.dumps(history)  # Replayable items are serializable, not SDK objects.
-    source = next(item for item in history if item.get("type") == "function_call_output")
-    assert json.loads(source["output"])["totals"]["affected_boards"] == 19
-    client = FakeClient([response([], "Comparació amb octubre.")])
-    await run_agent("I a l'octubre?", client=client, message_history=history)
-    assert client.requests[0]["input"][:-1] == history
-    assert client.requests[0]["input"][-1] == {"role": "user", "content": "I a l'octubre?"}
-    assert client.requests[0]["store"] is False
+    first = await run_agent("TE setembre 2026", model=summary_model())
+    json.dumps(first["message_history"])
+    def respond(messages, info):
+        results = [p.content for m in messages for p in m.parts if isinstance(p, ToolReturnPart)]
+        assert results[0]["totals"]["affected_boards"] == 19
+        assert any(isinstance(p, TextPart) and p.content == first["answer"]
+                   for m in messages for p in m.parts)
+        assert messages[-1].parts[0].content == "I a l'octubre?"
+        return ModelResponse(parts=[TextPart("Comparació amb octubre.")])
+    await run_agent("I a l'octubre?", model=FunctionModel(respond), message_history=first["message_history"])
 
 
 async def test_separate_calls_without_history_do_not_share_context():
-    await run_agent("TE setembre", client=FakeClient([response([], "First")]))
-    client = FakeClient([response([], "Second")])
-    await run_agent("TV octubre", client=client)
-    assert client.requests[0]["input"] == [{"role": "user", "content": "TV octubre"}]
+    def respond(messages, info):
+        assert len(messages) == 1
+        return ModelResponse(parts=[TextPart("Quina mètrica?")])
+    model = FunctionModel(respond)
+    await run_agent("TE setembre", model=model)
+    await run_agent("TV octubre", model=model)
 
 
 async def test_failed_turn_does_not_change_supplied_history():
     history = [{"role": "user", "content": "TE setembre de 2026"},
                {"role": "assistant", "content": "Quina mètrica?"}]
-    before = copy.deepcopy(history)
-    with pytest.raises(RuntimeError, match="did not complete"):
-        await run_agent("Plaques afectades", message_history=history,
-                        client=FakeClient([response([], status="incomplete")]))
-    assert history == before
+    saved = copy.deepcopy(history)
+    def fail(messages, info):
+        raise ConnectionError("offline")
+    with pytest.raises(ConnectionError):
+        await run_agent("Plaques afectades", model=FunctionModel(fail), message_history=history)
+    assert history == saved
 
 
 @pytest.mark.parametrize("history", [{}, "TE", ["invalid item"]])
 async def test_invalid_history_fails_before_model_call(history):
-    client = FakeClient([])
+    def unexpected(messages, info):
+        raise AssertionError("Model must not run")
     with pytest.raises(ValueError, match="message_history"):
-        await run_agent("Summary", client=client, message_history=history)
-    assert client.requests == []
+        await run_agent("Summary", model=FunctionModel(unexpected), message_history=history)
 
 
 @pytest.mark.integration
@@ -91,7 +93,7 @@ async def test_real_short_section_reply_resolves_pending_comparison(agent):
 
 @pytest.mark.integration
 async def test_real_month_followup_keeps_two_sections_and_does_not_invent_production(agent):
-    # Use streaming, as in the UI, to verify replay of normalized SDK items.
+    # Use streaming, as in the UI, to verify replay of native PydanticAI messages.
     async def observe(event):
         pass
 

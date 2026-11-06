@@ -1,16 +1,18 @@
 """Verify actual exported span trees and accounting, without external APIs."""
 import json
-from types import SimpleNamespace
 
 import pytest
 from logfire.testing import TestExporter
 from opentelemetry.sdk.trace.export import SimpleSpanProcessor
+from pydantic_ai.messages import ModelResponse, TextPart, ToolCallPart
+from pydantic_ai.models.function import DeltaToolCall, FunctionModel
+from pydantic_ai.usage import RequestUsage
 
 from est_prog.capstone_reporting.agent import run_agent
 from est_prog.capstone_reporting.cost_tracker import CostAccumulator, cost_usd
 from est_prog.capstone_reporting.monitoring import configure_monitoring, monitoring_session
-from tests.test_reporting_agent import FakeClient, call, response
-from tests.test_streaming_agent import FakeStream, client_with_streams
+
+FILTERS = dict(section="TE", date_from="2026-09-01", date_to="2026-09-30")
 
 
 @pytest.fixture
@@ -20,12 +22,6 @@ def exporter():
                          additional_span_processors=[SimpleSpanProcessor(exporter)])
     yield exporter
     configure_monitoring(send_to_logfire=False)
-
-
-def priced_response(output, text="", input_tokens=100, output_tokens=20):
-    result = response(output, text)
-    result.usage = SimpleNamespace(input_tokens=input_tokens, output_tokens=output_tokens)
-    return result
 
 
 def test_course_cost_formula_and_unpriced_or_missing_usage():
@@ -40,50 +36,72 @@ def test_course_cost_formula_and_unpriced_or_missing_usage():
 @pytest.mark.asyncio
 @pytest.mark.parametrize("streaming", [False, True])
 async def test_two_turn_session_has_one_trace_and_counts_each_response_once(exporter, streaming):
-    replies = [priced_response([call()]), priced_response([], "12"),
-               priced_response([], "Follow-up", input_tokens=200, output_tokens=30)]
-    client = (client_with_streams(*(FakeStream([], reply) for reply in replies))
-              if streaming else FakeClient(replies))
+    responses = iter([
+        ModelResponse(parts=[ToolCallPart("get_defect_summary", FILTERS)],
+                      usage=RequestUsage(input_tokens=100, output_tokens=20)),
+        ModelResponse(parts=[TextPart("12 synthetic-defects-v1")],
+                      usage=RequestUsage(input_tokens=100, output_tokens=20)),
+        ModelResponse(parts=[TextPart("Follow-up")],
+                      usage=RequestUsage(input_tokens=200, output_tokens=30)),
+    ])
+
+    def respond(messages, info):
+        return next(responses)
+
+    async def stream(messages, info):
+        for part in next(responses).parts:
+            if isinstance(part, ToolCallPart):
+                yield {0: DeltaToolCall(name=part.tool_name, json_args=part.args_as_json_str())}
+            else:
+                yield part.content
+
+    model = FunctionModel(respond, stream_function=stream, model_name="gpt-4o-mini")
 
     async def collect(event):
         pass
 
     with monitoring_session() as costs:
-        first = await run_agent("Summary", client=client, on_event=collect if streaming else None)
-        second = await run_agent("Follow-up", client=client,
+        first = await run_agent("Summary", model=model, on_event=collect if streaming else None)
+        second = await run_agent("Follow-up", model=model,
                                  message_history=first["message_history"],
                                  on_event=collect if streaming else None)
     assert first["trace_id"] == second["trace_id"]
-    assert first["usage"]["input_tokens"] == 200
-    assert second["usage"]["input_tokens"] == 200
-    assert costs.input_tokens == 400 and costs.output_tokens == 70
-    assert costs.total_cost == pytest.approx(0.000102)
+    # Compare accounting with native response usage, including the streaming path.
+    native_usage = [m["usage"] for m in second["message_history"] if m["kind"] == "response"]
+    assert len(native_usage) == costs.requests == 3
+    assert first["usage"]["requests"] == 2
+    assert second["usage"]["requests"] == 1
+    assert costs.input_tokens == sum(u["input_tokens"] for u in native_usage)
+    assert costs.output_tokens == sum(u["output_tokens"] for u in native_usage)
+    assert costs.total_cost == pytest.approx(cost_usd("gpt-4o-mini", costs.input_tokens, costs.output_tokens))
     assert second["session_usage"] == costs.as_dict()
     spans = [s for s in exporter.exported_spans
              if s.attributes.get("logfire.span_type") == "span"]
     sessions = [s for s in spans if s.name == "reporting_session"]
     runs = [s for s in spans if s.name == "agent_run"]
-    models = [s for s in spans if s.name == "llm_call"]
-    tools = [s for s in spans if s.name == "tool_call"]
+    models = [s for s in spans if s.attributes.get("gen_ai.operation.name") == "chat"]
+    tools = [s for s in spans if s.attributes.get("gen_ai.tool.name") == "get_defect_summary"]
     assert len(sessions) == 1 and len(runs) == 2 and len(models) == 3 and len(tools) == 1
     assert len({s.context.trace_id for s in spans}) == 1
     assert all(s.parent.span_id == sessions[0].context.span_id for s in runs)
-    assert all(s.parent.span_id in {r.context.span_id for r in runs} for s in models + tools)
-    assert sessions[0].attributes["input_tokens"] == 400
-    assert tools[0].attributes["tool_name"] == "get_defect_summary"
-    assert "result" in tools[0].attributes
+    assert sessions[0].attributes["input_tokens"] == costs.input_tokens
+    assert all(s.parent is not None for s in models + tools)
 
 
 @pytest.mark.asyncio
 async def test_partial_failure_keeps_known_usage_and_marks_unknown_cost(exporter):
-    class FailedClient(FakeClient):
-        async def create(self, **kwargs):
-            if self.requests:
-                raise ConnectionError("offline")
-            return await super().create(**kwargs)
+    calls = 0
+
+    def respond(messages, info):
+        nonlocal calls
+        calls += 1
+        if calls == 2:
+            raise ConnectionError("offline")
+        return ModelResponse(parts=[ToolCallPart("get_defect_summary", FILTERS)],
+                             usage=RequestUsage(input_tokens=100, output_tokens=20))
 
     with pytest.raises(ConnectionError):
-        await run_agent("Summary", client=FailedClient([priced_response([call()])]))
+        await run_agent("Summary", model=FunctionModel(respond))
     session = next(s for s in exporter.exported_spans if s.name == "reporting_session"
                    and s.attributes.get("logfire.span_type") == "span")
     assert session.attributes["input_tokens"] == 100
