@@ -9,7 +9,7 @@ from tests.judge import evaluate_criteria
 from tests.judge_criteria import ZERO_REMOVAL_CRITERIA
 
 
-pytestmark = [pytest.mark.integration, pytest.mark.judge_calibration]
+pytestmark = [pytest.mark.integration, pytest.mark.judge_calibration, pytest.mark.asyncio]
 EXAMPLES = json.loads(
     (Path(__file__).parent / "fixtures" / "judge_zero_removals.json").read_text()
 )
@@ -17,7 +17,7 @@ EXAMPLES = json.loads(
 
 @pytest.mark.parametrize("repeat", [1, 2], ids=["run-1", "run-2"])
 @pytest.mark.parametrize("case", EXAMPLES["cases"], ids=lambda case: case["id"])
-def test_judge_agrees_with_fixed_labels(api_access, case, repeat):
+async def test_judge_agrees_with_fixed_labels(api_access, case, repeat):
     calls = copy.deepcopy(EXAMPLES["tool_calls"])
     if "arguments" in case:
         calls[0]["arguments"] = json.dumps(case["arguments"])
@@ -28,7 +28,7 @@ def test_judge_agrees_with_fixed_labels(api_access, case, repeat):
     print(f"Fixed example: {case['id']}; repetition: {repeat}")
     print(json.dumps(result, ensure_ascii=False, indent=2))
     # Expected labels are deliberately NOT sent to the judge.
-    feedback = evaluate_criteria(result, ZERO_REMOVAL_CRITERIA)
+    feedback = await evaluate_criteria(result, ZERO_REMOVAL_CRITERIA)
     observed = [criterion.passed for criterion in feedback.criteria]
     print(f"Human labels: {case['expected']}; judge labels: {observed}")
     assert observed == case["expected"], feedback.model_dump_json(indent=2)

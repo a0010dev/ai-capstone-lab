@@ -5,10 +5,10 @@ from tests.judge import assert_criteria
 from tests.judge_criteria import ZERO_REMOVAL_CRITERIA
 
 
-pytestmark = pytest.mark.integration
+pytestmark = [pytest.mark.integration, pytest.mark.asyncio]
 
 
-def test_zero_removals_with_existing_records_judge(agent):
-    result = agent("Fes un Pareto de retirades de TE durant octubre de 2026.")
+async def test_zero_removals_with_existing_records_judge(agent):
+    result = await agent("Fes un Pareto de retirades de TE durant octubre de 2026.")
 
-    assert_criteria(result, criteria=ZERO_REMOVAL_CRITERIA)
+    await assert_criteria(result, criteria=ZERO_REMOVAL_CRITERIA)

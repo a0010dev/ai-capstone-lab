@@ -11,7 +11,7 @@ import unicodedata
 import pytest
 
 
-pytestmark = pytest.mark.integration
+pytestmark = [pytest.mark.integration, pytest.mark.asyncio]
 
 SEPTEMBER = dict(section="TE", date_from="2026-09-01", date_to="2026-09-30")
 OCTOBER = dict(section="TE", date_from="2026-10-01", date_to="2026-10-31")
@@ -49,8 +49,8 @@ def assert_no_missing_records_claim(answer):
     ), answer
 
 
-def test_summary_reports_removed_boards(agent):
-    result = agent("Quantes plaques hem retirat a TE durant setembre de 2026?")
+async def test_summary_reports_removed_boards(agent):
+    result = await agent("Quantes plaques hem retirat a TE durant setembre de 2026?")
     calls_for(result, "get_defect_summary", SEPTEMBER)
     assert [c["name"] for c in result["tool_calls"]] == ["get_defect_summary"]
     answer = data_answer(result)
@@ -61,8 +61,8 @@ def test_summary_reports_removed_boards(agent):
     assert "%" not in answer
 
 
-def test_pareto_uses_removals_and_descending_order(agent):
-    result = agent("Quins defectes han provocat mes retirades a TE durant setembre de 2026?")
+async def test_pareto_uses_removals_and_descending_order(agent):
+    result = await agent("Quins defectes han provocat mes retirades a TE durant setembre de 2026?")
     calls_for(result, "get_defect_pareto", SEPTEMBER, metric="removed_boards")
     answer = data_answer(result)
     for code, quantity in [("c", 8), ("a", 3), ("b", 1)]:
@@ -70,8 +70,8 @@ def test_pareto_uses_removals_and_descending_order(agent):
     assert answer.index("demo-code-c") < answer.index("demo-code-a") < answer.index("demo-code-b")
 
 
-def test_removal_explanation_includes_source_identifiers(agent):
-    result = agent(
+async def test_removal_explanation_includes_source_identifiers(agent):
+    result = await agent(
         "Mostra'm el total i els controls i les fitxes que expliquen les retirades "
         "a TE durant setembre de 2026."
     )
@@ -84,16 +84,16 @@ def test_removal_explanation_includes_source_identifiers(agent):
     assert re.search(r"\b12\b", answer)
 
 
-def test_pareto_honors_explicit_errors_metric(agent):
-    result = agent("Fes un Pareto pel nombre d'errors de TE durant setembre de 2026.")
+async def test_pareto_honors_explicit_errors_metric(agent):
+    result = await agent("Fes un Pareto pel nombre d'errors de TE durant setembre de 2026.")
     calls_for(result, "get_defect_pareto", SEPTEMBER, metric="errors")
     answer = data_answer(result)
     for code, quantity in [("c", 10), ("a", 8), ("b", 5)]:
         assert re.search(rf"demo-code-{code}(?:(?!demo-code-)[\s\S])*?\b{quantity}\b", answer), answer
 
 
-def test_comparison_queries_both_periods(agent):
-    result = agent("Compara les plaques retirades de TE entre setembre i octubre de 2026.")
+async def test_comparison_queries_both_periods(agent):
+    result = await agent("Compara les plaques retirades de TE entre setembre i octubre de 2026.")
     calls = [c for c in result["tool_calls"] if c["name"] == "get_defect_summary"]
     assert len(calls) == 2
     assert sorted(json.loads(c["arguments"])["date_from"] for c in calls) == ["2026-09-01", "2026-10-01"]
@@ -107,8 +107,8 @@ def test_comparison_queries_both_periods(agent):
     assert_no_missing_records_claim(answer)
 
 
-def test_summary_uses_inclusive_boundaries(agent):
-    result = agent(
+async def test_summary_uses_inclusive_boundaries(agent):
+    result = await agent(
         "Mostra el nombre de controls, la mostra i les plaques retirades de TE "
         "entre l'1 i el 30 de setembre de 2026, inclosos."
     )
@@ -125,8 +125,8 @@ def test_summary_uses_inclusive_boundaries(agent):
     ("Fes-me un resum dels defectes de TE.", ("periode",), ("seccio",)),
     ("Fes-me un resum dels defectes de setembre de 2026.", ("seccio",), ("periode",)),
 ], ids=["missing-both", "missing-period", "missing-section"])
-def test_clarification_asks_only_for_missing_filters(agent, query, required, not_missing):
-    result = agent(query)
+async def test_clarification_asks_only_for_missing_filters(agent, query, required, not_missing):
+    result = await agent(query)
     assert result["tool_calls"] == []
     answer = plain(result["answer"])
     assert re.search(r"\?|indiqu|indica|especific|necessito|cal que", answer), answer
@@ -138,8 +138,8 @@ def test_clarification_asks_only_for_missing_filters(agent, query, required, not
         assert not re.search(rf"(?:quina?|quines|quin)\s+{concept}", answer), answer
 
 
-def test_empty_pareto_without_controls_reports_unknown_coverage(agent):
-    result = agent("Fes un Pareto de retirades de TE durant agost de 2026.")
+async def test_empty_pareto_without_controls_reports_unknown_coverage(agent):
+    result = await agent("Fes un Pareto de retirades de TE durant agost de 2026.")
     pareto = calls_for(result, "get_defect_pareto", AUGUST, metric="removed_boards")[0]["result"]
     summary = calls_for(result, "get_defect_summary", AUGUST)[0]["result"]
     assert pareto["items"] == []
@@ -149,8 +149,8 @@ def test_empty_pareto_without_controls_reports_unknown_coverage(agent):
     assert "cobertura desconeguda" in answer
 
 
-def test_empty_pareto_with_healthy_control_is_not_missing_data(agent):
-    result = agent("Fes un Pareto de retirades de TE del dia 1 de setembre de 2026.")
+async def test_empty_pareto_with_healthy_control_is_not_missing_data(agent):
+    result = await agent("Fes un Pareto de retirades de TE del dia 1 de setembre de 2026.")
     pareto = calls_for(result, "get_defect_pareto", FIRST_DAY, metric="removed_boards")[0]["result"]
     summary = calls_for(result, "get_defect_summary", FIRST_DAY)[0]["result"]
     assert pareto["items"] == []
@@ -162,9 +162,9 @@ def test_empty_pareto_with_healthy_control_is_not_missing_data(agent):
     assert not re.search(r"sense controls|no (?:hi ha|existeixen) (?:cap )?controls?", answer), answer
 
 
-def test_zero_removals_with_existing_defect_is_not_missing_data(agent):
+async def test_zero_removals_with_existing_defect_is_not_missing_data(agent):
     """Regression: the week 3 agent called a nonempty zero Pareto 'no records'."""
-    result = agent("Fes un Pareto de retirades de TE durant octubre de 2026.")
+    result = await agent("Fes un Pareto de retirades de TE durant octubre de 2026.")
     pareto = calls_for(result, "get_defect_pareto", OCTOBER, metric="removed_boards")[0]["result"]
     assert pareto["total_quantity"] == 0
     assert len(pareto["items"]) == 1
@@ -181,8 +181,8 @@ def test_zero_removals_with_existing_defect_is_not_missing_data(agent):
         assert re.search(r"no defin|indefin|no aplic|n/[ad]\b|nul|total (?:es |de )?zero|total (?:es |de )?0", answer), answer
 
 
-def test_unvalidated_defect_rate_is_not_calculated(agent):
-    result = agent("Quina es la taxa de defectuositat de TE durant setembre de 2026?")
+async def test_unvalidated_defect_rate_is_not_calculated(agent):
+    result = await agent("Quina es la taxa de defectuositat de TE durant setembre de 2026?")
     for call in result["tool_calls"]:
         assert call["name"] == "get_defect_summary"
         assert json.loads(call["arguments"]) == SEPTEMBER
@@ -193,8 +193,8 @@ def test_unvalidated_defect_rate_is_not_calculated(agent):
     assert not re.search(r"\d+(?:[.,]\d+)?\s*(?:%|per cent)", answer), answer
 
 
-def test_comparison_without_records_does_not_claim_improvement(agent):
-    result = agent("Han disminuit les retirades a TE entre setembre de 2026 i gener de 2027?")
+async def test_comparison_without_records_does_not_claim_improvement(agent):
+    result = await agent("Han disminuit les retirades a TE entre setembre de 2026 i gener de 2027?")
     january = dict(section="TE", date_from="2027-01-01", date_to="2027-01-31")
     calls = [c for c in result["tool_calls"] if c["name"] == "get_defect_summary"]
     assert len(calls) == 2

@@ -23,16 +23,16 @@ class FakeClient:
         self.requests = []
         self.responses = self
 
-    def create(self, **kwargs):
+    async def create(self, **kwargs):
         self.requests.append(kwargs)
         return next(self.pending)
 
 
-class ReportingAgentTests(unittest.TestCase):
-    def test_pareto_dispatch_and_strict_argument_contract(self):
+class ReportingAgentTests(unittest.IsolatedAsyncioTestCase):
+    async def test_pareto_dispatch_and_strict_argument_contract(self):
         for metric, total in [('errors', 23), ('affected_boards', 19),
                               ('repaired_boards', 4), ('removed_boards', 12)]:
-            result = execute_tool('get_defect_pareto', json.dumps(dict(FILTERS, metric=metric)))
+            result = await execute_tool('get_defect_pareto', json.dumps(dict(FILTERS, metric=metric)))
             self.assertEqual(result['total_quantity'], total)
             self.assertEqual(result['metric'], metric)
         invalid = [FILTERS, dict(FILTERS, metric=None), dict(FILTERS, metric=1),
@@ -41,16 +41,16 @@ class ReportingAgentTests(unittest.TestCase):
                    dict(FILTERS, metric='removed_boards', date_to='2026-02-30')]
         for arguments in invalid:
             with self.subTest(arguments=arguments):
-                self.assertEqual(execute_tool('get_defect_pareto', json.dumps(arguments))['error'],
+                self.assertEqual((await execute_tool('get_defect_pareto', json.dumps(arguments)))['error'],
                                  'invalid_arguments')
-        self.assertEqual(execute_tool('get_defect_summary',
-            json.dumps(dict(FILTERS, metric='errors')))['error'], 'invalid_arguments')
+        self.assertEqual((await execute_tool('get_defect_summary',
+            json.dumps(dict(FILTERS, metric='errors'))))['error'], 'invalid_arguments')
 
-    def test_pareto_schema_and_output_round_trip(self):
+    async def test_pareto_schema_and_output_round_trip(self):
         arguments = dict(FILTERS, metric='removed_boards')
         client = FakeClient([response([call('get_defect_pareto', json.dumps(arguments))]),
                              response([], 'Dades sintètiques: C=8, A=3, B=1')])
-        result = run_agent('Pareto de retirades de TE de setembre de 2026',
+        result = await run_agent('Pareto de retirades de TE de setembre de 2026',
                            client=client, today='2026-10-16')
         registered = {tool['name']: tool for tool in client.requests[0]['tools']}
         self.assertEqual(set(registered),
@@ -67,33 +67,33 @@ class ReportingAgentTests(unittest.TestCase):
         self.assertEqual(output['call_id'], 'call_1')
         self.assertEqual(json.loads(output['output'])['items'][0]['quantity'], 8)
 
-    def test_real_tools_reconcile_and_keep_healthy_controls(self):
-        summary = execute_tool("get_defect_summary", json.dumps(FILTERS))
-        detail = execute_tool("get_defect_detail", json.dumps(FILTERS))
+    async def test_real_tools_reconcile_and_keep_healthy_controls(self):
+        summary = await execute_tool("get_defect_summary", json.dumps(FILTERS))
+        detail = await execute_tool("get_defect_detail", json.dumps(FILTERS))
         self.assertEqual(summary["totals"], dict(control_count=3, sample_quantity=220,
             errors=23, affected_boards=19, repaired_boards=4, removed_boards=12))
         self.assertEqual(detail["controls"][0]["defects"], [])
         self.assertEqual(sum(d["removed_boards"] for c in detail["controls"]
                              for d in c["defects"]), 12)
 
-    def test_dispatch_rejects_unapproved_tools_and_invalid_arguments(self):
-        self.assertEqual(execute_tool("run_sql", "{}")['error'], 'unknown_tool')
+    async def test_dispatch_rejects_unapproved_tools_and_invalid_arguments(self):
+        self.assertEqual((await execute_tool("run_sql", "{}"))['error'], 'unknown_tool')
         for args in ['bad json', '[]', '{}', json.dumps(dict(FILTERS, sql='select 1')),
                      json.dumps(dict(FILTERS, section=1)),
                      json.dumps(dict(FILTERS, date_to='2026-02-30'))]:
             with self.subTest(args=args):
-                self.assertEqual(execute_tool('get_defect_summary', args)['error'],
+                self.assertEqual((await execute_tool('get_defect_summary', args))['error'],
                                  'invalid_arguments')
 
-    def test_multiple_calls_and_full_output_round_trip(self):
+    async def test_multiple_calls_and_full_output_round_trip(self):
         reasoning = SimpleNamespace(type="reasoning")
         client = FakeClient([response([reasoning, call(), call('get_defect_detail', call_id='call_2')]),
                              response([], "Synthetic result: 12")])
-        result = run_agent("Explain removals", client=client, today="2026-10-16")
+        result = await run_agent("Explain removals", client=client, today="2026-10-16")
         self.assertEqual(len(result['tool_calls']), 2)
         self.assertEqual(result['answer'], 'Synthetic result: 12')
         request = client.requests[1]
-        self.assertIn(reasoning, request['input'])
+        self.assertIn({"type": "reasoning"}, request['input'])
         outputs = [x for x in request['input'] if isinstance(x, dict)
                    and x.get('type') == 'function_call_output']
         self.assertEqual([x['call_id'] for x in outputs], ['call_1', 'call_2'])
@@ -101,24 +101,24 @@ class ReportingAgentTests(unittest.TestCase):
         self.assertIn("2026-10-16", request['instructions'])
         self.assertFalse(request['store'])
 
-    def test_error_is_returned_to_model_for_recovery(self):
+    async def test_error_is_returned_to_model_for_recovery(self):
         client = FakeClient([response([call(arguments='{}')]), response([call()]),
                              response([], 'Recovered')])
-        result = run_agent('Summary', client=client)
+        result = await run_agent('Summary', client=client)
         self.assertEqual(result['tool_calls'][0]['result']['error'], 'invalid_arguments')
         self.assertEqual(result['tool_calls'][1]['result']['totals']['control_count'], 3)
 
-    def test_clarification_needs_no_tool(self):
+    async def test_clarification_needs_no_tool(self):
         client = FakeClient([response([], 'Which section and period?')])
-        self.assertEqual(run_agent('Summary', client=client)['tool_calls'], [])
+        self.assertEqual((await run_agent('Summary', client=client))['tool_calls'], [])
 
-    def test_loop_limit_and_incomplete_responses_fail_explicitly(self):
+    async def test_loop_limit_and_incomplete_responses_fail_explicitly(self):
         with self.assertRaisesRegex(RuntimeError, 'max_rounds'):
-            run_agent('Summary', client=FakeClient([response([call()])]), max_rounds=1)
+            await run_agent('Summary', client=FakeClient([response([call()])]), max_rounds=1)
         with self.assertRaisesRegex(RuntimeError, 'did not complete'):
-            run_agent('Summary', client=FakeClient([response([], status='incomplete')]))
+            await run_agent('Summary', client=FakeClient([response([], status='incomplete')]))
         with self.assertRaisesRegex(RuntimeError, 'neither'):
-            run_agent('Summary', client=FakeClient([response([])]))
+            await run_agent('Summary', client=FakeClient([response([])]))
 
 
 if __name__ == '__main__':

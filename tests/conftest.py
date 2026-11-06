@@ -18,11 +18,13 @@ def api_access():
 
 @pytest.fixture(scope="module")
 def agent(api_access):
-    def run(user_prompt):
-        result = run_agent(
+    async def run(user_prompt, *, on_event=None, message_history=None, today="2026-10-16"):
+        result = await run_agent(
             user_prompt,
             model=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
-            today="2026-10-16",
+            today=today,
+            on_event=on_event,
+            message_history=message_history,
         )
         # Visible with pytest -s, or captured with a failing assertion.
         print(json.dumps(result, ensure_ascii=False, indent=2))

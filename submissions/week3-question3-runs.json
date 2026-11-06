@@ -1,0 +1,183 @@
+{
+  "source_notebook": "notebooks/04-reporting-agent.ipynb",
+  "source": "Saved execution outputs; no new API requests made for this export.",
+  "execution_date": "2026-10-18",
+  "model": "gpt-4o-mini",
+  "reference_date": "2026-10-16",
+  "dataset_id": "synthetic-defects-v1",
+  "selected_run": "pareto_zero",
+  "runs": {
+    "summary": {
+      "question": "Dona'm el resum de defectes de la secció TE de l'1 al 30 de setembre de 2026.",
+      "tool_calls": [
+        {
+          "name": "get_defect_summary",
+          "arguments": {
+            "section": "TE",
+            "date_from": "2026-09-01",
+            "date_to": "2026-09-30"
+          },
+          "result": {
+            "schema_version": 1,
+            "source": {
+              "kind": "synthetic",
+              "dataset_id": "synthetic-defects-v1"
+            },
+            "filters": {
+              "section": "TE",
+              "date_from": "2026-09-01",
+              "date_to": "2026-09-30"
+            },
+            "metric_semantics": {
+              "status": "prototype_only_not_validated_erp_rules",
+              "date_basis": "synthetic_control_date_inclusive",
+              "sample_quantity": "sum_once_per_control_not_unique_boards",
+              "board_counts": "sum_of_recorded_occurrences_not_unique_boards"
+            },
+            "totals": {
+              "errors": 23,
+              "affected_boards": 19,
+              "repaired_boards": 4,
+              "removed_boards": 12,
+              "control_count": 3,
+              "sample_quantity": 220
+            }
+          }
+        }
+      ],
+      "final_answer": "Dades sintètiques de la secció TE de l'1 al 30 de setembre de 2026:\n\n- **Errors:** 23\n- **Plaques afectades:** 19\n- **Plaques reparades:** 4\n- **Plaques retirades:** 12\n- **Nombre de controls:** 3\n- **Mostra total:** 220\n\nDataset ID: synthetic-defects-v1."
+    },
+    "pareto": {
+      "question": "Mostra el Pareto de defectes de TE de setembre de 2026, amb percentatges i acumulats.",
+      "tool_calls": [
+        {
+          "name": "get_defect_pareto",
+          "arguments": {
+            "section": "TE",
+            "date_from": "2026-09-01",
+            "date_to": "2026-09-30",
+            "metric": "removed_boards"
+          },
+          "result": {
+            "schema_version": 1,
+            "source": {
+              "kind": "synthetic",
+              "dataset_id": "synthetic-defects-v1"
+            },
+            "filters": {
+              "section": "TE",
+              "date_from": "2026-09-01",
+              "date_to": "2026-09-30"
+            },
+            "metric_semantics": {
+              "status": "prototype_only_not_validated_erp_rules",
+              "date_basis": "synthetic_control_date_inclusive",
+              "sample_quantity": "sum_once_per_control_not_unique_boards",
+              "board_counts": "sum_of_recorded_occurrences_not_unique_boards",
+              "percentage_basis": "share_of_selected_metric_not_defect_rate"
+            },
+            "metric": "removed_boards",
+            "total_quantity": 12,
+            "items": [
+              {
+                "defect_code": "DEMO-CODE-C",
+                "quantity": 8,
+                "records": [
+                  {
+                    "job_id": "DEMO-JOB-C",
+                    "control_id": "DEMO-CTRL-004",
+                    "record_id": "DEMO-DEF-004",
+                    "quantity": 8
+                  }
+                ],
+                "percentage": 66.66666666666667,
+                "cumulative_percentage": 66.66666666666667
+              },
+              {
+                "defect_code": "DEMO-CODE-A",
+                "quantity": 3,
+                "records": [
+                  {
+                    "job_id": "DEMO-JOB-B",
+                    "control_id": "DEMO-CTRL-002",
+                    "record_id": "DEMO-DEF-001",
+                    "quantity": 3
+                  }
+                ],
+                "percentage": 25.0,
+                "cumulative_percentage": 91.66666666666667
+              },
+              {
+                "defect_code": "DEMO-CODE-B",
+                "quantity": 1,
+                "records": [
+                  {
+                    "job_id": "DEMO-JOB-B",
+                    "control_id": "DEMO-CTRL-002",
+                    "record_id": "DEMO-DEF-002",
+                    "quantity": 1
+                  }
+                ],
+                "percentage": 8.333333333333334,
+                "cumulative_percentage": 100.0
+              }
+            ]
+          }
+        }
+      ],
+      "final_answer": "Dades sintètiques del Pareto de defectes de TE de setembre de 2026:\n\n- **Total de plaques retirades**: 12\n\n| Codi de defecte    | Quantitat | Percentatge | Percentatge acumulat |\n|--------------------|-----------|-------------|----------------------|\n| DEMO-CODE-C        | 8         | 66.67%      | 66.67%               |\n| DEMO-CODE-A        | 3         | 25.00%      | 91.67%               |\n| DEMO-CODE-B        | 1         | 8.33%       | 100.00%              |\n\nDataset ID: synthetic-defects-v1"
+    },
+    "pareto_zero": {
+      "question": "Mostra el Pareto de retirades de TE de l'1 al 31 d'octubre de 2026.",
+      "tool_calls": [
+        {
+          "name": "get_defect_pareto",
+          "arguments": {
+            "section": "TE",
+            "date_from": "2026-10-01",
+            "date_to": "2026-10-31",
+            "metric": "removed_boards"
+          },
+          "result": {
+            "schema_version": 1,
+            "source": {
+              "kind": "synthetic",
+              "dataset_id": "synthetic-defects-v1"
+            },
+            "filters": {
+              "section": "TE",
+              "date_from": "2026-10-01",
+              "date_to": "2026-10-31"
+            },
+            "metric_semantics": {
+              "status": "prototype_only_not_validated_erp_rules",
+              "date_basis": "synthetic_control_date_inclusive",
+              "sample_quantity": "sum_once_per_control_not_unique_boards",
+              "board_counts": "sum_of_recorded_occurrences_not_unique_boards",
+              "percentage_basis": "share_of_selected_metric_not_defect_rate"
+            },
+            "metric": "removed_boards",
+            "total_quantity": 0,
+            "items": [
+              {
+                "defect_code": "DEMO-CODE-C",
+                "quantity": 0,
+                "records": [
+                  {
+                    "job_id": "DEMO-JOB-B",
+                    "control_id": "DEMO-CTRL-006",
+                    "record_id": "DEMO-DEF-006",
+                    "quantity": 0
+                  }
+                ],
+                "percentage": null,
+                "cumulative_percentage": null
+              }
+            ]
+          }
+        }
+      ],
+      "final_answer": "Dades sintètiques del Pareto de retirades de TE de l'1 al 31 d'octubre de 2026:\n\n- **Total de plaques retirades:** 0\n- **Codi de defecte:** DEMO-CODE-C\n  - **Quantitat:** 0\n  - **ID del treball:** DEMO-JOB-B\n  - **ID del control:** DEMO-CTRL-006\n  - **ID del registre:** DEMO-DEF-006\n\nSense registres coincidents; cobertura desconeguda."
+    }
+  }
+}

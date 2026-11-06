@@ -15,3 +15,6 @@ tmp/
 
 #Repositori del curs
 course_repository/
+
+# Logfire credentials and local configuration
+.logfire/

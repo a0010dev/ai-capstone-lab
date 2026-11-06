@@ -1,0 +1,113 @@
+Question 3: Test Your Agent
+
+I tested my industrial reporting agent on representative business questions
+using synthetic manufacturing data (synthetic-defects-v1), not production ERP
+data. The notebook contains eleven saved runs dated 18 October 2026 using
+gpt-4o-mini. Three queries covering different tool paths were:
+
+1. Main tool / summary
+   Question: "Dona'm el resum de defectes de la secció TE de l'1 al 30 de setembre de 2026."
+   Tool: get_defect_summary
+   Outcome: 3 controls, sample quantity 220, 23 errors, 19 affected,
+   4 repaired and 12 removed board occurrences.
+
+2. Different tool / Pareto ranking
+   Question: "Mostra el Pareto de defectes de TE de setembre de 2026, amb percentatges i acumulats."
+   Tool: get_defect_pareto with metric="removed_boards"
+   Outcome: DEMO-CODE-C=8, DEMO-CODE-A=3, DEMO-CODE-B=1.
+   Their shares were 66.67%, 25.00% and 8.33%, with cumulative shares
+   of 66.67%, 91.67% and 100.00%. These are contributions to recorded
+   removals, not defect rates or evidence of causes.
+
+3. Edge case / Pareto with a zero total
+   Question: "Mostra el Pareto de retirades de TE de l'1 al 31 d'octubre de 2026."
+   Tool: get_defect_pareto with metric="removed_boards"
+   Outcome: the tool correctly returned a source record with zero removals
+   and undefined percentages (null), but the model incorrectly described
+   the result as having no matching records.
+
+Most interesting run — full interaction
+
+The following question, tool arguments and final answer are copied from the
+saved run. The final answer has not been corrected.
+
+Question:
+Mostra el Pareto de retirades de TE de l'1 al 31 d'octubre de 2026.
+
+Tools called, in execution order:
+
+1. get_defect_pareto
+Arguments:
+{
+  "section": "TE",
+  "date_from": "2026-10-01",
+  "date_to": "2026-10-31",
+  "metric": "removed_boards"
+}
+
+Tool result:
+{
+  "schema_version": 1,
+  "source": {
+    "kind": "synthetic",
+    "dataset_id": "synthetic-defects-v1"
+  },
+  "filters": {
+    "section": "TE",
+    "date_from": "2026-10-01",
+    "date_to": "2026-10-31"
+  },
+  "metric_semantics": {
+    "status": "prototype_only_not_validated_erp_rules",
+    "date_basis": "synthetic_control_date_inclusive",
+    "sample_quantity": "sum_once_per_control_not_unique_boards",
+    "board_counts": "sum_of_recorded_occurrences_not_unique_boards",
+    "percentage_basis": "share_of_selected_metric_not_defect_rate"
+  },
+  "metric": "removed_boards",
+  "total_quantity": 0,
+  "items": [
+    {
+      "defect_code": "DEMO-CODE-C",
+      "quantity": 0,
+      "records": [
+        {
+          "job_id": "DEMO-JOB-B",
+          "control_id": "DEMO-CTRL-006",
+          "record_id": "DEMO-DEF-006",
+          "quantity": 0
+        }
+      ],
+      "percentage": null,
+      "cumulative_percentage": null
+    }
+  ]
+}
+
+Final answer (verbatim):
+
+Dades sintètiques del Pareto de retirades de TE de l'1 al 31 d'octubre de 2026:
+
+- **Total de plaques retirades:** 0
+- **Codi de defecte:** DEMO-CODE-C
+  - **Quantitat:** 0
+  - **ID del treball:** DEMO-JOB-B
+  - **ID del control:** DEMO-CTRL-006
+  - **ID del registre:** DEMO-DEF-006
+
+Sense registres coincidents; cobertura desconeguda.
+
+What I learned
+
+The tool returned DEMO-DEF-006 under DEMO-CTRL-006 with quantity 0.
+The model listed that same record, then contradicted itself by saying
+"Sense registres coincidents; cobertura desconeguda."
+A zero selected metric does not mean an empty selection. Its percentage
+contributions are undefined because the denominator is zero. The tools'
+results were correct; the error appeared in the model's interpretation.
+Next week I want to distinguish zero totals from empty selections explicitly
+in response validation and present coverage information deterministically.
+
+Evidence: notebooks/04-reporting-agent.ipynb, saved agent runs in section 3.
+Companion JSON: week3-question3-runs.json (all three selected runs, including
+complete tool results and unedited final answers).

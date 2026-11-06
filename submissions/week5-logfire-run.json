@@ -1,0 +1,35 @@
+{
+  "kind": "real_openai_run_logfire_verified",
+  "timestamp_utc": "2026-11-04T18:44:00.680801Z",
+  "trace_id": "01a1a7e00c28b18f10ed8d7cb11b5f8e",
+  "model": "gpt-4o-mini",
+  "query": "Quantes plaques retirades consten a TE entre el 2026-09-01 i el 2026-09-30?",
+  "answer": "Dades sintètiques per a la secció TE entre el 2026-09-01 i el 2026-09-30:\n\n- **Plaques retirades**: 12\n- **Errors**: 23\n- **Plaques afectades**: 19\n- **Plaques reparades**: 4\n- **Mida de la mostra**: 220\n\n**Detall de les plaques retirades**:\n1. **DEMO-CODE-C**: 8 plaques (66.67%)\n   - Job ID: DEMO-JOB-C, Control ID: DEMO-CTRL-004, Record ID: DEMO-DEF-004\n2. **DEMO-CODE-A**: 3 plaques (25.00%)\n   - Job ID: DEMO-JOB-B, Control ID: DEMO-CTRL-002, Record ID: DEMO-DEF-001\n3. **DEMO-CODE-B**: 1 placa (8.33%)\n   - Job ID: DEMO-JOB-B, Control ID: DEMO-CTRL-002, Record ID: DEMO-DEF-002\n\nSi desitges més informació o detalls addicionals, no dubtis a preguntar!",
+  "usage": {
+    "input_tokens": 6853,
+    "output_tokens": 343,
+    "requests": 3,
+    "missing_usage": 0,
+    "estimated_cost_usd": 0.00123375
+  },
+  "span_counts": {
+    "session": 1,
+    "agent_run": 1,
+    "llm_call": 3,
+    "tool_call": 2
+  },
+  "tools": [
+    "get_defect_summary",
+    "get_defect_pareto"
+  ],
+  "checks": {
+    "remote_readback_verified": true,
+    "all_local_span_ids_found_remotely": true,
+    "parent_hierarchy": true,
+    "usage_reconciles_with_model_calls": true
+  },
+  "dashboard_export_verified": true,
+  "verification_method": "LogfireQueryClient using LOGFIRE_READ_TOKEN; dashboard UI not inspected",
+  "local_trace_file": "tmp/monitoring/logfire-run.jsonl",
+  "remote_span_file": "tmp/monitoring/logfire-remote.json"
+}

@@ -1,0 +1,33 @@
+{
+  "kind": "real_openai_run_local_telemetry",
+  "timestamp_utc": "2026-11-04T18:30:31.237621Z",
+  "model": "gpt-4o-mini",
+  "query": "Quantes plaques retirades consten a TE entre el 2026-09-01 i el 2026-09-30?",
+  "trace_id": "01a1a7d3b245487d96dafb697e82cbb3",
+  "answer": "Dades sintètiques per a la secció TE del **2026-09-01** al **2026-09-30**:\n\n- **Plaques retirades**: 12\n- **Errors**: 23\n- **Plaques afectades**: 19\n- **Plaques reparades**: 4\n- **Mostra**: 220\n\n### Detall de plaques retirades:\n1. **DEMO-CODE-C**\n   - **Quantitat**: 8\n   - **Job ID**: DEMO-JOB-C\n   - **Control ID**: DEMO-CTRL-004\n   - **Record ID**: DEMO-DEF-004\n\n2. **DEMO-CODE-A**\n   - **Quantitat**: 3\n   - **Job ID**: DEMO-JOB-B\n   - **Control ID**: DEMO-CTRL-002\n   - **Record ID**: DEMO-DEF-001\n\n3. **DEMO-CODE-B**\n   - **Quantitat**: 1\n   - **Job ID**: DEMO-JOB-B\n   - **Control ID**: DEMO-CTRL-002\n   - **Record ID**: DEMO-DEF-002\n\nAixí doncs, entre el 2026-09-01 i el 2026-09-30, un total de **12 plaques han estat retirades** a la secció TE.",
+  "usage": {
+    "input_tokens": 6853,
+    "output_tokens": 394,
+    "requests": 3,
+    "missing_usage": 0,
+    "estimated_cost_usd": 0.0012643499999999998
+  },
+  "span_counts": {
+    "session": 1,
+    "agent_run": 1,
+    "llm_call": 3,
+    "tool_call": 2
+  },
+  "tools": [
+    "get_defect_summary",
+    "get_defect_pareto"
+  ],
+  "checks": {
+    "single_trace": true,
+    "parent_hierarchy": true,
+    "usage_reconciles_with_model_calls": true
+  },
+  "dashboard_export_verified": false,
+  "dashboard_limitation": "LOGFIRE_TOKEN is not configured; only local export verified.",
+  "local_trace_file": "tmp/monitoring/authorized-run.jsonl"
+}

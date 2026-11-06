@@ -1,0 +1,34 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.16, pytest-9.2.0, pluggy-1.7.0 -- /workspaces/ai-capstone-lab/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /workspaces/ai-capstone-lab
+configfile: pyproject.toml
+plugins: anyio-4.15.1, asyncio-1.4.1.post1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 8 items / 7 deselected / 1 selected
+
+tests/test_streaming_agent.py::test_real_stream_emits_tools_and_text_before_final_result FAILED
+
+=================================== FAILURES ===================================
+__________ test_real_stream_emits_tools_and_text_before_final_result ___________
+tests/test_streaming_agent.py:176: in test_real_stream_emits_tools_and_text_before_final_result
+    result = await agent(
+tests/conftest.py:22: in run
+    result = await run_agent(
+est_prog/capstone_reporting/agent.py:183: in run_agent
+    async with client.responses.stream(**options) as stream:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/openai/lib/streaming/responses/_responses.py:216: in __aenter__
+    raw_stream = await self.__api_request
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py:2925: in create
+    return await self._post(
+.venv/lib/python3.13/site-packages/openai/_base_client.py:1990: in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/openai/_base_client.py:1775: in request
+    raise self._make_status_error_from_response(err.response) from None
+E   openai.BadRequestError: Error code: 400 - {'error': {'message': "Unknown parameter: 'input[1].parsed_arguments'.", 'type': 'invalid_request_error', 'param': 'input[1].parsed_arguments', 'code': 'unknown_parameter'}}
+=========================== short test summary info ============================
+FAILED tests/test_streaming_agent.py::test_real_stream_emits_tools_and_text_before_final_result
+======================= 1 failed, 7 deselected in 2.26s ========================

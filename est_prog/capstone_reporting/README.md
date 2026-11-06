@@ -127,3 +127,47 @@ públiques i l'estructura de resposta sempre que sigui possible. Aquesta
 substitució requerirà validar regles, unitats, cobertura i consistència de les
 dades reals; no es reutilitzaran automàticament les convencions del fixture.
 La consulta agregada específica de jobs afectats queda fora d'aquest increment.
+
+## Migració asíncrona
+
+`agent.run_agent` i `agent.execute_tool` són ara coroutines: cal executar-les
+amb `await`. Els notebooks poden usar `await run_agent(...)` directament;
+des d'un script síncron es pot usar `asyncio.run(run_agent(...))`.
+
+El mòdul `tools.py` proporciona les signatures asíncrones de les tres eines.
+Actualment executa el backend JSON en un fil amb `asyncio.to_thread`, sense
+bloquejar el bucle d'events. Aquest límit permet substituir les lectures per
+crides HTTP asíncrones quan es disposi del contracte de l'API real. No s'ha
+implementat cap connexió real en aquest increment.
+
+Les funcions de `defects.py` i les exportacions de l'arrel del paquet continuen
+sent síncrones per a càlculs i consultes deterministes locals. La demostració
+`python -m est_prog.capstone_reporting` les continua executant sense model.
+
+## Streaming
+
+`await run_agent(pregunta, on_event=callback)` activa el streaming. El callback
+ha de ser asíncron i rep diccionaris `round_start`, `text_delta`, `tool_start`,
+`tool_end` i `completed`. El valor retornat continua contenint `answer`,
+`tool_calls`, `model` i `reference_date`. Sense callback, l'agent usa la via
+de resposta completa per mantenir els consumidors i el jutge existents.
+
+Streamlit mostra el text progressivament i la traça de cada eina quan s'executa.
+Els arguments han d'estar complets abans d'executar cap eina. El text provisional
+d'una ronda amb eines es reemplaça a la ronda següent; si hi ha un error a mig
+flux, no es desa com una resposta completada. La traça disponible i l'error
+continuen visibles després dels reruns de la interfície.
+
+## Context de conversa
+
+`run_agent` accepta `message_history` i retorna aquest mateix camp ampliat amb
+el torn actual. Per continuar una conversa, passa `resultat["message_history"]`
+a la crida següent. L'historial inclou les preguntes, les respostes i les crides
+i resultats de les eines; es copia i no es modifica el que proporciona el caller.
+Sense historial, la consulta continua començant una conversa nova.
+
+Streamlit conserva aquest context dins la sessió i el buida amb «Esborra la
+conversa». Això permet completar un aclariment amb «te» sense repetir les dates.
+L'historial no és una font per inventar producció: `sample_quantity` és mostra
+inspeccionada i `errors` són ocurrències d'error. Per a plaques afectades cal usar
+`affected_boards`, també com a ocurrències registrades, no com a plaques úniques.
